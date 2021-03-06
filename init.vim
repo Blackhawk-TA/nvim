@@ -1,19 +1,24 @@
 call plug#begin("~/.vim/plugged")
-  " Plugin Section
-  Plug 'joshdick/onedark.vim'
-  Plug 'scrooloose/nerdtree'
-  Plug 'ryanoasis/vim-devicons'
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-  Plug 'junegunn/fzf.vim'
-  Plug 'easymotion/vim-easymotion'
-  Plug 'editorconfig/editorconfig-vim'
-  Plug 'tpope/vim-fugitive'
-  Plug 'dyng/ctrlsf.vim'
+    " Plugin Section
+    Plug 'joshdick/onedark.vim'
+    Plug 'scrooloose/nerdtree'
+    Plug 'itchyny/lightline.vim'
+    Plug 'ryanoasis/vim-devicons'
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    Plug 'junegunn/fzf.vim'
+    Plug 'easymotion/vim-easymotion'
+    Plug 'editorconfig/editorconfig-vim'
+    Plug 'tpope/vim-fugitive'
+    Plug 'dyng/ctrlsf.vim'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'leafgarland/typescript-vim'
+    Plug 'peitalin/vim-jsx-typescript'
+    Plug 'clangd/coc-clangd'
 call plug#end()
 
 "Config Section
 if (has("termguicolors"))
-  set termguicolors
+    set termguicolors
 endif
 syntax on
 colorscheme onedark
@@ -36,6 +41,7 @@ set list
 set listchars=tab:\|- 
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 set encoding=utf-8
+set clipboard^=unnamed,unnamedplus
 
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeMinimalUI = 1
@@ -50,17 +56,35 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " Toggle
 nnoremap <silent> <C-b> :NERDTreeToggle<CR>
 
+" Split window
+nmap ss :split<Return><C-w>w
+nmap sv :vsplit<Return><C-w>w
+" Move window
+map s<left> <C-w>h
+map s<up> <C-w>k
+map s<down> <C-w>j
+map s<right> <C-w>l
+map sh <C-w>h
+map sk <C-w>k
+map sj <C-w>j
+map sl <C-w>l
+map si <C-w>+
+map su <C-w>-
+map so <C-w><
+map sp <C-w>>
+
 " open new split panes to right and below
 set splitright
 set splitbelow
+
 " turn terminal to normal mode with escape
 tnoremap <Esc> <C-\><C-n>
 " start terminal in insert mode
 au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 " open terminal on ctrl+n
 function! OpenTerminal()
-  split term://bash
-  resize 10
+    split term://bash
+    resize 10
 endfunction
 nnoremap <c-n> :call OpenTerminal()<CR>
 
@@ -77,11 +101,23 @@ nnoremap <A-l> <C-w>l
 " search
 nnoremap <C-p> :FZF<CR>
 let g:fzf_action = {
-  \'ctrl-t': 'tab split',
-  \'ctrl-s': 'split',
-  \'ctrl-v': 'vsplit'
+    \'ctrl-t': 'tab split',
+    \'ctrl-s': 'split',
+    \'ctrl-v': 'vsplit'
 \}
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 " global search
-nnoremap <C-o> :CtrlSF<CR>
+nnoremap <C-o> :CtrlSF<Space>
+
+" CoC config
+let g:coc_global_extensions = [
+    \'coc-emmet',
+    \'coc-css',
+    \'coc-html',
+    \'coc-json',
+    \'coc-prettier',
+    \'coc-tsserver',
+    \'coc-clangd'
+\]
+
