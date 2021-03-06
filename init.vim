@@ -3,6 +3,8 @@ call plug#begin("~/.vim/plugged")
     Plug 'joshdick/onedark.vim'
     Plug 'scrooloose/nerdtree'
     Plug 'itchyny/lightline.vim'
+    Plug 'maximbaz/lightline-ale'
+    Plug 'dense-analysis/ale'
     Plug 'ryanoasis/vim-devicons'
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
@@ -127,8 +129,8 @@ nnoremap <C-o> :CtrlSF<Space>
 
 " CoC config
 let g:coc_global_extensions = [
-    \'coc-emmet',
     \'coc-css',
+    \'coc-eslint',
     \'coc-html',
     \'coc-json',
     \'coc-prettier',
