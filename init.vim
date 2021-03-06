@@ -56,9 +56,18 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " Toggle
 nnoremap <silent> <C-b> :NERDTreeToggle<CR>
 
+" Lightline config
+let g:lightline = {
+    \'colorscheme': 'onedark',
+\}
+
+" Airline config
+let g:airline_theme='onedark'
+
 " Split window
 nmap ss :split<Return><C-w>w
 nmap sv :vsplit<Return><C-w>w
+
 " Move window
 map s<left> <C-w>h
 map s<up> <C-w>k
@@ -72,6 +81,12 @@ map si <C-w>+
 map su <C-w>-
 map so <C-w><
 map sp <C-w>>
+
+" Resize window
+nmap <C-w><left> <C-w><
+nmap <C-w><right> <C-w>>
+nmap <C-w><up> <C-w>+
+nmap <C-w><down> <C-w>-
 
 " open new split panes to right and below
 set splitright
