@@ -11,6 +11,7 @@ call plug#begin("~/.vim/plugged")
     Plug 'easymotion/vim-easymotion'
     Plug 'editorconfig/editorconfig-vim'
     Plug 'tpope/vim-fugitive'
+    Plug 'airblade/vim-gitgutter'
     Plug 'dyng/ctrlsf.vim'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'leafgarland/typescript-vim'
