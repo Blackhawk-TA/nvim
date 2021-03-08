@@ -116,6 +116,17 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
+" easymotion
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+nnoremap <space> <NOP>
+nmap <space> <Plug>(easymotion-jumptoanywhere)
+let g:EasyMotion_smartcase = 1
+let g:EasyMotion_keys = 'hklyuiopnmqwertzxcvbasdjf'
+let g:EasyMotion_re_anywhere = '\v' .
+\'(<.|^$)' . '|' .
+\'(_\zs.)' . '|' .
+\'(#\zs.)'
+
 " search
 nnoremap <C-p> :FZF<CR>
 let g:fzf_action = {
