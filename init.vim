@@ -63,8 +63,36 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 nnoremap <silent> <C-b> :NERDTreeToggle<CR>
 
 " Lightline config
-let g:lightline = {
-    \'colorscheme': 'onedark',
+let g:lightline = { 'colorscheme': 'onedark' }
+
+let g:lightline.component_expand = {
+\   'gitbranch': 'FugitiveHead',
+\   'linter_checking': 'lightline#ale#checking',
+\   'linter_infos': 'lightline#ale#infos',
+\   'linter_warnings': 'lightline#ale#warnings',
+\   'linter_errors': 'lightline#ale#errors',
+\   'linter_ok': 'lightline#ale#ok',
+\}
+
+let g:lightline.component_type = {
+\   'linter_checking': 'right',
+\   'linter_infos': 'right',
+\   'linter_warnings': 'warning',
+\   'linter_errors': 'error',
+\   'linter_ok': 'right',
+\ }
+
+let g:lightline.active = { 
+\   'left': [ 
+\       [ 'mode', 'paste' ],
+\       [ 'gitbranch', 'readonly', 'filename', 'modified' ],
+\   ],
+\   'right': [
+\       [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
+\       [ 'lineinfo' ],
+\       [ 'percent' ],
+\       [ 'fileformat', 'fileencoding', 'filetype' ],
+\   ],
 \}
 
 " Airline config
