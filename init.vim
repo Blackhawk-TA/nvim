@@ -187,14 +187,18 @@ nnoremap <C-o> :CtrlSF<Space>
 
 " CoC config
 let g:coc_global_extensions = [
+    \'coc-clangd',
+    \'coc-cmake',
     \'coc-css',
     \'coc-eslint',
+    \'coc-go',
     \'coc-html',
     \'coc-json',
+    \'coc-markdownlint',
     \'coc-prettier',
+    \'coc-swagger',
+    \'coc-sql',
     \'coc-tsserver',
-    \'coc-clangd',
-    \'coc-go',
     \'coc-yaml',
     \'coc-xml',
     \'coc-vimlsp',
