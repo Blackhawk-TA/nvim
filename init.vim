@@ -19,6 +19,7 @@ call plug#begin("~/.vim/plugged")
     Plug 'peitalin/vim-jsx-typescript'
     Plug 'clangd/coc-clangd'
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+    Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 "Config Section
@@ -203,4 +204,21 @@ let g:coc_global_extensions = [
     \'coc-xml',
     \'coc-vimlsp',
 \]
+
+" Show element type on which the cursor is located
+map <F1> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+" Colorscheme modifications
+"hi Constant ctermfg=214 guifg=#e5c07b
+"hi Type ctermfg=214 guifg=#e5c07b
+"hi Identifier ctermfg=214 guifg=#e5c07b
+"hi Structure ctermfg=214 guifg=#e5c07b
+
+"hi Statement ctermfg=160 guifg=#e06c75
+"hi Include ctermfg=160 guifg=#e06c75
+"hi Function ctermfg=160 guifg=#e06c75
+
+"hi StorageClass ctermfg=15 guifg=#aab2bf
 
