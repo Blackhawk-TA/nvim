@@ -41,9 +41,10 @@ set showmode
 set showcmd
 set hidden
 set list
-set listchars=tab:\|- 
+set listchars=tab:\|-
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 set encoding=utf-8
+set ff=unix
 set clipboard^=unnamed,unnamedplus
 
 let g:NERDTreeShowHidden = 1
@@ -149,4 +150,3 @@ let g:coc_global_extensions = [
     \'coc-tsserver',
     \'coc-clangd'
 \]
-
