@@ -28,6 +28,7 @@ endif
 syntax on
 colorscheme onedark
 
+let mapleader = ","
 set number
 set number relativenumber
 set hlsearch
@@ -61,6 +62,23 @@ autocmd FileType nerdtree setlocal relativenumber
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " Toggle
 nnoremap <silent> <C-b> :NERDTreeToggle<CR>
+
+" Terminal
+" turn terminal to normal mode with escape
+tnoremap <Esc> <C-\><C-n>
+" start terminal in insert mode
+au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+" open terminal on ctrl+n
+function! OpenTerminal()
+    if has('win64') " Use powershell on windows
+        split term://powershell
+    else
+        split term://bash
+    endif
+    resize 10
+endfunction
+nnoremap <c-n> :call OpenTerminal()<CR>
+
 
 " Lightline config
 let g:lightline = { 'colorscheme': 'onedark' }
@@ -126,21 +144,6 @@ nmap <C-w><down> <C-w>-
 set splitright
 set splitbelow
 
-" turn terminal to normal mode with escape
-tnoremap <Esc> <C-\><C-n>
-" start terminal in insert mode
-au BufEnter * if &buftype == 'terminal' | :startinsert | endif
-" open terminal on ctrl+n
-function! OpenTerminal()
-    if has('win64')
-        split term://powershell
-    else
-        split term://bash
-    endif
-    resize 10
-endfunction
-nnoremap <c-n> :call OpenTerminal()<CR>
-
 " use alt+hjkl to move between split/vsplit panels
 tnoremap <A-h> <C-\><C-n><C-w>h
 tnoremap <A-j> <C-\><C-n><C-w>j
@@ -150,6 +153,14 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
+
+" Git shortcuts
+nmap <leader>gb :Gblame<CR>
+nmap <leader>gs :G<CR>
+nmap <leader>gc :Gvdiff<CR>
+
+" Jump to latest edit
+nmap <Tab> '.
 
 " easymotion
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
@@ -182,6 +193,10 @@ let g:coc_global_extensions = [
     \'coc-json',
     \'coc-prettier',
     \'coc-tsserver',
-    \'coc-clangd'
+    \'coc-clangd',
+    \'coc-go',
+    \'coc-yaml',
+    \'coc-xml',
+    \'coc-vimlsp',
 \]
 
