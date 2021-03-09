@@ -13,6 +13,7 @@ call plug#begin("~/.vim/plugged")
     Plug 'tpope/vim-fugitive'
     Plug 'airblade/vim-gitgutter'
     Plug 'dyng/ctrlsf.vim'
+    Plug 'raimondi/delimitMate'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'leafgarland/typescript-vim'
     Plug 'peitalin/vim-jsx-typescript'
@@ -103,7 +104,11 @@ tnoremap <Esc> <C-\><C-n>
 au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 " open terminal on ctrl+n
 function! OpenTerminal()
-    split term://bash
+    if has('win64')
+        split term://powershell
+    else
+        split term://bash
+    endif
     resize 10
 endfunction
 nnoremap <c-n> :call OpenTerminal()<CR>
