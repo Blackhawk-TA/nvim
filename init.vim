@@ -17,6 +17,7 @@ call plug#begin("~/.vim/plugged")
     Plug 'leafgarland/typescript-vim'
     Plug 'peitalin/vim-jsx-typescript'
     Plug 'clangd/coc-clangd'
+    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 "Config Section
@@ -150,3 +151,4 @@ let g:coc_global_extensions = [
     \'coc-tsserver',
     \'coc-clangd'
 \]
+
