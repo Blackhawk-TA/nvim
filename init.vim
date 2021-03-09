@@ -186,6 +186,9 @@ let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 " global search
 nnoremap <C-o> :CtrlSF<Space>
 
+" go to definition global
+nnoremap <leader>gd :ALEGoToDefinition<CR>
+
 " CoC config
 let g:coc_global_extensions = [
     \'coc-clangd',
