@@ -46,6 +46,7 @@ set showcmd
 set hidden
 set list
 set listchars=tab:\|-
+set listchars+=space:·
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 set encoding=utf-8
 set ff=unix
@@ -218,6 +219,7 @@ let g:lightline#ale#indicator_infos = "\uf129"
 let g:lightline#ale#indicator_warnings = "\uf071"
 let g:lightline#ale#indicator_errors = "\uf05e"
 let g:lightline#ale#indicator_ok = "\uf00c"
+
 " Colorscheme modifications
 "hi Constant ctermfg=214 guifg=#e5c07b
 "hi Type ctermfg=214 guifg=#e5c07b
