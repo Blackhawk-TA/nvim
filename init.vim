@@ -20,7 +20,6 @@ call plug#begin("~/.vim/plugged")
     Plug 'clangd/coc-clangd'
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
     Plug 'sheerun/vim-polyglot'
-    Plug 'vim-scripts/vim-auto-save'
 call plug#end()
 
 "Config Section
@@ -52,8 +51,6 @@ set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 set encoding=utf-8
 set ff=unix
 set clipboard^=unnamed,unnamedplus
-
-let g:auto_save = 1 " Auto safe
 
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeMinimalUI = 1
