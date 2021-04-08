@@ -48,7 +48,7 @@ set hidden
 set list
 set listchars=tab:\|-
 set listchars+=space:·
-set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+set tabstop=4 softtabstop=0 shiftwidth=4 smarttab
 set encoding=utf-8
 set ff=unix
 set clipboard^=unnamed,unnamedplus
