@@ -44,6 +44,7 @@ set confirm
 set laststatus=2
 set showmode
 set showcmd
+set spelllang=en
 set hidden
 set list
 set listchars=tab:\|-
@@ -58,6 +59,10 @@ let g:NERDTreeMinimalUI = 1
 let g:NERDTreeIgnore = []
 let g:NERDTreeStatusline = ''
 let g:NERDTreeShowLineNumbers=1
+
+" Toggle spellcheck
+nnoremap <silent> <F2> :set spell!<cr>
+inoremap <silent> <F2> <C-O>:set spell!<cr>
 
 " Use relative line numbers in nerdtree
 autocmd FileType nerdtree setlocal relativenumber
