@@ -218,6 +218,7 @@ let g:coc_global_extensions = [
     \'coc-prettier',
     \'coc-swagger',
     \'coc-sql',
+    \'coc-sh',
     \'coc-tsserver',
     \'coc-yaml',
     \'coc-xml',
