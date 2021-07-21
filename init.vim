@@ -1,31 +1,31 @@
 call plug#begin("~/.vim/plugged")
-    " Plugin Section
-    Plug 'joshdick/onedark.vim'
-    Plug 'scrooloose/nerdtree'
-    Plug 'itchyny/lightline.vim'
-    Plug 'maximbaz/lightline-ale'
-    Plug 'dense-analysis/ale'
-    Plug 'ryanoasis/vim-devicons'
-    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-    Plug 'junegunn/fzf.vim'
-    Plug 'easymotion/vim-easymotion'
-    Plug 'editorconfig/editorconfig-vim'
-    Plug 'tpope/vim-fugitive'
-    Plug 'airblade/vim-gitgutter'
-    Plug 'dyng/ctrlsf.vim'
-    Plug 'raimondi/delimitMate'
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'leafgarland/typescript-vim'
-    Plug 'peitalin/vim-jsx-typescript'
-    Plug 'clangd/coc-clangd'
-    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-    Plug 'sheerun/vim-polyglot'
-    Plug 'puremourning/vimspector'
+	" Plugin Section
+	Plug 'joshdick/onedark.vim'
+	Plug 'scrooloose/nerdtree'
+	Plug 'itchyny/lightline.vim'
+	Plug 'maximbaz/lightline-ale'
+	Plug 'dense-analysis/ale'
+	Plug 'ryanoasis/vim-devicons'
+	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+	Plug 'junegunn/fzf.vim'
+	Plug 'easymotion/vim-easymotion'
+	Plug 'editorconfig/editorconfig-vim'
+	Plug 'tpope/vim-fugitive'
+	Plug 'airblade/vim-gitgutter'
+	Plug 'dyng/ctrlsf.vim'
+	Plug 'raimondi/delimitMate'
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	Plug 'leafgarland/typescript-vim'
+	Plug 'peitalin/vim-jsx-typescript'
+	Plug 'clangd/coc-clangd'
+	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+	Plug 'sheerun/vim-polyglot'
+	Plug 'puremourning/vimspector'
 call plug#end()
 
 "Config Section
 if (has("termguicolors"))
-    set termguicolors
+	set termguicolors
 endif
 syntax on
 colorscheme onedark
@@ -78,12 +78,12 @@ tnoremap <Esc> <C-\><C-n>
 au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 " open terminal on ctrl+n
 function! OpenTerminal()
-    if has('win64') " Use powershell on windows
-        split term://powershell
-    else
-        split term://bash
-    endif
-    resize 10
+	if has('win64') " Use powershell on windows
+		split term://powershell
+	else
+		split term://bash
+	endif
+	resize 10
 endfunction
 nnoremap <c-n> :call OpenTerminal()<CR>
 
@@ -92,33 +92,33 @@ nnoremap <c-n> :call OpenTerminal()<CR>
 let g:lightline = { 'colorscheme': 'onedark' }
 
 let g:lightline.component_expand = {
-\   'gitbranch': 'FugitiveHead',
-\   'linter_checking': 'lightline#ale#checking',
-\   'linter_infos': 'lightline#ale#infos',
-\   'linter_warnings': 'lightline#ale#warnings',
-\   'linter_errors': 'lightline#ale#errors',
-\   'linter_ok': 'lightline#ale#ok',
+\	'gitbranch': 'FugitiveHead',
+\	'linter_checking': 'lightline#ale#checking',
+\	'linter_infos': 'lightline#ale#infos',
+\	'linter_warnings': 'lightline#ale#warnings',
+\	'linter_errors': 'lightline#ale#errors',
+\	'linter_ok': 'lightline#ale#ok',
 \}
 
 let g:lightline.component_type = {
-\   'linter_checking': 'right',
-\   'linter_infos': 'right',
-\   'linter_warnings': 'warning',
-\   'linter_errors': 'error',
-\   'linter_ok': 'right',
-\ }
+\	'linter_checking': 'right',
+\	'linter_infos': 'right',
+\	'linter_warnings': 'warning',
+\	'linter_errors': 'error',
+\	'linter_ok': 'right',
+\}
 
 let g:lightline.active = { 
-\   'left': [ 
-\       [ 'mode', 'paste' ],
-\       [ 'gitbranch', 'readonly', 'filename', 'modified' ],
-\   ],
-\   'right': [
-\       [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
-\       [ 'lineinfo' ],
-\       [ 'percent' ],
-\       [ 'fileformat', 'fileencoding', 'filetype' ],
-\   ],
+\	'left': [ 
+\		[ 'mode', 'paste' ],
+\		[ 'gitbranch', 'readonly', 'filename', 'modified' ],
+\	],
+\	'right': [
+\		[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
+\		[ 'lineinfo' ],
+\		[ 'percent' ],
+\		[ 'fileformat', 'fileencoding', 'filetype' ],
+\	],
 \}
 
 let g:lightline#ale#indicator_checking = "\uf110"
@@ -193,9 +193,9 @@ let g:EasyMotion_re_anywhere = '\v' .
 " search
 nnoremap <C-p> :FZF<CR>
 let g:fzf_action = {
-    \'ctrl-t': 'tab split',
-    \'ctrl-s': 'split',
-    \'ctrl-v': 'vsplit'
+\	'ctrl-t': 'tab split',
+\	'ctrl-s': 'split',
+\	'ctrl-v': 'vsplit'
 \}
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
@@ -207,22 +207,22 @@ nnoremap <leader>gd :ALEGoToDefinition<CR>
 
 " CoC config
 let g:coc_global_extensions = [
-    \'coc-clangd',
-    \'coc-cmake',
-    \'coc-css',
-    \'coc-eslint',
-    \'coc-go',
-    \'coc-html',
-    \'coc-json',
-    \'coc-markdownlint',
-    \'coc-prettier',
-    \'coc-swagger',
-    \'coc-sql',
-    \'coc-sh',
-    \'coc-tsserver',
-    \'coc-yaml',
-    \'coc-xml',
-    \'coc-vimlsp',
+\	'coc-clangd',
+\	'coc-cmake',
+\	'coc-css',
+\	'coc-eslint',
+\	'coc-go',
+\	'coc-html',
+\	'coc-json',
+\	'coc-markdownlint',
+\	'coc-prettier',
+\	'coc-swagger',
+\	'coc-sql',
+\	'coc-sh',
+\	'coc-tsserver',
+\	'coc-yaml',
+\	'coc-xml',
+\	'coc-vimlsp',
 \]
 
 " Show element type on which the cursor is located
