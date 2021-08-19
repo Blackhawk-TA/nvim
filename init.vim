@@ -210,6 +210,7 @@ let g:coc_global_extensions = [
 \	'coc-clangd',
 \	'coc-cmake',
 \	'coc-css',
+\	'coc-docker',
 \	'coc-eslint',
 \	'coc-go',
 \	'coc-html',
