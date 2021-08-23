@@ -51,7 +51,8 @@ set listchars=tab:\|-
 set listchars+=space:·
 set tabstop=4 softtabstop=0 shiftwidth=4 smarttab
 set encoding=utf-8
-set ff=unix
+set fileformat=unix
+set fileformats=unix,dos
 set clipboard^=unnamed,unnamedplus
 
 let g:NERDTreeShowHidden = 1
