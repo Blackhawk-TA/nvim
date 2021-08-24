@@ -192,7 +192,7 @@ let g:EasyMotion_re_anywhere = '\v' .
 \'(#\zs.)'
 
 " search
-nnoremap <C-p> :FZF<CR>
+nnoremap <C-o> :FZF<CR>
 let g:fzf_action = {
 \	'ctrl-t': 'tab split',
 \	'ctrl-s': 'split',
@@ -201,7 +201,7 @@ let g:fzf_action = {
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 " global search
-nnoremap <C-o> :CtrlSF<Space>
+nnoremap <C-p> :CtrlSF<Space>
 
 " go to definition global
 nnoremap <leader>gd :ALEGoToDefinition<CR>
