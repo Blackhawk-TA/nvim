@@ -61,6 +61,9 @@ let g:NERDTreeIgnore = []
 let g:NERDTreeStatusline = ''
 let g:NERDTreeShowLineNumbers=1
 
+" Autosave on focus lost
+autocmd BufLeave,FocusLost * silent! wall
+
 " Toggle spellcheck
 nnoremap <silent> <F2> :set spell!<cr>
 inoremap <silent> <F2> <C-O>:set spell!<cr>
