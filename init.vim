@@ -138,6 +138,13 @@ let g:airline_theme='onedark'
 " Debugger
 let g:vimspector_enable_mappings = 'HUMAN'
 
+" vim-test keybinds
+nmap <silent> <leader>tn :TestNearest<CR>
+nmap <silent> <leader>tf :TestFile<CR>
+nmap <silent> <leader>ts :TestSuite<CR>
+nmap <silent> <leader>tl :TestLast<CR>
+nmap <silent> <leader>tv :TestVisit<CR>
+
 " Split window
 nmap ss :split<Return><C-w>w
 nmap sv :vsplit<Return><C-w>w
