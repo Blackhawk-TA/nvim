@@ -21,6 +21,7 @@ call plug#begin("~/.vim/plugged")
 	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 	Plug 'sheerun/vim-polyglot'
 	Plug 'puremourning/vimspector'
+	Plug 'vim-test/vim-test'
 call plug#end()
 
 "Config Section
