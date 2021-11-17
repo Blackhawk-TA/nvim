@@ -22,6 +22,7 @@ call plug#begin("~/.vim/plugged")
 	Plug 'sheerun/vim-polyglot'
 	Plug 'puremourning/vimspector'
 	Plug 'vim-test/vim-test'
+	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 call plug#end()
 
 "Config Section
@@ -217,6 +218,10 @@ nnoremap <C-p> :CtrlSF<Space>
 " go to definition global
 nnoremap <leader>gd :ALEGoToDefinition<CR>
 
+" markdown keybinds
+noremap <C-m>+ :MarkdownPreview<CR>
+noremap <C-m>- :MarkdownPreviewStop<CR>
+
 " CoC config
 let g:coc_global_extensions = [
 \	'coc-clangd',
@@ -227,6 +232,7 @@ let g:coc_global_extensions = [
 \	'coc-go',
 \	'coc-html',
 \	'coc-json',
+\	'coc-java',
 \	'coc-markdownlint',
 \	'coc-prettier',
 \	'coc-swagger',
