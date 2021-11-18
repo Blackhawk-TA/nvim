@@ -189,6 +189,9 @@ nmap <leader>gb :Gblame<CR>
 nmap <leader>gs :G<CR>
 nmap <leader>gc :Gvdiff<CR>
 
+" Markdown preview keybinds
+nmap <leader>mp :MarkdownPreviewToggle<CR>
+
 " Jump to latest edit
 nmap <Tab> '.
 
@@ -217,10 +220,6 @@ nnoremap <C-p> :CtrlSF<Space>
 
 " go to definition global
 nnoremap <leader>gd :ALEGoToDefinition<CR>
-
-" markdown keybinds
-noremap <C-m>+ :MarkdownPreview<CR>
-noremap <C-m>- :MarkdownPreviewStop<CR>
 
 " CoC config
 let g:coc_global_extensions = [
