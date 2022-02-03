@@ -23,6 +23,7 @@ call plug#begin("~/.vim/plugged")
 	Plug 'puremourning/vimspector'
 	Plug 'vim-test/vim-test'
 	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+	Plug 'alvan/vim-closetag'
 call plug#end()
 
 "Config Section
