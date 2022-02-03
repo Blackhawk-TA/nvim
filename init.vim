@@ -88,7 +88,7 @@ function! OpenTerminal()
 	if has('win64') " Use powershell on windows
 		split term://powershell
 	else
-		split term://bash
+		split term://zsh
 	endif
 	resize 10
 endfunction
