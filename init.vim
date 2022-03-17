@@ -207,6 +207,9 @@ let g:EasyMotion_re_anywhere = '\v' .
 \'(_\zs.)' . '|' .
 \'(#\zs.)'
 
+" hide search highlighting on escape
+nnoremap <Esc> :noh<CR>
+
 " search
 nnoremap <C-o> :FZF<CR>
 let g:fzf_action = {
