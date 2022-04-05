@@ -23,6 +23,8 @@ call plug#begin("~/.vim/plugged")
 	Plug 'puremourning/vimspector'
 	Plug 'vim-test/vim-test'
 	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+	Plug 'lervag/vimtex'
+	Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 	Plug 'alvan/vim-closetag'
 call plug#end()
 
@@ -34,6 +36,7 @@ syntax on
 colorscheme onedark
 
 let mapleader = ","
+let maplocalleader = ","
 set number
 set number relativenumber
 set hlsearch
@@ -225,6 +228,17 @@ nnoremap <C-p> :CtrlSF<Space>
 " go to definition global
 nnoremap <leader>gd :ALEGoToDefinition<CR>
 
+" latex preview
+let g:vimtex_view_method = 'zathura'
+let g:livepreview_previewer = 'zathura'
+nmap <leader>lc :VimtexCompile<CR>
+nmap <leader>lp :LLPStartPreview<CR>
+
+" Spellchecking
+set spelllang=en,de
+set spellsuggest=best,9
+nnoremap <silent> <leader>sc :set spell!<cr>
+
 " CoC config
 let g:coc_global_extensions = [
 \	'coc-clangd',
@@ -238,6 +252,8 @@ let g:coc_global_extensions = [
 \	'coc-java',
 \	'coc-markdownlint',
 \	'coc-prettier',
+\	'coc-spell-checker',
+\	'coc-cspell-dicts',
 \	'coc-swagger',
 \	'coc-sql',
 \	'coc-sh',
@@ -245,6 +261,7 @@ let g:coc_global_extensions = [
 \	'coc-yaml',
 \	'coc-xml',
 \	'coc-vimlsp',
+\	'coc-vimtex',
 \]
 
 " Show element type on which the cursor is located
