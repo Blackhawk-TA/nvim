@@ -70,7 +70,12 @@ let g:NERDTreeShowLineNumbers=1
 
 " Autosave + autoformat on focus lost
 autocmd BufLeave,FocusLost * silent! wall
+
+" Autoformat on foucs lost
 autocmd BufLeave,FocusLost * :Autoformat
+
+" Auto format on keybind
+autocmd ModeChanged * :Autoformat
 
 " Toggle spellcheck
 nnoremap <silent> <F2> :set spell!<cr>
@@ -121,17 +126,13 @@ let g:lightline.component_type = {
 			\}
 
 let g:lightline.active = {
-			\	'left': [
-				\		[ 'mode', 'paste' ],
-				\		[ 'gitbranch', 'readonly', 'filename', 'modified' ],
-				\	],
-				\	'right': [
-					\		[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
-					\		[ 'lineinfo' ],
-					\		[ 'percent' ],
-					\		[ 'fileformat', 'fileencoding', 'filetype' ],
-					\	],
-					\}
+			\	'left': [[ 'mode', 'paste' ], [ 'gitbranch', 'readonly', 'filename', 'modified' ]],
+			\	'right': [
+				\		[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
+				\		[ 'lineinfo' ],
+				\		[ 'percent' ],
+				\		[ 'fileformat', 'fileencoding', 'filetype' ]]
+				\}
 
 let g:lightline#ale#indicator_checking = "\uf110"
 let g:lightline#ale#indicator_infos = "\uf129"
