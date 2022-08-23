@@ -26,7 +26,6 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 Plug 'lervag/vimtex'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'alvan/vim-closetag'
-Plug 'vim-autoformat/vim-autoformat'
 call plug#end()
 
 "Config Section
@@ -70,9 +69,6 @@ let g:NERDTreeShowLineNumbers=1
 
 " Autosave + autoformat on focus lost
 autocmd BufLeave,FocusLost * silent! wall
-
-" Autoformat on foucs lost
-autocmd BufLeave,FocusLost * silent! :Autoformat
 
 " Toggle spellcheck
 nnoremap <silent> <F2> :set spell!<cr>
@@ -263,6 +259,14 @@ let g:coc_global_extensions = [
 			\	'coc-vimlsp',
 			\	'coc-vimtex',
 			\]
+
+" Rename the current word in the cursor
+nmap <leader>cr  <Plug>(coc-rename)
+nmap <F2>        <Plug>(coc-rename)
+
+" Format code
+nmap <leader>cf  <Plug>(coc-format)
+vmap <leader>cf  <Plug>(coc-format-selected)
 
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice.
