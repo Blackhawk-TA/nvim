@@ -72,10 +72,7 @@ let g:NERDTreeShowLineNumbers=1
 autocmd BufLeave,FocusLost * silent! wall
 
 " Autoformat on foucs lost
-autocmd BufLeave,FocusLost * :Autoformat
-
-" Auto format on keybind
-autocmd ModeChanged * :Autoformat
+autocmd BufLeave,FocusLost * silent! :Autoformat
 
 " Toggle spellcheck
 nnoremap <silent> <F2> :set spell!<cr>
@@ -214,7 +211,7 @@ let g:EasyMotion_re_anywhere = '\v' .
 			\'(#\zs.)'
 
 " hide search highlighting on escape
-nnoremap <Esc> :noh<CR>
+nnoremap <silent> <Esc> :noh<CR>
 
 " search
 nnoremap <C-o> :FZF<CR>
