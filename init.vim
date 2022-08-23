@@ -1,31 +1,32 @@
 call plug#begin("~/.vim/plugged")
-	" Plugin Section
-	Plug 'joshdick/onedark.vim'
-	Plug 'scrooloose/nerdtree'
-	Plug 'itchyny/lightline.vim'
-	Plug 'maximbaz/lightline-ale'
-	Plug 'dense-analysis/ale'
-	Plug 'ryanoasis/vim-devicons'
-	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-	Plug 'junegunn/fzf.vim'
-	Plug 'easymotion/vim-easymotion'
-	Plug 'editorconfig/editorconfig-vim'
-	Plug 'tpope/vim-fugitive'
-	Plug 'airblade/vim-gitgutter'
-	Plug 'dyng/ctrlsf.vim'
-	Plug 'raimondi/delimitMate'
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
-	Plug 'leafgarland/typescript-vim'
-	Plug 'peitalin/vim-jsx-typescript'
-	Plug 'clangd/coc-clangd'
-	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-	Plug 'sheerun/vim-polyglot'
-	Plug 'puremourning/vimspector'
-	Plug 'vim-test/vim-test'
-	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-	Plug 'lervag/vimtex'
-	Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
-	Plug 'alvan/vim-closetag'
+" Plugin Section
+Plug 'joshdick/onedark.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'itchyny/lightline.vim'
+Plug 'maximbaz/lightline-ale'
+Plug 'dense-analysis/ale'
+Plug 'ryanoasis/vim-devicons'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'dyng/ctrlsf.vim'
+Plug 'raimondi/delimitMate'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'clangd/coc-clangd'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'sheerun/vim-polyglot'
+Plug 'puremourning/vimspector'
+Plug 'vim-test/vim-test'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'lervag/vimtex'
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+Plug 'alvan/vim-closetag'
+Plug 'vim-autoformat/vim-autoformat'
 call plug#end()
 
 "Config Section
@@ -67,8 +68,9 @@ let g:NERDTreeIgnore = []
 let g:NERDTreeStatusline = ''
 let g:NERDTreeShowLineNumbers=1
 
-" Autosave on focus lost
+" Autosave + autoformat on focus lost
 autocmd BufLeave,FocusLost * silent! wall
+autocmd BufLeave,FocusLost * :Autoformat
 
 " Toggle spellcheck
 nnoremap <silent> <F2> :set spell!<cr>
@@ -83,7 +85,7 @@ nnoremap <silent> <C-b> :NERDTreeToggle<CR>
 
 " Terminal
 " turn terminal to normal mode with escape
-tnoremap <Esc> <C-\><C-n>
+tnoremap <silent> <Esc> <C-\><C-n>
 " start terminal in insert mode
 au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 " open terminal on ctrl+n
@@ -102,34 +104,34 @@ nnoremap <c-n> :call OpenTerminal()<CR>
 let g:lightline = { 'colorscheme': 'onedark' }
 
 let g:lightline.component_expand = {
-\	'gitbranch': 'FugitiveHead',
-\	'linter_checking': 'lightline#ale#checking',
-\	'linter_infos': 'lightline#ale#infos',
-\	'linter_warnings': 'lightline#ale#warnings',
-\	'linter_errors': 'lightline#ale#errors',
-\	'linter_ok': 'lightline#ale#ok',
-\}
+			\	'gitbranch': 'FugitiveHead',
+			\	'linter_checking': 'lightline#ale#checking',
+			\	'linter_infos': 'lightline#ale#infos',
+			\	'linter_warnings': 'lightline#ale#warnings',
+			\	'linter_errors': 'lightline#ale#errors',
+			\	'linter_ok': 'lightline#ale#ok',
+			\}
 
 let g:lightline.component_type = {
-\	'linter_checking': 'right',
-\	'linter_infos': 'right',
-\	'linter_warnings': 'warning',
-\	'linter_errors': 'error',
-\	'linter_ok': 'right',
-\}
+			\	'linter_checking': 'right',
+			\	'linter_infos': 'right',
+			\	'linter_warnings': 'warning',
+			\	'linter_errors': 'error',
+			\	'linter_ok': 'right',
+			\}
 
-let g:lightline.active = { 
-\	'left': [ 
-\		[ 'mode', 'paste' ],
-\		[ 'gitbranch', 'readonly', 'filename', 'modified' ],
-\	],
-\	'right': [
-\		[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
-\		[ 'lineinfo' ],
-\		[ 'percent' ],
-\		[ 'fileformat', 'fileencoding', 'filetype' ],
-\	],
-\}
+let g:lightline.active = {
+			\	'left': [
+				\		[ 'mode', 'paste' ],
+				\		[ 'gitbranch', 'readonly', 'filename', 'modified' ],
+				\	],
+				\	'right': [
+					\		[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
+					\		[ 'lineinfo' ],
+					\		[ 'percent' ],
+					\		[ 'fileformat', 'fileencoding', 'filetype' ],
+					\	],
+					\}
 
 let g:lightline#ale#indicator_checking = "\uf110"
 let g:lightline#ale#indicator_infos = "\uf129"
@@ -206,9 +208,9 @@ nmap <space> <Plug>(easymotion-jumptoanywhere)
 let g:EasyMotion_smartcase = 1
 let g:EasyMotion_keys = 'hklyuiopnmqwertzxcvbasdjf'
 let g:EasyMotion_re_anywhere = '\v' .
-\'(<.|^$)' . '|' .
-\'(_\zs.)' . '|' .
-\'(#\zs.)'
+			\'(<.|^$)' . '|' .
+			\'(_\zs.)' . '|' .
+			\'(#\zs.)'
 
 " hide search highlighting on escape
 nnoremap <Esc> :noh<CR>
@@ -216,10 +218,10 @@ nnoremap <Esc> :noh<CR>
 " search
 nnoremap <C-o> :FZF<CR>
 let g:fzf_action = {
-\	'ctrl-t': 'tab split',
-\	'ctrl-s': 'split',
-\	'ctrl-v': 'vsplit'
-\}
+			\	'ctrl-t': 'tab split',
+			\	'ctrl-s': 'split',
+			\	'ctrl-v': 'vsplit'
+			\}
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 " global search
@@ -241,38 +243,38 @@ nnoremap <silent> <leader>sc :set spell!<cr>
 
 " CoC config
 let g:coc_global_extensions = [
-\	'coc-clangd',
-\	'coc-cmake',
-\	'coc-css',
-\	'coc-docker',
-\	'coc-eslint',
-\	'coc-go',
-\	'coc-html',
-\	'coc-json',
-\	'coc-java',
-\	'coc-markdownlint',
-\	'coc-prettier',
-\	'coc-spell-checker',
-\	'coc-cspell-dicts',
-\	'coc-swagger',
-\	'coc-sql',
-\	'coc-sh',
-\	'coc-tsserver',
-\	'coc-yaml',
-\	'coc-xml',
-\	'coc-vimlsp',
-\	'coc-vimtex',
-\]
+			\	'coc-clangd',
+			\	'coc-cmake',
+			\	'coc-css',
+			\	'coc-docker',
+			\	'coc-eslint',
+			\	'coc-go',
+			\	'coc-html',
+			\	'coc-json',
+			\	'coc-java',
+			\	'coc-markdownlint',
+			\	'coc-prettier',
+			\	'coc-spell-checker',
+			\	'coc-cspell-dicts',
+			\	'coc-swagger',
+			\	'coc-sql',
+			\	'coc-sh',
+			\	'coc-tsserver',
+			\	'coc-yaml',
+			\	'coc-xml',
+			\	'coc-vimlsp',
+			\	'coc-vimtex',
+			\]
 
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice.
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+			\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Show element type on which the cursor is located
 map <F1> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+			\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+			\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 " Colorscheme modifications
 "hi Constant ctermfg=214 guifg=#e5c07b
