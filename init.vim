@@ -248,6 +248,7 @@ let g:coc_global_extensions = [
 			\	'coc-java',
 			\	'coc-markdownlint',
 			\	'coc-prettier',
+			\	'coc-python',
 			\	'coc-spell-checker',
 			\	'coc-cspell-dicts',
 			\	'coc-swagger',
