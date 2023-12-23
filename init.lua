@@ -7,6 +7,7 @@ require("config/lualine")
 require("config/comment")
 require("config/hop")
 require("config/autopairs")
+require("config/toggleterm")
 
 require("after/plugin/keymap")
 

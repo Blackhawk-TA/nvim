@@ -17,3 +17,6 @@ keymap('n', 'su', '<C-w>-', default_opts)
 keymap('n', 'so', '<C-w><', default_opts)
 keymap('n', 'sp', '<C-w>>', default_opts)
 
+-- Map Esc in terminal mode to exit
+keymap('t', '<Esc>', '<C-\\><C-n>', default_opts)
+
