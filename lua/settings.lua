@@ -48,8 +48,8 @@ vim.o.mouse = 'a'
 vim.o.undofile = true
 vim.o.autowrite = true
 
--- Autosave + autoformat on focus lost
+-- Autosave on BufLeave and remove trailing spaces (excluding readonly and non-modifiable buffers)
 vim.api.nvim_exec([[
-  autocmd! BufLeave,FocusLost * silent! w
+  autocmd! BufLeave,FocusLost * if &modifiable && !&readonly | %s/\s\+$//e | silent! wall | endif
 ]], false)
 
