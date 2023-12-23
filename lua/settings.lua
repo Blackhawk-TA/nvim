@@ -50,6 +50,6 @@ vim.o.autowrite = true
 
 -- Autosave on BufLeave and remove trailing spaces (excluding readonly and non-modifiable buffers)
 vim.api.nvim_exec([[
-  autocmd! BufLeave,FocusLost * if &modifiable && !&readonly | %s/\s\+$//e | silent! wall | endif
+	autocmd! BufLeave,FocusLost * if &modifiable && !&readonly | %s/\s\+$//e | silent! wall | endif
 ]], false)
 
