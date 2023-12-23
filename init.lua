@@ -5,4 +5,5 @@ require("config/colorscheme")
 require("config/neotree")
 require("config/lualine")
 require("config/comment")
+require("config/hop")
 
