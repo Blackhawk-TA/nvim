@@ -4,12 +4,9 @@
 
 #### Cross platform
 
-- silversearcher-ag: https://github.com/ggreer/the_silver_searcher
-- FiraMono font: https://github.com/ryanoasis/nerd-fonts
-- pynvim: https://github.com/neovim/pynvim
+- [FiraMono font](https://github.com/ryanoasis/nerd-fonts)
 
 #### Arch packages
 
-- https://archlinux.org/packages/extra/any/python-pynvim/
-- https://archlinux.org/packages/extra/any/texlive-core/
+- [Fzf](https://wiki.archlinux.org/title/Fzf)
 
