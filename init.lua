@@ -6,4 +6,5 @@ require("config/neotree")
 require("config/lualine")
 require("config/comment")
 require("config/hop")
+require("config/autopairs")
 
