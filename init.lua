@@ -4,4 +4,5 @@ require("config/lazy")
 require("config/colorscheme")
 require("config/neotree")
 require("config/lualine")
+require("config/comment")
 
