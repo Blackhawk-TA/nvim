@@ -8,6 +8,7 @@ require("config/comment")
 require("config/hop")
 require("config/autopairs")
 require("config/toggleterm")
+require("config/bufferline")
 
 require("after/plugin/keymap")
 
