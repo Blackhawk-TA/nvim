@@ -9,6 +9,7 @@ require("config/hop")
 require("config/autopairs")
 require("config/toggleterm")
 require("config/bufferline")
+require("config/telescope")
 
 require("after/plugin/keymap")
 
