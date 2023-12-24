@@ -11,6 +11,5 @@
 
 #### Arch packages
 
-- [Fzf](https://wiki.archlinux.org/title/Fzf)
 - [Pynvim](https://archlinux.org/packages/extra/any/python-pynvim/)
 
