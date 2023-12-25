@@ -10,6 +10,7 @@ require("config/autopairs")
 require("config/toggleterm")
 require("config/bufferline")
 require("config/telescope")
+require("config/treesitter")
 
 require("after/plugin/keymap")
 
