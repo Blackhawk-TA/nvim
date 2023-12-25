@@ -16,6 +16,7 @@ return {
 			mappings = {
 				["s"] = "noop",
 				["<C-s>"] = "open_vsplit",
+				["<C-t>"] = "open_tabnew",
 			},
 		},
 		filesystem = {
