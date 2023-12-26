@@ -25,17 +25,17 @@ lsp_zero.on_attach(function(client, bufnr)
 	})
 
 	-- Enbale code lense everywhere by default
-	pcall(vim.lsp.codelens.refresh)
-
-	local codelense_cmds = vim.api.nvim_create_augroup("codelense_cmds", { clear = true })
-	vim.api.nvim_create_autocmd("BufWritePost", {
-		buffer = bufnr,
-		group = codelense_cmds,
-		desc = "refresh codelens",
-		callback = function()
-			pcall(vim.lsp.codelens.refresh)
-		end,
-	})
+	-- pcall(vim.lsp.codelens.refresh)
+	--
+	-- local codelens_cmds = vim.api.nvim_create_augroup("codelens_cmds", { clear = true })
+	-- vim.api.nvim_create_autocmd("BufWritePost", {
+	-- 	buffer = bufnr,
+	-- 	group = codelens_cmds,
+	-- 	desc = "refresh codelens",
+	-- 	callback = function()
+	-- 		pcall(vim.lsp.codelens.refresh)
+	-- 	end,
+	-- })
 end)
 
 local cmp = require("cmp")
