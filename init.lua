@@ -11,6 +11,7 @@ require("config/toggleterm")
 require("config/bufferline")
 require("config/telescope")
 require("config/treesitter")
+require("config/lsp-zero")
 
 require("after/plugin/keymap")
 

@@ -1,7 +1,5 @@
-vim.g.mapleader = ','
-vim.g.maplocalleader = ','
-
-vim.o.termguicolors = true
+vim.g.mapleader = ","
+vim.g.maplocalleader = ","
 
 -- Line numbers
 vim.o.number = true
@@ -20,7 +18,7 @@ vim.o.smartindent = true
 -- Indentation visibility settings
 vim.o.hidden = true
 vim.o.list = true
-vim.o.listchars = 'tab:│ ,space:·'
+vim.o.listchars = "tab:│ ,space:·"
 
 -- Display settings
 vim.o.ruler = true
@@ -36,22 +34,18 @@ vim.o.shiftwidth = 4
 vim.o.smarttab = true
 
 -- Encoding and file format
-vim.o.encoding = 'utf-8'
-vim.o.fileformat = 'unix'
-vim.o.fileformats = 'unix,dos'
+vim.o.encoding = "utf-8"
+vim.o.fileformat = "unix"
+vim.o.fileformats = "unix,dos"
+vim.o.editorconfig = true
 
 -- Clipboard
-vim.o.clipboard = 'unnamed,unnamedplus'
+vim.o.clipboard = "unnamed,unnamedplus"
 
 -- Enable mouse features
-vim.o.mouse = 'a'
+vim.o.mouse = "a"
 
 -- Save handling
 vim.o.undofile = true
 vim.o.autowrite = true
-
--- Autosave on BufLeave and remove trailing spaces (excluding readonly and non-modifiable buffers)
-vim.api.nvim_exec([[
-	autocmd! BufLeave,FocusLost * if &modifiable && !&readonly | %s/\s\+$//e | silent! wall | endif
-]], false)
 
