@@ -24,7 +24,7 @@ lsp_zero.on_attach(function(client, bufnr)
 		end,
 	})
 
-	-- Enbale code lense everywhere by default
+	-- Enable code lense everywhere by default
 	-- pcall(vim.lsp.codelens.refresh)
 	--
 	-- local codelens_cmds = vim.api.nvim_create_augroup("codelens_cmds", { clear = true })
@@ -42,6 +42,15 @@ local cmp = require("cmp")
 local cmp_action = require("lsp-zero").cmp_action()
 
 cmp.setup({
+	sources = {
+		name = "spell",
+		option = {
+			keep_all_entries = false,
+			enable_in_context = function()
+				return true
+			end
+		}
+	},
 	mapping = cmp.mapping.preset.insert({
 		["<CR>"] = cmp.mapping.confirm({ select = false }),
 		["<Tab>"] = cmp_action.luasnip_supertab(),
@@ -101,5 +110,3 @@ require("mason-lspconfig").setup({
 		"yamlls"
 	}
 })
-
-vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", { undercurl = false })
