@@ -2,5 +2,6 @@
 return {
 	"nvim-lualine/lualine.nvim",
 	"norcalli/nvim-colorizer.lua",
-	"editorconfig/editorconfig-vim"
+	"editorconfig/editorconfig-vim",
+	"tpope/vim-fugitive"
 }

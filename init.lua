@@ -14,4 +14,3 @@ require("config/treesitter")
 require("config/lsp-zero")
 
 require("after/plugin/keymap")
-
