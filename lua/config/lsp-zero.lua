@@ -11,7 +11,7 @@ lsp_zero.on_attach(function(client, bufnr)
 	vim.keymap.set("n", "<leader>r", "<cmd> lua vim.lsp.buf.rename()<cr>", default_opts)
 	vim.keymap.set("n", "<leader>cf", "<cmd> lua vim.lsp.buf.format()<cr>", default_opts)
 	vim.keymap.set({ "n", "v" }, "<leader><space>", "<cmd>lua vim.lsp.buf.code_action()<cr>", default_opts)
-	lsp_zero.buffer_autoformat()
+	-- lsp_zero.buffer_autoformat()
 
 	local auto_save_format = vim.api.nvim_create_augroup("auto_save_format", { clear = true })
 	vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost" }, {
@@ -19,7 +19,8 @@ lsp_zero.on_attach(function(client, bufnr)
 		group = auto_save_format,
 		desc = "formats the buffer on save",
 		callback = function()
-			vim.lsp.buf.format()
+			-- vim.lsp.buf.format()
+			vim.cmd("%s/\\s\\+$//e")
 			vim.cmd("w")
 		end,
 	})
