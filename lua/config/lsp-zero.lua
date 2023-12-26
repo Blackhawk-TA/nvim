@@ -20,7 +20,7 @@ lsp_zero.on_attach(function(client, bufnr)
 		desc = "formats the buffer on save",
 		callback = function()
 			-- vim.lsp.buf.format()
-			vim.cmd("%s/\\s\\+$//e")
+			-- vim.cmd("%s/\\s\\+$//e")
 			vim.cmd("w")
 		end,
 	})
@@ -43,15 +43,6 @@ local cmp = require("cmp")
 local cmp_action = require("lsp-zero").cmp_action()
 
 cmp.setup({
-	sources = {
-		name = "spell",
-		option = {
-			keep_all_entries = false,
-			enable_in_context = function()
-				return true
-			end
-		}
-	},
 	mapping = cmp.mapping.preset.insert({
 		["<CR>"] = cmp.mapping.confirm({ select = false }),
 		["<Tab>"] = cmp_action.luasnip_supertab(),
@@ -111,3 +102,10 @@ require("mason-lspconfig").setup({
 		"yamlls"
 	}
 })
+
+-- Add icons for diagnostics
+vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
+vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
+vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
+
