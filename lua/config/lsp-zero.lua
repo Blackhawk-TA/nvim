@@ -19,8 +19,8 @@ lsp_zero.on_attach(function(client, bufnr)
 		group = auto_save_format,
 		desc = "formats the buffer on save",
 		callback = function()
-			vim.cmd("w")
 			vim.lsp.buf.format()
+			vim.cmd("w")
 		end,
 	})
 
@@ -104,4 +104,3 @@ require("mason-lspconfig").setup({
 })
 
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", { undercurl = false })
-
