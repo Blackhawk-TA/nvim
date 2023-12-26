@@ -50,6 +50,7 @@ vim.o.undofile = true
 vim.o.autowrite = true
 
 -- Spellcheck
+vim.o.syntax = "enable"
 vim.o.spelllang = "en,de"
 vim.o.spell = true
 vim.api.nvim_create_autocmd("TermOpen", { pattern = "term://*", command = "setlocal nospell" }) -- Disable spellcheck in terminal
