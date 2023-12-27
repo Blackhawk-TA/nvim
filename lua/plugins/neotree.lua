@@ -17,6 +17,8 @@ return {
 				["s"] = "noop",
 				["<C-s>"] = "open_vsplit",
 				["<C-t>"] = "open_tabnew",
+				["z"] = "close_all_nodes",
+				["Z"] = "expand_all_nodes",
 			},
 		},
 		filesystem = {
@@ -32,8 +34,8 @@ return {
 		git_status = {
 			symbols = {
 				-- Change type
-				added     = "✚", -- or "✚", but this is redundant info if you use git_status_colors on the name
-				modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
+				added     = "✚",
+				modified  = "",
 				deleted   = "✖", -- this can only be used in the git_status source
 				renamed   = "󰁕", -- this can only be used in the git_status source
 				-- Status type
