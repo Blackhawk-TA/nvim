@@ -54,3 +54,21 @@ vim.o.syntax = "enable"
 vim.o.spelllang = "en,de"
 vim.o.spell = true
 vim.api.nvim_create_autocmd("TermOpen", { pattern = "term://*", command = "setlocal nospell" }) -- Disable spellcheck in terminal
+
+
+-- Auto format + save
+vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost" }, {
+	pattern = "*",
+	desc = "formats the buffer on save",
+	callback = function()
+		local current_buffer = vim.fn.bufnr('%')
+		local is_modifiable = vim.api.nvim_buf_get_option(current_buffer, 'modifiable')
+		local is_readonly = vim.api.nvim_buf_get_option(current_buffer, 'readonly')
+
+		if is_modifiable and not is_readonly then
+			-- vim.lsp.buf.format()
+			vim.cmd("%s/\\s\\+$//e")
+			vim.cmd("wall")
+		end
+	end,
+})
