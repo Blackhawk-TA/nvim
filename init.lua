@@ -12,6 +12,7 @@ require("config/bufferline")
 require("config/telescope")
 require("config/treesitter")
 require("config/lsp-zero")
+require("config/debugging")
 
 require("after/plugin/autocmd")
 require("after/plugin/keymap")
