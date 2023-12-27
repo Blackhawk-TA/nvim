@@ -68,7 +68,8 @@ vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost" }, {
 		if is_modifiable and not is_readonly then
 			-- vim.lsp.buf.format()
 			vim.cmd("%s/\\s\\+$//e")
-			vim.cmd("wall")
+			vim.cmd("silent! wall")
 		end
 	end,
 })
+
