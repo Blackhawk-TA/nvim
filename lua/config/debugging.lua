@@ -3,6 +3,7 @@ local dapui = require("dapui")
 local utils = require("utils")
 
 -- Toggle debug view
+dapui.setup()
 dap.listeners.after.event_initialized["dapui_config"] = function()
   dapui.open()
 end
@@ -41,11 +42,11 @@ dap.configurations.cpp = {{
 } }
 
 -- Go debug adapter
-require('dap-go').setup() --TODO: Show output and debug view
+require("dap-go").setup() --TODO: Show output and debug view
 
 -- Python debug adapter
-local debugpy_dir = utils.get_mason_dir("debugpy")
-require('dap-python').setup(debugpy_dir .. "/venv/bin/python") --TODO: Check how local .venvs can be used instead of global
+local python_path = utils.get_python_path()
+require("dap-python").setup(python_path) -- FIX: .vscode/launch.json support
 
 -- Debugging keybindings
 vim.keymap.set("n", "<F5>", "<cmd>lua require('dap').toggle_breakpoint()<cr>")

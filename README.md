@@ -37,10 +37,16 @@ For debugging to work, `delve` must be installed using mason.
 :MasonInstall delve
 ```
 
-
 #### Python
 
 For debugging to work, `debugpy` must be installed using mason.
 ```vim
 :MasonInstall debugpy
 ```
+If a virtual environment is used, it requires `debugpy` to be installed there:
+```bash
+source .venv/bin/activate
+pip install debugpy
+```
+When adding a virtual environment, neovim has to be restarted to ensure that it is being used.
+
