@@ -69,7 +69,12 @@ cmp.setup({
 
 -- see :help lsp-zero-guide:integrate-with-mason-nvim
 -- to learn how to use mason.nvim with lsp-zero
-require("mason").setup({})
+require("mason").setup({
+	ensure_installed = { --TODO: Make sure auto install works.
+		"delve",
+		"debugpy",
+	}
+})
 require("mason-lspconfig").setup({
 	handlers = {
 		lsp_zero.default_setup,

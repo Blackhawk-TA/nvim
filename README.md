@@ -30,3 +30,17 @@ make
 ```
 This produces the `compile_commands.json` in the `.build` directory, which neovim expects.
 
+#### GoLang
+
+For debugging to work, `delve` must be installed using mason.
+```vim
+:MasonInstall delve
+```
+
+
+#### Python
+
+For debugging to work, `debugpy` must be installed using mason.
+```vim
+:MasonInstall debugpy
+```

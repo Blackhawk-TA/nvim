@@ -7,4 +7,11 @@ function utils.is_editable()
 	return is_modifiable and not is_readonly
 end
 
+function utils.start_debugger()
+	if vim.fn.filereadable(".vscode/launch.json") then
+		require("dap.ext.vscode").load_launchjs()
+	end
+	require("dap").continue()
+end
+
 return utils
