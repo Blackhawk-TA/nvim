@@ -26,7 +26,7 @@ dap.listeners.before.event_exited["dapui_config"] = function()
 	end
 end
 
---TODO: debug setup for python, node, c/c++, go
+-- FIX: C/C++ debugger (most likely not working due ot wrong gdb version)
 
 -- C/C++/Rust debug adapter
 dap.adapters.gdb = {
@@ -39,14 +39,14 @@ dap.configurations.c = {{
 	type = "gdb",
 	request = "launch",
 	program = function()
-		return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+		return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
 	end,
 	cwd = "${workspaceFolder}",
 }}
 dap.configurations.cpp = dap.configurations.c
 
 -- Go debug adapter
-require("dap-go").setup() --TODO: Show output and debug view
+require("dap-go").setup()
 
 -- Python debug adapter
 local python_path = utils.get_python_path()
