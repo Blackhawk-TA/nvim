@@ -25,7 +25,3 @@ keymap("n", "<Tab>", "'.", default_opts)
 
 -- Remove highlighting
 keymap("n", "<Esc>", ":noh<CR>", default_opts)
-
--- Git commands
-keymap("n", "<leader>gc", ":Gvdiffsplit<cr>", default_opts)
-keymap("n", "<leader>gb", ":Git blame<cr>", default_opts)

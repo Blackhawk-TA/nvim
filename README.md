@@ -21,10 +21,12 @@ This is my personal neovim config.
 - [Pynvim](https://github.com/neovim/pynvim)
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [fd](https://github.com/sharkdp/)
+- [lazygit](https://github.com/jesseduffield/lazygit#installation)
 
 ### Arch packages
 
 - [Pynvim](https://archlinux.org/packages/extra/any/python-pynvim/)
+- [lazygit](https://archlinux.org/packages/extra/x86_64/lazygit/)
 
 ## Development
 
