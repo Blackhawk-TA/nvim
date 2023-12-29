@@ -1,17 +1,17 @@
 # Config for neovim
 
-<!--toc:start-->
+This is my personal neovim config.
+
+## Content
+
 - [Dependencies](#dependencies)
   - [Cross platform](#cross-platform)
-    - [Arch packages](#arch-packages)
+  - [Arch packages](#arch-packages)
 - [Development](#development)
   - [CMake](#cmake)
   - [GoLang](#golang)
   - [Lua](#lua)
   - [Python](#python)
-<!--toc:end-->
-
-This is my personal neovim config.
 
 ## Dependencies
 
@@ -58,8 +58,9 @@ To be able to install all required Mason packages,
 ### Python
 
 For debugging to work, `debugpy` must be installed using mason.
-Mason installations are done automatically.
-If a virtual environment is used, it requires `debugpy` to be installed there:
+Mason installations are done automatically. \
+If a virtual environment is used, it is required to install `debugpy`
+manually within it:
 
 ```bash
 source .venv/bin/activate
