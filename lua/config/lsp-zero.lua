@@ -26,7 +26,7 @@ lsp_zero.on_attach(function(client, bufnr)
 	-- Enable code lense everywhere by default
 	-- pcall(vim.lsp.codelens.refresh)
 	--
-	-- local codelens_cmds = vim.api.nvim_create_augroup("codelens_cmds", { clear = true })
+>cf	-- local codelens_cmds = vim.api.nvim_create_augroup("codelens_cmds", { clear = true })
 	-- vim.api.nvim_create_autocmd("BufWritePost", {
 	-- 	buffer = bufnr,
 	-- 	group = codelens_cmds,
