@@ -1,6 +1,5 @@
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
-vim.g.editorconfig = true
 
 -- Line numbers
 vim.o.number = true
@@ -38,7 +37,6 @@ vim.o.smarttab = true
 vim.o.encoding = "utf-8"
 vim.o.fileformat = "unix"
 vim.o.fileformats = "unix,dos"
-vim.o.editorconfig = true
 
 -- Clipboard
 vim.o.clipboard = "unnamed,unnamedplus"
