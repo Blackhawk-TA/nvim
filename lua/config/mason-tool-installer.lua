@@ -3,13 +3,16 @@ require("mason-tool-installer").setup {
 	-- The language servers are installed in the lsp-zero config
 	ensure_installed = {
 		-- Linter
-		"shellcheck",
+		"cspell",
+		"cmakelint",
+		"cpplint",
 		"editorconfig-checker",
 		"luacheck",
 		"misspell",
-		"markdownlint-cli2",
+		"markdownlint",
 		"shellcheck",
-		"vint",
+		"yamllint",
+		"jsonlint",
 
 		-- Tools
 		"golines",

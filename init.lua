@@ -15,6 +15,7 @@ require("config/lsp-zero")
 require("config/mason-tool-installer")
 require("config/debugging")
 require("config/formatter")
+require("config/nvim-lint")
 
 require("after/plugin/autocmd")
 require("after/plugin/keymap")
