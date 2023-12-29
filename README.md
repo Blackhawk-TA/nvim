@@ -38,12 +38,12 @@ cmake with the `-DCMAKE_EXPORT_COMPILE_COMMANDS=ON` parameter.
 A build workflow could look like this:
 
 ```bash
-mkdir build && cd build
+mkdir -p build && cd build
 cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..
 make
 ```
 
-This produces the `compile_commands.json` in the `.build` directory,
+This produces the `compile_commands.json` in the `./build` directory,
 which neovim expects.
 
 ### GoLang
