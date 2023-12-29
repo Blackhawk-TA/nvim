@@ -26,7 +26,7 @@ lsp_zero.on_attach(function(client, bufnr)
 	-- Enable code lense everywhere by default
 	-- pcall(vim.lsp.codelens.refresh)
 	--
->cf	-- local codelens_cmds = vim.api.nvim_create_augroup("codelens_cmds", { clear = true })
+	-- local codelens_cmds = vim.api.nvim_create_augroup("codelens_cmds", { clear = true })
 	-- vim.api.nvim_create_autocmd("BufWritePost", {
 	-- 	buffer = bufnr,
 	-- 	group = codelens_cmds,
@@ -69,17 +69,13 @@ cmp.setup({
 
 -- see :help lsp-zero-guide:integrate-with-mason-nvim
 -- to learn how to use mason.nvim with lsp-zero
-require("mason").setup({
-	ensure_installed = { --TODO: Make sure auto install works.
-		"delve",
-		"debugpy"
-	}
-})
+require("mason").setup()
 require("mason-lspconfig").setup({
 	handlers = {
 		lsp_zero.default_setup,
 	},
 	ensure_installed = {
+		"typos_lsp",
 		"angularls",
 		"bashls",
 		"clangd",
@@ -102,7 +98,7 @@ require("mason-lspconfig").setup({
 		"sqlls",
 		"lemminx",
 		"vimls",
-		"yamlls"
+		"yamlls",
 	}
 })
 

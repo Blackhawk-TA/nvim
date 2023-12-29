@@ -12,6 +12,7 @@ require("config/bufferline")
 require("config/telescope")
 require("config/treesitter")
 require("config/lsp-zero")
+require("config/mason-tool-installer")
 require("config/debugging")
 require("config/formatter")
 
