@@ -1,7 +1,6 @@
 local dap = require("dap")
 local dapui = require("dapui")
 local utils = require("utils")
-require("dap.ext.vscode").load_launchjs(nil, {})
 
 -- Toggle debug view
 dapui.setup()
@@ -27,7 +26,7 @@ dap.listeners.before.event_exited["dapui_config"] = function()
 	end
 end
 
---TODO: Eval expression + floating elements + debug setup for python, node, c/c++, go
+--TODO: debug setup for python, node, c/c++, go
 
 -- C/C++/Rust debug adapter
 dap.adapters.gdb = {
@@ -44,15 +43,7 @@ dap.configurations.c = {{
 	end,
 	cwd = "${workspaceFolder}",
 }}
-dap.configurations.cpp = {{
-	name = "Launch",
-	type = "gdb",
-	request = "launch",
-	program = function()
-		return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-	end,
-	cwd = "${workspaceFolder}",
-} }
+dap.configurations.cpp = dap.configurations.c
 
 -- Go debug adapter
 require("dap-go").setup() --TODO: Show output and debug view
@@ -72,6 +63,8 @@ vim.keymap.set("n", "<F9>", "<cmd>lua require('utils').start_debugger()<cr>")
 vim.keymap.set("n", "<F7>", "<cmd>lua require('dap').step_into()<cr>")
 vim.keymap.set("n", "<F8>", "<cmd>lua require('dap').step_over()<cr>")
 vim.keymap.set("n", "<S-F8>", "<cmd>lua require('dap').step_out()<cr>")
+
+vim.keymap.set("n", "<F12>", "<cmd>lua require('dapui').eval()<cr>")
 
 -- Breakpoints appearance
 vim.api.nvim_set_hl(0, "DapBreakpoint", { ctermbg = 0, fg = "#ef5f6b", bg = "#2d3343" })

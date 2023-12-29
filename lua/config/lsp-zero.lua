@@ -72,7 +72,7 @@ cmp.setup({
 require("mason").setup({
 	ensure_installed = { --TODO: Make sure auto install works.
 		"delve",
-		"debugpy",
+		"debugpy"
 	}
 })
 require("mason-lspconfig").setup({
