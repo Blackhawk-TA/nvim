@@ -1,4 +1,6 @@
-local utils = {}
+local utils = {
+	neotree_open_before_debug = nil
+}
 
 function utils.is_editable()
 	local current_buffer = vim.fn.bufnr("%")
@@ -8,6 +10,10 @@ function utils.is_editable()
 end
 
 function utils.start_debugger()
+	if utils.is_editable() then
+		vim.cmd("silent! wall")
+	end
+
 	if vim.fn.filereadable(".vscode/launch.json") then
 		require("dap.ext.vscode").load_launchjs()
 	end
@@ -29,6 +35,14 @@ function utils.get_python_path()
 	else
 		return utils.get_mason_dir("debugpy") .. "/venv/bin/python"
 	end
+end
+
+function utils.is_neotree_open()
+	local manager = require("neo-tree.sources.manager")
+	local renderer = require("neo-tree.ui.renderer")
+	local state = manager.get_state("filesystem")
+	local window_exists = renderer.window_exists(state)
+	return window_exists
 end
 
 return utils

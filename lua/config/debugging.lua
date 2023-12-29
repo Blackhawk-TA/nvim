@@ -1,17 +1,30 @@
 local dap = require("dap")
 local dapui = require("dapui")
 local utils = require("utils")
+require("dap.ext.vscode").load_launchjs(nil, {})
 
 -- Toggle debug view
 dapui.setup()
 dap.listeners.after.event_initialized["dapui_config"] = function()
-  dapui.open()
+	dapui.open()
+	if utils.is_neotree_open() then
+		utils.neotree_open_before_debug = true
+		vim.cmd("Neotree close")
+	end
 end
 dap.listeners.before.event_terminated["dapui_config"] = function()
-  dapui.close()
+	dapui.close()
+	if not utils.is_neotree_open() and utils.neotree_open_before_debug == true then
+		utils.neotree_open_before_debug = false
+		vim.cmd("Neotree show")
+	end
 end
 dap.listeners.before.event_exited["dapui_config"] = function()
-  dapui.close()
+	dapui.close()
+	if not utils.is_neotree_open() and utils.neotree_open_before_debug == true then
+		utils.neotree_open_before_debug = false
+		vim.cmd("Neotree show")
+	end
 end
 
 --TODO: Eval expression + floating elements + debug setup for python, node, c/c++, go
