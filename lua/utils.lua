@@ -18,8 +18,7 @@ function utils.start_debugger()
 	local config_path = cwd .. "/.vscode/launch.json"
 	if vim.fn.filereadable(config_path) then
 		require("dap.ext.vscode").load_launchjs(config_path, {
-			gdb = { "c", "cpp" },
-			codelldb = { "c", "cpp" },
+			codelldb = { "c", "cpp", "rust" },
 		})
 	end
 	require("dap").continue()
