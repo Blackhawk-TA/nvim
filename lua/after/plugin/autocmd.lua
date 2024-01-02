@@ -38,5 +38,9 @@ local augroup = vim.api.nvim_create_augroup("UserTreesitterConfig", {})
 vim.api.nvim_create_autocmd("BufEnter", {
 	group = augroup,
 	pattern = "*",
-	command = "normal zR",
+	callback = function()
+		if utils.is_editable() then
+			vim.cmd("normal zR")
+		end
+	end
 })
