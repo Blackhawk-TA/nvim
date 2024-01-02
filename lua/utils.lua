@@ -14,8 +14,13 @@ function utils.start_debugger()
 		vim.cmd("silent! wall")
 	end
 
-	if vim.fn.filereadable(".vscode/launch.json") then
-		require("dap.ext.vscode").load_launchjs()
+	local cwd = vim.fn.getcwd()
+	local config_path = cwd .. "/.vscode/launch.json"
+	if vim.fn.filereadable(config_path) then
+		require("dap.ext.vscode").load_launchjs(config_path, {
+			gdb = { "c", "cpp" },
+			codelldb = { "c", "cpp" },
+		})
 	end
 	require("dap").continue()
 end
@@ -24,6 +29,10 @@ function utils.get_mason_dir(package_name)
 	local mason_registry = require("mason-registry")
 	local package = mason_registry.get_package(package_name)
 	return package:get_install_path()
+end
+
+function utils.get_mason_binary(package_name)
+	return utils.get_mason_dir(package_name) .. "/" .. package_name
 end
 
 function utils.get_python_path()

@@ -29,6 +29,7 @@ require("mason-tool-installer").setup {
 		"shfmt",
 
 		-- Debuggers
+		"codelldb",
 		"delve",
 		"debugpy"
 	},

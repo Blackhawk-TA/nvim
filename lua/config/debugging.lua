@@ -26,24 +26,29 @@ dap.listeners.before.event_exited["dapui_config"] = function()
 	end
 end
 
--- FIX: C/C++ debugger (most likely not working due ot wrong gdb version)
-
 -- C/C++/Rust debug adapter
-dap.adapters.gdb = {
-	type = "executable",
-	command = "gdb",
-	args = { "-i", "dap" }
+dap.adapters.codelldb = {
+	type = "server",
+	port = "${port}",
+	executable = {
+		command = utils.get_mason_binary("codelldb"),
+		args = { "--port", "${port}" },
+	},
 }
-dap.configurations.c = {{
-	name = "Launch",
-	type = "gdb",
-	request = "launch",
-	program = function()
-		return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-	end,
-	cwd = "${workspaceFolder}",
-}}
+dap.configurations.c = {
+	{
+		name = "Launch file",
+		type = "codelldb",
+		request = "launch",
+		program = function()
+			return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+		end,
+		cwd = '${workspaceFolder}',
+		stopOnEntry = false,
+	},
+}
 dap.configurations.cpp = dap.configurations.c
+dap.configurations.rust = dap.configurations.c
 
 -- Go debug adapter
 require("dap-go").setup()
