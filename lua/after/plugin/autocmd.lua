@@ -1,6 +1,6 @@
 local utils = require("utils")
 
- -- Disable spellcheck in terminal
+-- Disable spellcheck in terminal
 vim.api.nvim_create_autocmd("TermOpen", {
 	pattern = "term://*",
 	command = "setlocal nospell"
@@ -31,3 +31,12 @@ vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost" }, {
 	end,
 })
 
+-- Workaround to update fold
+-- https://github.com/nvim-treesitter/nvim-treesitter/issues/1337
+-- https://www.jmaguire.tech/posts/treesitter_folding/
+local augroup = vim.api.nvim_create_augroup("UserTreesitterConfig", {})
+vim.api.nvim_create_autocmd("BufEnter", {
+	group = augroup,
+	pattern = "*",
+	command = "normal zR",
+})

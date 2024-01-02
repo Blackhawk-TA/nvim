@@ -20,6 +20,11 @@ vim.o.hidden = true
 vim.o.list = true
 vim.o.listchars = "tab:│ ,space:·"
 
+-- Code folding
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+vim.o.foldenable = false
+
 -- Display settings
 vim.o.ruler = true
 vim.o.confirm = true
