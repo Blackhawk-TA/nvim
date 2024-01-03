@@ -3,6 +3,6 @@ return {
 	"nvim-lualine/lualine.nvim",
 	"norcalli/nvim-colorizer.lua",
 	"editorconfig/editorconfig-vim",
-	"tpope/vim-fugitive",
 	"kdheepak/lazygit.nvim",
+	"lewis6991/gitsigns.nvim"
 }
