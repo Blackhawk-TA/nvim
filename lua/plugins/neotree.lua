@@ -31,20 +31,25 @@ return {
 			follow_current_file = { enabled = true },
 			use_libuv_file_watcher = true, -- use OS to detect file changes
 		},
-		git_status = {
-			symbols = {
-				-- Change type
-				added     = "", -- or "✚", but it would be a duplicate due to the colored filenames
-				modified  = "",  -- or "", but it would be a duplicate due to the colored filenames
-				deleted   = "✖", -- this can only be used in the git_status source
-				renamed   = "󰁕", -- this can only be used in the git_status source
-				-- Status type
-				untracked = "",
-				ignored   = "",
-				unstaged  = "󰄱",
-				staged    = "",
-				conflict  = "",
-			}
+		default_component_configs = {
+			name = {
+				trailing_slash = true,
+			},
+			git_status = {
+				symbols = {
+					-- Change type
+					added     = "", -- or "✚", but it would be a duplicate due to the colored filenames
+					modified  = "", -- or "", but it would be a duplicate due to the colored filenames
+					deleted   = "✖", -- this can only be used in the git_status source
+					renamed   = "󰁕", -- this can only be used in the git_status source
+					-- Status type
+					untracked = "",
+					ignored   = "",
+					unstaged  = "󰄱",
+					staged    = "",
+					conflict  = "",
+				}
+			},
 		}
 	}
 }
