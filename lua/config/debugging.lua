@@ -55,14 +55,14 @@ require("dap-go").setup()
 
 -- Python debug adapter
 local python_path = utils.get_python_path()
-require("dap-python").setup(python_path) -- FIX: .vscode/launch.json support
+require("dap-python").setup(python_path)
 
 -- Debugging keybindings
 vim.keymap.set("n", "<F5>", "<cmd>lua require('dap').toggle_breakpoint()<cr>")
 vim.keymap.set("n", "<F6>", "<cmd>lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>") -- Set Breakpoint condition
 
-vim.keymap.set("n", "<S-F9>", "<cmd>lua require('dap').run_last()<cr>") -- Re-run debugger
-vim.keymap.set("n", "<C-F9>", "<cmd>lua require('dap').disconnect({ terminateDebuggee = true })<<cr>") -- Stop debugging
+vim.keymap.set("n", "<S-F9>", "<cmd>lua require('dap').run_last()<cr>")                                           -- Re-run debugger
+vim.keymap.set("n", "<C-F9>", "<cmd>lua require('dap').disconnect({ terminateDebuggee = true })<cr>")             -- Stop debugging
 vim.keymap.set("n", "<F9>", "<cmd>lua require('utils').start_debugger()<cr>")
 
 vim.keymap.set("n", "<F7>", "<cmd>lua require('dap').step_into()<cr>")
@@ -106,4 +106,3 @@ vim.fn.sign_define("DapStopped", {
 	linehl = "DapStopped",
 	numhl = "DapStopped"
 })
-
