@@ -41,11 +41,11 @@ return {
 					added     = "", -- or "✚", but it would be a duplicate due to the colored filenames
 					modified  = "", -- or "", but it would be a duplicate due to the colored filenames
 					deleted   = "✖", -- this can only be used in the git_status source
-					renamed   = "󰁕", -- this can only be used in the git_status source
+					renamed   = "→", -- this can only be used in the git_status source
 					-- Status type
 					untracked = "",
 					ignored   = "",
-					unstaged  = "󰄱",
+					unstaged  = "□",
 					staged    = "",
 					conflict  = "",
 				}

@@ -37,6 +37,7 @@ lsp_zero.on_attach(function(client, bufnr)
 	-- 	end,
 	-- })
 end)
+--HINT:
 
 local cmp = require("cmp")
 local cmp_action = require("lsp-zero").cmp_action()
@@ -116,4 +117,4 @@ nvim_lsp.clangd.setup {
 vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError" })
 vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn" })
 vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignInfo" })
-vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
+vim.fn.sign_define("DiagnosticSignHint", { text = " ", texthl = "DiagnosticSignHint" }) -- or: 󰌵
