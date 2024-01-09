@@ -1,6 +1,6 @@
 require("telescope").setup{
 	defaults = {
-		file_ignore_patterns = { "node_modules", ".git", ".venv", ".idea", ".vscode" },
+		file_ignore_patterns = { "node_modules", "\\.git", "\\.venv", "\\.idea" },
 		mappings = {
 			i = {
 				-- map actions.which_key to <C-h> (default: <C-/>)
