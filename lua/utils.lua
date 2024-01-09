@@ -1,5 +1,6 @@
 local utils = {
-	neotree_open_before_debug = nil
+	neotree_open_before_debug = nil,
+	autoclose_debug_windows = false
 }
 
 function utils.is_editable()
@@ -9,7 +10,8 @@ function utils.is_editable()
 	return is_modifiable and not is_readonly
 end
 
-function utils.start_debugger()
+function utils.start_debugger(autoclose_windows)
+	utils.autoclose_debug_windows = autoclose_windows
 	if utils.is_editable() then
 		vim.cmd("silent! wall")
 	end
@@ -22,6 +24,14 @@ function utils.start_debugger()
 		})
 	end
 	require("dap").continue()
+end
+
+function utils.close_debugger()
+	require("dapui").close()
+	if not utils.is_neotree_open() and utils.neotree_open_before_debug == true then
+		utils.neotree_open_before_debug = false
+		vim.cmd("Neotree show")
+	end
 end
 
 function utils.get_mason_dir(package_name)
