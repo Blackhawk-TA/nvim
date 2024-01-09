@@ -15,6 +15,7 @@ require("mason-tool-installer").setup {
 		"jsonlint",
 
 		-- Tools
+		"goimports",
 		"golines",
 		"gomodifytags",
 		"gotests",
