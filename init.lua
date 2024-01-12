@@ -19,6 +19,7 @@ require("config/nvim-lint")
 require("config/git")
 require("config/trouble")
 require("config/neodev")
+require("config/neotest")
 
 require("after/plugin/autocmd")
 require("after/plugin/keymap")
