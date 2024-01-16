@@ -37,7 +37,6 @@ lsp_zero.on_attach(function(client, bufnr)
 	-- 	end,
 	-- })
 end)
---HINT:
 
 local cmp = require("cmp")
 local cmp_action = require("lsp-zero").cmp_action()
