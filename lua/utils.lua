@@ -68,4 +68,20 @@ function utils.is_neotree_open()
 	return window_exists
 end
 
+function utils.get_username()
+	local f = io.popen("whoami")
+	local username = ""
+	if f ~= nil then
+		username = f:read("*a")
+		username = username:gsub("%s+", "")
+		f:close()
+	end
+	return username
+end
+
+function utils.is_work_device()
+	local username = utils.get_username()
+	return string.match(username, "D%d%d%d%d%d%d")
+end
+
 return utils

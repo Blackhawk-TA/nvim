@@ -20,6 +20,7 @@ require("config/git")
 require("config/trouble")
 require("config/neodev")
 require("config/neotest")
+require("config/copilot")
 
 require("after/plugin/autocmd")
 require("after/plugin/keymap")

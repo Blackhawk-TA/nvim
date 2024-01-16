@@ -65,8 +65,17 @@ cmp.setup({
 			mode = "symbol", -- show only symbol annotations
 			maxwidth = 50, -- prevent the popup from showing more than provided characters
 			ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead
+			symbol_map = { Copilot = "" }
 		})
-	}
+	},
+	sources = {
+		-- Copilot Source
+		{ name = "copilot",  group_index = 2 },
+		-- Other Sources
+		{ name = "nvim_lsp", group_index = 2 },
+		{ name = "path",     group_index = 2 },
+		{ name = "buffer",   group_index = 2 },
+	},
 })
 
 -- see :help lsp-zero-guide:integrate-with-mason-nvim
