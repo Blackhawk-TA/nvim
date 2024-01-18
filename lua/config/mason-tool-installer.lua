@@ -10,6 +10,7 @@ require("mason-tool-installer").setup {
 		"luacheck",
 		"misspell",
 		"markdownlint",
+		"mypy",
 		"shellcheck",
 		"yamllint",
 		"jsonlint",
