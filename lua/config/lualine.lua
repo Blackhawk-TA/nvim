@@ -11,6 +11,7 @@ require("lualine").setup({
 	options = {
 		theme = "auto",
 		globalstatus = true,
+		symbols = { error = " ", warn = " ", info = " ", hint = " " },
 	},
 	sections = {
 		lualine_a = { "mode" },
