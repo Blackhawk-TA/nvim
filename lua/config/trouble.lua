@@ -2,7 +2,7 @@ require("trouble").setup({
 	signs = {
 		error = "",
 		warning = "",
-		hint = "󰌵",
+		hint = "",
 		information = "",
 		other = "",
 	},
