@@ -22,6 +22,7 @@ require("config/neodev")
 require("config/neotest")
 require("config/copilot")
 require("config/refactoring")
+require("config/markdown-preview")
 
 require("after/plugin/autocmd")
 require("after/plugin/keymap")
