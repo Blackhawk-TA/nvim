@@ -1,5 +1,6 @@
 return {
 	"nvim-neotest/neotest",
+	"nvim-neotest/nvim-nio",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"antoinemadec/FixCursorHold.nvim",
