@@ -9,9 +9,9 @@ require("telescope").setup{
 				-- e.g. git_{create, delete, ...}_branch for the git_branches picker
 				["<C-h>"] = "which_key",
 				["<C-s>"] = "select_vertical",
-				["<C-t>"] = trouble.open_with_trouble
+				["<C-z>"] = trouble.open_with_trouble
 			},
-			n = { ["<C-t>"] = trouble.open_with_trouble },
+			n = { ["<C-z>"] = trouble.open_with_trouble },
 		}
 	},
 	pickers = {
