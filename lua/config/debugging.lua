@@ -5,6 +5,7 @@ local utils = require("utils")
 -- Toggle debug view
 dapui.setup()
 dap.listeners.after.event_initialized["dapui_config"] = function()
+	utils.store_current_buffer()
 	dapui.open()
 	if utils.is_neotree_open() then
 		utils.neotree_open_before_debug = true
@@ -15,11 +16,13 @@ dap.listeners.before.event_terminated["dapui_config"] = function()
 	if utils.autoclose_debug_windows then
 		utils.close_debugger()
 	end
+	utils.restore_current_buffer()
 end
 dap.listeners.before.event_exited["dapui_config"] = function()
 	if utils.autoclose_debug_windows then
 		utils.close_debugger()
 	end
+	utils.restore_current_buffer()
 end
 
 -- C/C++/Rust debug adapter

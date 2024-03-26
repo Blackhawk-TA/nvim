@@ -2,6 +2,7 @@ local utils = {
 	neotree_open_before_debug = nil,
 	autoclose_debug_windows = false,
 	debugging = false,
+	current_file_in_buffer = nil,
 }
 
 function utils.is_editable()
@@ -9,6 +10,16 @@ function utils.is_editable()
 	local is_modifiable = vim.api.nvim_buf_get_option(current_buffer, "modifiable")
 	local is_readonly = vim.api.nvim_buf_get_option(current_buffer, "readonly")
 	return is_modifiable and not is_readonly
+end
+
+function utils.store_current_buffer()
+	utils.current_file_in_buffer = vim.fn.bufname("%")
+end
+
+function utils.restore_current_buffer()
+	if utils.current_file_in_buffer then
+		vim.cmd("e " .. utils.current_file_in_buffer)
+	end
 end
 
 function utils.start_debugger(autoclose_windows)
