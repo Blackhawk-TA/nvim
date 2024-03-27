@@ -2,7 +2,8 @@ local utils = {
 	neotree_open_before_debug = nil,
 	autoclose_debug_windows = false,
 	debugging = false,
-	current_file_in_buffer = nil,
+	pre_debug_file_in_buffer = nil,
+	pre_debug_buffer = nil,
 }
 
 function utils.is_editable()
@@ -13,12 +14,18 @@ function utils.is_editable()
 end
 
 function utils.store_current_buffer()
-	utils.current_file_in_buffer = vim.fn.bufname("%")
+	utils.pre_debug_buffer = vim.fn.bufnr("%")
+	utils.pre_debug_file_in_buffer = vim.fn.bufname("%")
 end
 
 function utils.restore_current_buffer()
-	if utils.current_file_in_buffer then
-		vim.cmd("e " .. utils.current_file_in_buffer)
+	-- Set the previous buffer as the current buffer
+	if utils.pre_debug_buffer then
+		vim.cmd("buffer " .. utils.pre_debug_buffer)
+	end
+	-- Open the previous file in the buffer
+	if utils.pre_debug_file_in_buffer then
+		vim.cmd("edit " .. utils.pre_debug_file_in_buffer)
 	end
 end
 
