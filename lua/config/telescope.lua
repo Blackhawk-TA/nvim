@@ -1,5 +1,5 @@
 local trouble = require("trouble.providers.telescope")
-require("telescope").setup{
+require("telescope").setup {
 	defaults = {
 		file_ignore_patterns = { "node_modules", "\\.git", "\\.venv", "\\.idea" },
 		mappings = {
@@ -32,9 +32,17 @@ require("telescope").setup{
 	}
 }
 
+require("dir-telescope").setup({
+	hidden = true,
+	no_ignore = false,
+	show_preview = true,
+})
+require("telescope").load_extension("dir")
+
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
 vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
 vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
 
+vim.keymap.set("n", "<leader>fd", "<cmd>Telescope dir live_grep<CR>", { noremap = true, silent = true })
