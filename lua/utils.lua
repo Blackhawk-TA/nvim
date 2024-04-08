@@ -14,11 +14,15 @@ function utils.is_editable()
 end
 
 function utils.store_current_buffer()
-	utils.pre_debug_buffer = vim.fn.bufnr("%")
-	utils.pre_debug_file_in_buffer = vim.fn.bufname("%")
+	if utils.is_editable() then
+		vim.cmd("silent! wall")
+		utils.pre_debug_buffer = vim.fn.bufnr("%")
+		utils.pre_debug_file_in_buffer = vim.fn.bufname("%")
+	end
 end
 
 function utils.restore_current_buffer()
+	vim.cmd("silent! wall")
 	-- Set the previous buffer as the current buffer
 	if utils.pre_debug_buffer then
 		vim.cmd("buffer " .. utils.pre_debug_buffer)
