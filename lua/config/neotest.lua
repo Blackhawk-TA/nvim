@@ -22,7 +22,11 @@ end)
 -- Debug nearest test
 vim.keymap.set("n", "<leader>ud", function()
 	vim.cmd("silent! w")
-	require("neotest").run.run({ strategy = 'dap' })
+	if vim.bo.filetype == "go" then
+		require("dap-go").debg_test()
+	else
+		require("neotest").run.run({ strategy = 'dap' })
+	end
 end)
 
 -- Stop nearest test
