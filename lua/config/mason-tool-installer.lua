@@ -14,6 +14,7 @@ require("mason-tool-installer").setup {
 		"shellcheck",
 		"yamllint",
 		"jsonlint",
+		"taplo",
 
 		-- Tools
 		"goimports",
