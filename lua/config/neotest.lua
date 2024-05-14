@@ -34,3 +34,8 @@ vim.keymap.set("n", "<leader>U", function()
 	vim.cmd("silent! w")
 	require("neotest").run.stop()
 end)
+
+-- Show test summary
+vim.keymap.set("n", "<leader>us", function()
+	vim.cmd("Neotest summary")
+end)
