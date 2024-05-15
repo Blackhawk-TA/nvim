@@ -44,3 +44,15 @@ vim.api.nvim_create_autocmd("BufEnter", {
 		end
 	end
 })
+
+-- Set spell file when entering a buffer
+vim.api.nvim_create_autocmd("BufEnter", {
+	pattern = "*",
+	callback = function()
+		local spellfile = vim.fn.getcwd() .. '/.nvim-spell/en.utf-8.add'
+		utils.ensure_file_exists(spellfile)
+		if vim.fn.filereadable(spellfile) then
+			vim.opt.spellfile = spellfile
+		end
+	end
+})

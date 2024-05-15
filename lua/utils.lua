@@ -106,4 +106,22 @@ function utils.is_work_device()
 	return string.match(username, "D%d%d%d%d%d%d")
 end
 
+function utils.ensure_directory_exists(dir)
+	if vim.fn.isdirectory(dir) == 0 then
+		vim.fn.mkdir(dir, "p")
+	end
+end
+
+function utils.ensure_file_exists(filepath)
+	local dir = vim.fn.fnamemodify(filepath, ":h")
+	utils.ensure_directory_exists(dir)
+
+	if vim.fn.filereadable(filepath) == 0 then
+		local file = io.open(filepath, "w")
+		if file ~= nil then
+			file:close()
+		end
+	end
+end
+
 return utils
