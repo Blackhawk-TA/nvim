@@ -101,6 +101,7 @@ require("mason-lspconfig").setup({
 		"helm_ls",
 		"jsonls",
 		"tsserver",
+		"taplo",
 		"lua_ls",
 		"marksman",
 		"spectral",
