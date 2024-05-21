@@ -3,7 +3,7 @@ require("settings")
 require("config/lazy")
 require("config/colorscheme")
 
-require("config/lsp-zero")
+require("config/lsp/lsp-zero")
 require("config/lsp/mason-tool-installer")
 require("config/lsp/clangd")
 require("config/lsp/go")
