@@ -26,7 +26,14 @@ lsp_zero.on_attach(function(client, bufnr)
 
 	-- Enable code lense everywhere by default
 	-- pcall(vim.lsp.codelens.refresh)
-	--
+
+	-- Enable inlay hints
+	if client.supports_method("textDocument/inlayHint") then
+		if vim.lsp.inlay_hint then
+			vim.lsp.inlay_hint.enable(true)
+		end
+	end
+
 	-- local codelens_cmds = vim.api.nvim_create_augroup("codelens_cmds", { clear = true })
 	-- vim.api.nvim_create_autocmd("BufWritePost", {
 	-- 	buffer = bufnr,
@@ -112,15 +119,6 @@ require("mason-lspconfig").setup({
 		"yamlls",
 	}
 })
-
--- Support clangd compile-commands.json
-local nvim_lsp = require('lspconfig')
-nvim_lsp.clangd.setup {
-	cmd = { "clangd", "--compile-commands-dir=build" },
-	root_dir = function()
-		return vim.fn.getcwd()
-	end,
-}
 
 -- Add icons for diagnostics
 vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError" })
