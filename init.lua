@@ -24,6 +24,7 @@ require("config/refactoring")
 require("config/markdown-preview")
 
 require("config/lsp/clangd")
+require("config/lsp/go")
 require("config/lsp/mason-tool-installer")
 require("config/lsp/python")
 require("config/lsp/typos")
