@@ -24,11 +24,11 @@ lsp_zero.on_attach(function(client, bufnr)
 	-- 	end,
 	-- })
 
-	if client.supports_method("textDocument/inlayHint") then
+	if client.supports_method("textDocument/inlayHint") and vim.lsp.inlay_hint then
 		vim.lsp.inlay_hint.enable(true)
 	end
 
-	if client.supports_method("textDocument/codeLens") then
+	if client.supports_method("textDocument/codeLens") and vim.lsp.codelens then
 		pcall(vim.lsp.codelens.refresh)
 	end
 
@@ -38,7 +38,7 @@ lsp_zero.on_attach(function(client, bufnr)
 		group = codelens_cmds,
 		desc = "refresh codelens",
 		callback = function()
-			if client.supports_method("textDocument/codeLens") then
+			if client.supports_method("textDocument/codeLens") and vim.lsp.codelens then
 				pcall(vim.lsp.codelens.refresh)
 			end
 		end,
@@ -123,6 +123,7 @@ require("mason-lspconfig").setup({
 	}
 })
 
+-- TODO:Check if this syntax changed in nvim 0.10
 -- Add icons for diagnostics
 vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError" })
 vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn" })

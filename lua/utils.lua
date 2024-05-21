@@ -112,6 +112,8 @@ function utils.ensure_directory_exists(dir)
 	end
 end
 
+-- Checks if a file exists and creates it if it does not.
+-- Returns true if the file was created, otherwise false.
 function utils.ensure_file_exists(filepath)
 	local dir = vim.fn.fnamemodify(filepath, ":h")
 	utils.ensure_directory_exists(dir)
@@ -121,7 +123,20 @@ function utils.ensure_file_exists(filepath)
 		if file ~= nil then
 			file:close()
 		end
+		return true
+	else
+		return false
 	end
 end
+
+function utils.append_file(path, content)
+	local file = io.open(path, "a+")
+	if file ~= nil then
+		file:seek("end")
+		file:write(content)
+		file:close()
+	end
+end
+
 
 return utils
