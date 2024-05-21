@@ -24,25 +24,25 @@ lsp_zero.on_attach(function(client, bufnr)
 	-- 	end,
 	-- })
 
-	-- Enable code lense everywhere by default
-	-- pcall(vim.lsp.codelens.refresh)
-
-	-- Enable inlay hints
 	if client.supports_method("textDocument/inlayHint") then
-		if vim.lsp.inlay_hint then
-			vim.lsp.inlay_hint.enable(true)
-		end
+		vim.lsp.inlay_hint.enable(true)
 	end
 
-	-- local codelens_cmds = vim.api.nvim_create_augroup("codelens_cmds", { clear = true })
-	-- vim.api.nvim_create_autocmd("BufWritePost", {
-	-- 	buffer = bufnr,
-	-- 	group = codelens_cmds,
-	-- 	desc = "refresh codelens",
-	-- 	callback = function()
-	-- 		pcall(vim.lsp.codelens.refresh)
-	-- 	end,
-	-- })
+	if client.supports_method("textDocument/codeLens") then
+		pcall(vim.lsp.codelens.refresh)
+	end
+
+	local codelens_cmds = vim.api.nvim_create_augroup("codelens_cmds", { clear = true })
+	vim.api.nvim_create_autocmd("BufWritePost", {
+		buffer = bufnr,
+		group = codelens_cmds,
+		desc = "refresh codelens",
+		callback = function()
+			if client.supports_method("textDocument/codeLens") then
+				pcall(vim.lsp.codelens.refresh)
+			end
+		end,
+	})
 end)
 
 local cmp = require("cmp")
@@ -92,7 +92,6 @@ require("mason-lspconfig").setup({
 		lsp_zero.default_setup,
 	},
 	ensure_installed = {
-		"typos_lsp",
 		"angularls",
 		"bashls",
 		"clangd",
@@ -109,10 +108,11 @@ require("mason-lspconfig").setup({
 		"jsonls",
 		"tsserver",
 		"taplo",
+		"typos_lsp",
 		"lua_ls",
 		"marksman",
-		"spectral",
 		"pyright",
+		"spectral",
 		"sqlls",
 		"lemminx",
 		"vimls",
