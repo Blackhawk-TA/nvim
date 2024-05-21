@@ -50,7 +50,10 @@ local cmp_action = require("lsp-zero").cmp_action()
 
 cmp.setup({
 	mapping = cmp.mapping.preset.insert({
-		["<CR>"] = cmp.mapping.confirm({ select = false }),
+		["<CR>"] = cmp.mapping.confirm({
+			behavior = cmp.ConfirmBehavior.Replace,
+			select = false
+		}),
 		["<Tab>"] = cmp_action.luasnip_supertab(),
 		["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
 		["<C-Space>"] = cmp.mapping.complete(),
