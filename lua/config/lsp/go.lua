@@ -7,6 +7,10 @@ nvim_lsp.gopls.setup({
 			},
 			staticcheck = true,
 			gofumpt = true,
+			codelenses = {
+				generate = true,
+				gc_details = true,
+			},
 		},
 	}
 })
