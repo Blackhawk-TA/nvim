@@ -1,3 +1,4 @@
+---@diagnostic disable: 113
 local lsp_zero = require("lsp-zero").preset({})
 
 lsp_zero.on_attach(function(client, bufnr)
@@ -123,9 +124,27 @@ require("mason-lspconfig").setup({
 	}
 })
 
--- TODO:Check if this syntax changed in nvim 0.10
 -- Add icons for diagnostics
-vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError" })
-vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn" })
-vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignInfo" })
-vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
+vim.diagnostic.config({
+	severity_sort = true,
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = "",
+			[vim.diagnostic.severity.WARN] = "",
+			[vim.diagnostic.severity.INFO] = "",
+			[vim.diagnostic.severity.HINT] = ""
+		},
+		linehl = {
+			[vim.diagnostic.severity.ERROR] = "ErrorMsg",
+			[vim.diagnostic.severity.WARN] = "WarningMsg",
+			[vim.diagnostic.severity.INFO] = "InfoMsg",
+			[vim.diagnostic.severity.HINT] = "HintMsg"
+		},
+		numhl = {
+			[vim.diagnostic.severity.ERROR] = "ErrorMsg",
+			[vim.diagnostic.severity.WARN] = "WarningMsg",
+			[vim.diagnostic.severity.INFO] = "InfoMsg",
+			[vim.diagnostic.severity.HINT] = "HintMsg"
+		}
+	}
+})
