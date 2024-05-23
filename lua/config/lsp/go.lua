@@ -10,6 +10,9 @@ nvim_lsp.gopls.setup({
 			codelenses = {
 				generate = true,
 				gc_details = true,
+				run_govulncheck = true,
+				tidy = true,
+				upgrade_dependency = true,
 			},
 		},
 	}
