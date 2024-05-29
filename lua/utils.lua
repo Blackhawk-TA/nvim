@@ -106,6 +106,11 @@ function utils.is_work_device()
 	return string.match(username, "D%d%d%d%d%d%d")
 end
 
+function utils.is_git_repo()
+	local git_dir = vim.fn.getcwd() .. "/.git"
+	return vim.fn.isdirectory(git_dir) == 1
+end
+
 function utils.ensure_directory_exists(dir)
 	if vim.fn.isdirectory(dir) == 0 then
 		vim.fn.mkdir(dir, "p")

@@ -1,6 +1,12 @@
 local utils = require("utils")
 local nvim_lsp = require("lspconfig")
-local typos_config_path = vim.fn.getcwd() .. "/.nvim-spell/typos.toml"
+
+-- Only use local config for git repos
+local typos_config_path = vim.fn.stdpath("config") .. "/.nvim-spell/typos.toml"
+if utils.is_git_repo() then
+	typos_config_path = vim.fn.getcwd() .. "/.nvim-spell/typos.toml"
+end
+
 local settings = {
 	init_options = {
 		config = typos_config_path,
