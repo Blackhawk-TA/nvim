@@ -124,6 +124,12 @@ require("mason-lspconfig").setup({
 	}
 })
 
+-- Use different hint sign on macOS because the default one is unknown
+local hint_sign = "󰌵"
+if vim.fn.has("macunix") == 1 then
+	hint_sign = ""
+end
+
 -- Add icons for diagnostics
 vim.diagnostic.config({
 	severity_sort = true,
@@ -132,7 +138,7 @@ vim.diagnostic.config({
 			[vim.diagnostic.severity.ERROR] = "",
 			[vim.diagnostic.severity.WARN] = "",
 			[vim.diagnostic.severity.INFO] = "",
-			[vim.diagnostic.severity.HINT] = ""
+			[vim.diagnostic.severity.HINT] = hint_sign
 		},
 		linehl = {
 			[vim.diagnostic.severity.ERROR] = "ErrorMsg",
