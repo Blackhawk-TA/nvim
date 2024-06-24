@@ -7,7 +7,6 @@ require("config/lsp/lsp-zero")
 require("config/lsp/mason-tool-installer")
 require("config/lsp/clangd")
 require("config/lsp/go")
-require("config/lsp/python")
 require("config/lsp/typos")
 
 require("config/neotree")
