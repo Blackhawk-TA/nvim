@@ -29,21 +29,21 @@ lsp_zero.on_attach(function(client, bufnr)
 		vim.lsp.inlay_hint.enable(true)
 	end
 
-	if client.supports_method("textDocument/codeLens") and vim.lsp.codelens then
-		pcall(vim.lsp.codelens.refresh)
-	end
-
-	local codelens_cmds = vim.api.nvim_create_augroup("codelens_cmds", { clear = true })
-	vim.api.nvim_create_autocmd("BufWritePost", {
-		buffer = bufnr,
-		group = codelens_cmds,
-		desc = "refresh codelens",
-		callback = function()
-			if client.supports_method("textDocument/codeLens") and vim.lsp.codelens then
-				pcall(vim.lsp.codelens.refresh)
-			end
-		end,
-	})
+	-- if client.supports_method("textDocument/codeLens") and vim.lsp.codelens then
+	-- 	pcall(vim.lsp.codelens.refresh)
+	-- end
+	--
+	-- local codelens_cmds = vim.api.nvim_create_augroup("codelens_cmds", { clear = true })
+	-- vim.api.nvim_create_autocmd("BufWritePost", {
+	-- 	buffer = bufnr,
+	-- 	group = codelens_cmds,
+	-- 	desc = "refresh codelens",
+	-- 	callback = function()
+	-- 		if client.supports_method("textDocument/codeLens") and vim.lsp.codelens then
+	-- 			pcall(vim.lsp.codelens.refresh)
+	-- 		end
+	-- 	end,
+	-- })
 end)
 
 local cmp = require("cmp")
