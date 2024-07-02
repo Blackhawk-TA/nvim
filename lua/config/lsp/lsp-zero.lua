@@ -1,5 +1,6 @@
 ---@diagnostic disable: 113
 local lsp_zero = require("lsp-zero").preset({})
+local utils = require("utils")
 
 lsp_zero.on_attach(function(client, bufnr)
 	-- see :help lsp-zero-keybindings
@@ -58,6 +59,12 @@ local has_words_before = function()
 	return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
 end
 
+local copilot_comparators_prioritize
+if not utils.is_work_device then
+	copilot_comparators_prioritize = ("copilot_cmp.comparators").prioritize
+end
+
+
 cmp.setup({
 	mapping = cmp.mapping.preset.insert({
 		["<CR>"] = cmp.mapping.confirm({
@@ -79,7 +86,7 @@ cmp.setup({
 	sorting = {
 		priority_weight = 2,
 		comparators = {
-			require("copilot_cmp.comparators").prioritize,
+			copilot_comparators_prioritize,
 
 			-- Below is the default comparator list and order for nvim-cmp
 			cmp.config.compare.offset,
