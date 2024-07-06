@@ -60,17 +60,25 @@ require("dap-python").setup(python_path)
 vim.keymap.set("n", "<F5>", "<cmd>lua require('dap').toggle_breakpoint()<cr>")
 vim.keymap.set("n", "<F6>", "<cmd>lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>") -- Set Breakpoint condition
 
-vim.keymap.set("n", "<F21>", "<cmd>lua require('dap').run_last()<cr>")                                            -- Re-run debugger, equals Shift + F9
-vim.keymap.set("n", "<F33>", "<cmd>lua require('dap').disconnect({ terminateDebuggee = true })<cr>")              -- Stop debugging, equals Control + F9
 vim.keymap.set("n", "<F9>", "<cmd>lua require('utils').start_debugger(true)<cr>")
 vim.keymap.set("n", "<F10>", "<cmd>lua require('utils').start_debugger(false)<cr>")
-vim.keymap.set("n", "<F22>", "<cmd>lua require('utils').close_debugger()<cr>") -- Equals Shift + F10
 
 vim.keymap.set("n", "<F7>", "<cmd>lua require('dap').step_into()<cr>")
-vim.keymap.set("n", "<F19>", "<cmd>lua require('dap').step_out()<cr>") -- Equals Shift + F7
 vim.keymap.set("n", "<F8>", "<cmd>lua require('dap').step_over()<cr>")
 
 vim.keymap.set("n", "<F12>", "<cmd>lua require('dapui').eval()<cr>")
+
+if vim.fn.has("macunix") == 1 then
+	vim.keymap.set("n", "<F21>", "<cmd>lua require('dap').run_last()<cr>")                            -- Re-run debugger, equals Shift + F9
+	vim.keymap.set("n", "<F33>", "<cmd>lua require('dap').disconnect({ terminateDebuggee = true })<cr>") -- Stop debugging, equals Control + F9
+	vim.keymap.set("n", "<F22>", "<cmd>lua require('utils').close_debugger()<cr>")                    -- Equals Shift + F10
+	vim.keymap.set("n", "<F19>", "<cmd>lua require('dap').step_out()<cr>")                            -- Equals Shift + F7
+else
+	vim.keymap.set("n", "<S-F9>", "<cmd>lua require('dap').run_last()<cr>")
+	vim.keymap.set("n", "<C-F9>", "<cmd>lua require('dap').disconnect({ terminateDebuggee = true })<cr>")
+	vim.keymap.set("n", "<S-F10>", "<cmd>lua require('utils').close_debugger()<cr>")
+	vim.keymap.set("n", "<S-F7>", "<cmd>lua require('dap').step_out()<cr>")
+end
 
 -- Breakpoints appearance
 vim.api.nvim_set_hl(0, "DapBreakpoint", { ctermbg = 0, fg = "#ef5f6b", bg = "#2d3343" })
