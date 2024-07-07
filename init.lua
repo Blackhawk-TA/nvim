@@ -28,6 +28,7 @@ require("config/neotest")
 require("config/copilot")
 require("config/refactoring")
 require("config/markdown-preview")
+require("config/swagger-preview")
 
 require("after/plugin/autocmd")
 require("after/plugin/keymap")
