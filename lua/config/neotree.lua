@@ -5,6 +5,10 @@ require("neo-tree").setup({
 	enable_diagnostics = true,
 	window = {
 		mappings = {
+			["s"] = "noop",
+			["<C-s>"] = "open_vsplit",
+			["<C-h>"] = "open_split",
+			["<C-t>"] = "open_tabnew",
 			["z"] = "close_all_nodes",
 			["Z"] = "expand_all_nodes",
 		},
