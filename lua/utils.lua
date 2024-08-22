@@ -2,8 +2,9 @@ local utils = {
 	neotree_open_before_debug = nil,
 	autoclose_debug_windows = false,
 	debugging = false,
-	pre_debug_file_in_buffer = nil,
+	pre_debug_window = nil,
 	pre_debug_buffer = nil,
+	pre_debug_file_in_buffer = nil,
 }
 
 function utils.is_editable()
@@ -16,16 +17,19 @@ end
 function utils.store_current_buffer()
 	if utils.is_editable() then
 		vim.cmd("silent! wall")
-		utils.pre_debug_buffer = vim.fn.bufnr("%")
-		utils.pre_debug_file_in_buffer = vim.fn.bufname("%")
+		utils.pre_debug_window = vim.api.nvim_get_current_win()
+		utils.pre_debug_buffer = vim.api.nvim_win_get_buf(utils.pre_debug_window)
+		utils.pre_debug_file_in_buffer = vim.api.nvim_buf_get_name(utils.pre_debug_buffer)
 	end
 end
 
 function utils.restore_current_buffer()
 	vim.cmd("silent! wall")
-	-- Set the previous buffer as the current buffer
-	if utils.pre_debug_buffer then
-		vim.cmd("buffer " .. utils.pre_debug_buffer)
+	-- Set the previous window and buffer as the current one if they are valid
+	if utils.pre_debug_window and vim.api.nvim_win_is_valid(utils.pre_debug_window)
+		and utils.pre_debug_buffer and vim.api.nvim_buf_is_valid(utils.pre_debug_buffer) then
+		vim.api.nvim_set_current_win(utils.pre_debug_window)
+		vim.api.nvim_set_current_buf(utils.pre_debug_buffer)
 	end
 	-- Open the previous file in the buffer
 	if utils.pre_debug_file_in_buffer then
