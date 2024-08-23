@@ -4,15 +4,25 @@ nvim_lsp.gopls.setup({
 		gopls = {
 			analyses = {
 				unusedparams = true,
+				unusedwrite = true,
+				unusedvariable = true,
+				noUsedResult = true
 			},
 			staticcheck = true,
 			gofumpt = true,
 			codelenses = {
+				enable = true,
+				references = true,
 				generate = true,
 				gc_details = true,
 				run_govulncheck = true,
 				tidy = true,
 				upgrade_dependency = true,
+			},
+			["ui.inlayhint.hints"] = {
+				compositeLiteralFields = true,
+				constantValues = true,
+				parameterNames = true
 			},
 		},
 	}
