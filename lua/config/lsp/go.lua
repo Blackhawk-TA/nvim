@@ -22,7 +22,7 @@ nvim_lsp.gopls.setup({
 			["ui.inlayhint.hints"] = {
 				compositeLiteralFields = true,
 				constantValues = true,
-				parameterNames = true
+				parameterNames = false,
 			},
 		},
 	}
