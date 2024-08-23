@@ -26,14 +26,16 @@ end
 function utils.restore_current_buffer()
 	vim.cmd("silent! wall")
 	-- Set the previous window and buffer as the current one if they are valid
-	if utils.pre_debug_window and vim.api.nvim_win_is_valid(utils.pre_debug_window)
-		and utils.pre_debug_buffer and vim.api.nvim_buf_is_valid(utils.pre_debug_buffer) then
+	local is_valid_window = utils.pre_debug_window and vim.api.nvim_win_is_valid(utils.pre_debug_window)
+	local is_valid_buffer = utils.pre_debug_buffer and vim.api.nvim_buf_is_valid(utils.pre_debug_buffer)
+	if is_valid_window and is_valid_buffer then
 		vim.api.nvim_set_current_win(utils.pre_debug_window)
 		vim.api.nvim_set_current_buf(utils.pre_debug_buffer)
 	end
 	-- Open the previous file in the buffer
-	if utils.pre_debug_file_in_buffer then
-		vim.cmd("edit " .. utils.pre_debug_file_in_buffer)
+	local file_path = utils.pre_debug_file_in_buffer
+	if file_path and vim.fn.filereadable(file_path) == true then
+		vim.cmd("edit " .. file_path)
 	end
 end
 
