@@ -101,7 +101,7 @@ cmp.setup({
 			cmp.config.compare.order,
 		},
 	},
-	preselect = "item",
+	preselect = cmp.PreselectMode.None, -- Ensure the first item is preselected
 	completion = {
 		completeopt = "menu,menuone,noinsert"
 	},
