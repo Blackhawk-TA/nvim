@@ -25,11 +25,14 @@ require("config/git")
 require("config/trouble")
 require("config/neodev")
 require("config/neotest")
-require("config/copilot")
 require("config/refactoring")
 require("config/markdown-preview")
 require("config/swagger-preview")
 require("config/colorizer")
+
+-- Copilot is only supported on work devices
+require("config/copilot")
+require("config/copilot-chat")
 
 require("after/plugin/autocmd")
 require("after/plugin/keymap")

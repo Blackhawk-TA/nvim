@@ -5,11 +5,17 @@ if not utils.is_work_device() then
 end
 
 require("copilot").setup({
-	suggestion = { enabled = false },
+	suggestion = { enabled = true },
 	panel = { enabled = false },
 })
 
 require("copilot_cmp").setup()
 
-vim.keymap.set("n", "<leader>ce", "<cmd>Copilot enable<cr>")
-vim.keymap.set("n", "<leader>cd", "<cmd>Copilot disable<cr>")
+vim.keymap.set("n", "<leader>ce", function ()
+	vim.cmd("Copilot enable")
+	print("Copilot enabled")
+end)
+vim.keymap.set("n", "<leader>cd", function ()
+	vim.cmd("Copilot disable")
+	print("Copilot disabled")
+end)
