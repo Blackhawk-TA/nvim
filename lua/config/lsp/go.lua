@@ -20,8 +20,8 @@ nvim_lsp.gopls.setup({
 				upgrade_dependency = true,
 			},
 			["ui.inlayhint.hints"] = {
-				compositeLiteralFields = true,
-				constantValues = true,
+				compositeLiteralFields = false,
+				constantValues = false,
 				parameterNames = false,
 			},
 		},
