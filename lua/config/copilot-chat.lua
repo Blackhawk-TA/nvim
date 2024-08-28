@@ -12,8 +12,15 @@ local prompts = {
 	Tests = "Please explain how the selected code works, then generate unit tests for it.",
 }
 
+require("CopilotChat.integrations.cmp").setup()
 require("CopilotChat").setup({
+	mappings = {
+		complete = {
+			insert = '', -- add autocomplete in chat window for prompts
+		},
+	},
 	debug = false,
+	model = "gpt-4o",
 	question_header = "## User ",
 	answer_header = "## Copilot ",
 	error_header = "## Error ",
@@ -27,11 +34,21 @@ require("CopilotChat").setup({
 	},
 })
 
-vim.keymap.set({"n", "v"}, "<leader>cc", "<cmd>CopilotChatToggle<cr>")
+vim.keymap.set({ "n", "v" }, "<leader>cc", "<cmd>CopilotChatToggle<cr>")
 vim.keymap.set("n", "<leader>cfd", "<cmd>CopilotChatFixDiagnostic<cr>")
-
 vim.keymap.set("v", "<leader>cr", "<cmd>CopilotChatReview<cr>")
 vim.keymap.set("v", "<leader>cf", "<cmd>CopilotChatFix<cr>")
 vim.keymap.set("v", "<leader>co", "<cmd>CopilotChatOptimize<cr>")
 vim.keymap.set("v", "<leader>cd", "<cmd>CopilotChatDocumentation<cr>")
 vim.keymap.set("v", "<leader>ct", "<cmd>CopilotChatTests<cr>")
+
+vim.keymap.set({ "n", "v" }, "<leader>fc", function()
+	local actions = require("CopilotChat.actions")
+	require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
+end)
+vim.keymap.set("n", "<leader>cq", function()
+	local input = vim.fn.input("Quick Chat: ")
+	if input ~= "" then
+		require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
+	end
+end)
