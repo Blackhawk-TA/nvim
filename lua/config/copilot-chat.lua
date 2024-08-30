@@ -37,7 +37,7 @@ require("CopilotChat").setup({
 vim.keymap.set({ "n", "v" }, "<leader>cc", "<cmd>CopilotChatToggle<cr>")
 vim.keymap.set("n", "<leader>cfd", "<cmd>CopilotChatFixDiagnostic<cr>")
 vim.keymap.set("v", "<leader>cr", "<cmd>CopilotChatReview<cr>")
-vim.keymap.set("v", "<leader>cf", "<cmd>CopilotChatFix<cr>")
+vim.keymap.set("v", "<leader>cfc", "<cmd>CopilotChatFix<cr>")
 vim.keymap.set("v", "<leader>co", "<cmd>CopilotChatOptimize<cr>")
 vim.keymap.set("v", "<leader>cd", "<cmd>CopilotChatDocumentation<cr>")
 vim.keymap.set("v", "<leader>ct", "<cmd>CopilotChatTests<cr>")
