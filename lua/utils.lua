@@ -141,5 +141,19 @@ function utils.append_file(path, content)
 	end
 end
 
+-- Opens a browser at the given URL
+function utils.open_browser(url)
+	local browser_cmd = ""
+	if vim.fn.has("mac") == 1 then
+		browser_cmd = "open " .. url
+	elseif vim.fn.has("unix") == 1 then
+		browser_cmd = "xdg-open " .. url
+	else
+		print("Unsupported system")
+		return
+	end
+
+	vim.fn.system(browser_cmd)
+end
 
 return utils

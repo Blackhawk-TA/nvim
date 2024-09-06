@@ -1,3 +1,5 @@
+local utils = require("utils")
+
 require("swagger-preview").setup({
 	-- The port to run the preview server on
 	port = 8787,
@@ -5,4 +7,15 @@ require("swagger-preview").setup({
 	host = "localhost",
 })
 
-vim.keymap.set("n", "<leader>sp", "<cmd>SwaggerPreviewToggle<cr>")
+local preview_active = false
+
+vim.keymap.set("n", "<leader>sp", function()
+	if preview_active then
+		vim.cmd("SwaggerPreviewStop")
+		preview_active = false
+	else
+		vim.cmd("SwaggerPreview")
+		preview_active = true
+		utils.open_browser("http://localhost:8787")
+	end
+end)
