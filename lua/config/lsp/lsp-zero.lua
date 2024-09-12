@@ -150,7 +150,7 @@ require("mason-lspconfig").setup({
 		"html",
 		"helm_ls",
 		"jsonls",
-		"tsserver",
+		"ts_ls",
 		"taplo",
 		"typos_lsp",
 		"lua_ls",
