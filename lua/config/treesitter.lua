@@ -21,6 +21,7 @@ require('nvim-treesitter.configs').setup({
 		"markdown",
 		"markdown_inline",
 		"json",
+		"jsonc",
 		"xml",
 		"yaml",
 		"regex",
