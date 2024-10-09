@@ -58,3 +58,5 @@ vim.o.syntax = "enable"
 vim.o.spelllang = "en,de"
 vim.o.spell = true
 
+-- Enable auto-reload of files
+vim.o.autoread = true
