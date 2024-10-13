@@ -1,8 +1,11 @@
+local utils = require("utils")
+local hint_sign = utils.get_hint_char() .. " "
+
 require("trouble").setup({
 	signs = {
 		error = "",
 		warning = "",
-		hint = "",
+		hint = hint_sign,
 		information = "",
 		other = "",
 	},

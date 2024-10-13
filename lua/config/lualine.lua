@@ -1,3 +1,5 @@
+local utils = require("utils")
+
 local function get_info()
 	local reg_recording = vim.fn.reg_recording()
 	if reg_recording == "" then
@@ -7,11 +9,13 @@ local function get_info()
 	end
 end
 
+local hint_sign = utils.get_hint_char() .. " "
+
 require("lualine").setup({
 	options = {
 		theme = "auto",
 		globalstatus = true,
-		symbols = { error = " ", warn = " ", info = " ", hint = " " },
+		symbols = { error = " ", warn = " ", info = " ", hint = hint_sign },
 	},
 	sections = {
 		lualine_a = { "mode" },

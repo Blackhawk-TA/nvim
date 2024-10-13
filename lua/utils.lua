@@ -156,4 +156,13 @@ function utils.open_browser(url)
 	vim.fn.system(browser_cmd)
 end
 
+-- Gets the hint char depending on the operating system
+function utils.get_hint_char()
+	local hint_char = "󰌵"
+	if vim.fn.has("macunix") == 1 then
+		hint_char = ""
+	end
+	return hint_char
+end
+
 return utils
