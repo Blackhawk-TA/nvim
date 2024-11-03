@@ -16,5 +16,6 @@ vim.keymap.set("n", "<leader>sp", function()
 	else
 		vim.cmd("SwaggerPreview")
 		preview_active = true
+		utils.open_browser("http://localhost:8787")
 	end
 end)
