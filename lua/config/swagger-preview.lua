@@ -12,6 +12,7 @@ local preview_active = false
 vim.keymap.set("n", "<leader>sp", function()
 	if preview_active then
 		vim.cmd("SwaggerPreviewStop")
+		print("Stopped swagger preview server")
 		preview_active = false
 	else
 		vim.cmd("SwaggerPreview")
