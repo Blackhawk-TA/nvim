@@ -12,12 +12,14 @@ local prompts = {
 	Tests = "Please explain how the selected code works, then generate unit tests for it.",
 }
 
-require("CopilotChat.integrations.cmp").setup()
 require("CopilotChat").setup({
 	mappings = {
 		complete = {
 			insert = '', -- add autocomplete in chat window for prompts
 		},
+	},
+	config = {
+		chat_autocomplete = true,
 	},
 	debug = false,
 	model = "gpt-4o",
