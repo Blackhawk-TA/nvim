@@ -9,7 +9,7 @@ require("swagger-preview").setup({
 
 local preview_active = false
 
-vim.keymap.set("n", "<leader>sp", function()
+vim.keymap.set("n", "<leader>ps", function()
 	if preview_active then
 		vim.cmd("SwaggerPreviewStop")
 		print("Stopped swagger preview server")
