@@ -30,6 +30,7 @@ require("config/markdown-preview")
 require("config/swagger-preview")
 require("config/colorizer")
 require("config/dev-container")
+require("config/makeit")
 
 -- Copilot is only supported on work devices
 require("config/copilot")
