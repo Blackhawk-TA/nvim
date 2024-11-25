@@ -10,4 +10,5 @@ return {
 			default_detail = 1
 		},
 	},
+	lazy = true,
 }
