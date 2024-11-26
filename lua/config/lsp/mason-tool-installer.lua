@@ -14,14 +14,6 @@ require("mason-tool-installer").setup {
 		"jsonlint",
 		"taplo",
 
-		-- Tools
-		"goimports",
-		"golines",
-		"gomodifytags",
-		"gotests",
-		"impl",
-		"json-to-struct",
-
 		-- Formatters
 		"autoflake",
 		"clang-format",

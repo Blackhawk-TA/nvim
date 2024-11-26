@@ -144,7 +144,6 @@ require("mason-lspconfig").setup({
 		"dockerls",
 		"docker_compose_language_service",
 		"eslint",
-		"golangci_lint_ls",
 		"gopls",
 		"graphql",
 		"html",
