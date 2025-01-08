@@ -7,7 +7,7 @@ require("neo-tree").setup({
 		mappings = {
 			["s"] = "noop",
 			["<C-s>"] = "open_vsplit",
-			["<C-h>"] = "open_split",
+			["<C-d>"] = "open_split",
 			["<C-t>"] = "open_tabnew",
 			["z"] = "close_all_nodes",
 			["Z"] = "expand_all_nodes",
