@@ -68,17 +68,16 @@ vim.keymap.set("n", "<F8>", "<cmd>lua require('dap').step_over()<cr>")
 
 vim.keymap.set("n", "<F12>", "<cmd>lua require('dapui').eval()<cr>")
 
-if vim.fn.has("macunix") == 1 then
-	vim.keymap.set("n", "<F21>", "<cmd>lua require('dap').run_last()<cr>")                            -- Re-run debugger, equals Shift + F9
-	vim.keymap.set("n", "<F33>", "<cmd>lua require('dap').disconnect({ terminateDebuggee = true })<cr>") -- Stop debugging, equals Control + F9
-	vim.keymap.set("n", "<F22>", "<cmd>lua require('utils').close_debugger()<cr>")                    -- Equals Shift + F10
-	vim.keymap.set("n", "<F19>", "<cmd>lua require('dap').step_out()<cr>")                            -- Equals Shift + F7
-else
-	vim.keymap.set("n", "<S-F9>", "<cmd>lua require('dap').run_last()<cr>")
-	vim.keymap.set("n", "<C-F9>", "<cmd>lua require('dap').disconnect({ terminateDebuggee = true })<cr>")
-	vim.keymap.set("n", "<S-F10>", "<cmd>lua require('utils').close_debugger()<cr>")
-	vim.keymap.set("n", "<S-F7>", "<cmd>lua require('dap').step_out()<cr>")
-end
+-- There are two ways F-Keys are displayed when modifier keys like Shift or Control are used
+-- Therefore both definitions have to be included for each command that uses modifier keys
+vim.keymap.set("n", "<F21>", "<cmd>lua require('dap').run_last()<cr>")                            -- Re-run debugger, equals Shift + F9
+vim.keymap.set("n", "<S-F9>", "<cmd>lua require('dap').run_last()<cr>")
+vim.keymap.set("n", "<F33>", "<cmd>lua require('dap').disconnect({ terminateDebuggee = true })<cr>") -- Stop debugging, equals Control + F9
+vim.keymap.set("n", "<C-F9>", "<cmd>lua require('dap').disconnect({ terminateDebuggee = true })<cr>")
+vim.keymap.set("n", "<F22>", "<cmd>lua require('utils').close_debugger()<cr>")                    -- Equals Shift + F10
+vim.keymap.set("n", "<S-F10>", "<cmd>lua require('utils').close_debugger()<cr>")
+vim.keymap.set("n", "<F19>", "<cmd>lua require('dap').step_out()<cr>")                            -- Equals Shift + F7
+vim.keymap.set("n", "<S-F7>", "<cmd>lua require('dap').step_out()<cr>")
 
 -- Breakpoints appearance
 vim.api.nvim_set_hl(0, "DapBreakpoint", { ctermbg = 0, fg = "#ef5f6b", bg = "#2d3343" })
