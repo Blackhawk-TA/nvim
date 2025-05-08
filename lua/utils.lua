@@ -59,16 +59,6 @@ function utils.close_debugger()
 	end
 end
 
-function utils.get_mason_dir(package_name)
-	local mason_registry = require("mason-registry")
-	local package = mason_registry.get_package(package_name)
-	return package:get_install_path()
-end
-
-function utils.get_mason_binary(package_name)
-	return utils.get_mason_dir(package_name) .. "/" .. package_name
-end
-
 function utils.get_python_path()
 	local cwd = vim.fn.getcwd()
 	if vim.fn.executable(cwd .. "/venv/bin/python") == 1 then
@@ -76,7 +66,7 @@ function utils.get_python_path()
 	elseif vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
 		return cwd .. "/.venv/bin/python"
 	else
-		return utils.get_mason_dir("debugpy") .. "/venv/bin/python"
+		return "$MASON/packages/debugpy/venv/bin/python"
 	end
 end
 

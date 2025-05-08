@@ -30,7 +30,7 @@ dap.adapters.codelldb = {
 	type = "server",
 	port = "${port}",
 	executable = {
-		command = utils.get_mason_binary("codelldb"),
+		command = "$MASON/packages/codelldb/codelldb",
 		args = { "--port", "${port}" },
 	},
 }
