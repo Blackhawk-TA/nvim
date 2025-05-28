@@ -22,7 +22,7 @@ require("CopilotChat").setup({
 		chat_autocomplete = true,
 	},
 	debug = false,
-	model = "gpt-4o",
+	model = "gpt-4.1",
 	question_header = "## User ",
 	answer_header = "## Copilot ",
 	error_header = "## Error ",
