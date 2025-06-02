@@ -1,5 +1,13 @@
-local nvim_lsp = require("lspconfig")
-nvim_lsp.gopls.setup({
+local root_files = {
+	".git",
+	"go.mod",
+}
+
+vim.lsp.config("go", {
+	name = "gopls",
+	cmd = { "gopls" },
+	filetypes = { "go" },
+	root_markers = root_files,
 	settings = {
 		gopls = {
 			analyses = {
@@ -26,7 +34,7 @@ nvim_lsp.gopls.setup({
 			},
 		},
 	}
-})
+});
 
 -- format code and import on save
 vim.api.nvim_create_autocmd("BufWritePre", {

@@ -1,10 +1,5 @@
-local lsp_zero = require("lsp-zero").preset({})
-
 require("mason").setup()
 require("mason-lspconfig").setup({
-	handlers = {
-		lsp_zero.default_setup,
-	},
 	ensure_installed = {
 		"angularls",
 		"bashls",

@@ -3,15 +3,6 @@ require("settings")
 require("config/lazy")
 require("config/colorscheme")
 
-require("config/lsp/lsp-zero")
-require("config/lsp/clangd")
-require("config/lsp/go")
-
-require("config/lsp-extensions/cmp")
-require("config/lsp-extensions/mason")
-require("config/lsp-extensions/mason-tool-installer")
-require("config/lsp-extensions/typos")
-
 require("config/neotree")
 require("config/lualine")
 require("config/comment")
@@ -37,6 +28,21 @@ require("config/diagnostic")
 -- Copilot is only supported on work devices
 require("config/copilot")
 require("config/copilot-chat")
+
+require("config/lsp-extensions/cmp")
+require("config/lsp-extensions/mason")
+require("config/lsp-extensions/mason-tool-installer")
+require("config/lsp-extensions/typos")
+
+require("lsp.clangd")
+require("lsp.go")
+require("lsp.luals")
+require("lsp.utils")
+vim.lsp.enable({
+	"clangd",
+	"go",
+	"luals",
+})
 
 require("after/plugin/autocmd")
 require("after/plugin/keymap")

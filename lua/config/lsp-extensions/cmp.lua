@@ -1,6 +1,6 @@
 local utils = require("utils")
 local cmp = require("cmp")
-local cmp_action = require("lsp-zero").cmp_action()
+local luasnip = require("luasnip")
 
 local has_words_before = function()
 	local current_buffer = vim.fn.bufnr("%")
@@ -16,21 +16,30 @@ if not utils.is_work_device then
 	copilot_comparators_prioritize = ("copilot_cmp.comparators").prioritize
 end
 
-
 cmp.setup({
 	mapping = cmp.mapping.preset.insert({
 		["<CR>"] = cmp.mapping.confirm({
 			behavior = cmp.ConfirmBehavior.Replace,
 			select = false
 		}),
-		["<Tab>"] = vim.schedule_wrap(function(fallback)
+		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() and has_words_before() then
 				cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+			elseif luasnip.expand_or_jumpable() then
+				luasnip.expand_or_jump()
 			else
 				fallback()
 			end
 		end),
-		["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
+		["<S-Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
+			elseif luasnip.jumpable(-1) then
+				luasnip.jump(-1)
+			else
+				fallback()
+			end
+		end),
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<C-j>"] = cmp.mapping.select_next_item({ behavior = "select" }),
 		["<C-k>"] = cmp.mapping.select_prev_item({ behavior = "select" })
@@ -78,6 +87,7 @@ cmp.setup({
 		{ name = "nvim_lsp", group_index = 2 },
 		{ name = "path",     group_index = 2 },
 		{ name = "buffer",   group_index = 2 },
+		{ name = 'luasnip',  group_index = 2 },
+		{ name = "lazydev",  group_index = 0 }, -- set group index to 0 to skip loading LuaLS completions
 	},
 })
-
