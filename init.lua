@@ -24,24 +24,24 @@ require("config/swagger-preview")
 require("config/colorizer")
 require("config/makeit")
 require("config/diagnostic")
+require("config/cmp")
+require("config/mason")
 
 -- Copilot is only supported on work devices
 require("config/copilot")
 require("config/copilot-chat")
 
-require("config/lsp-extensions/cmp")
-require("config/lsp-extensions/mason")
-require("config/lsp-extensions/mason-tool-installer")
-require("config/lsp-extensions/typos")
-
+-- LSP configs
 require("lsp.clangd")
 require("lsp.go")
-require("lsp.luals")
+require("lsp.lua")
+require("lsp.typos")
 require("lsp.utils")
 vim.lsp.enable({
 	"clangd",
 	"go",
 	"luals",
+	"typos_lsp"
 })
 
 require("after/plugin/autocmd")

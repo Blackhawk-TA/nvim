@@ -1,5 +1,4 @@
 local utils = require("utils")
-local nvim_lsp = require("lspconfig")
 
 -- Only use local config for git repos
 local typos_config_path = vim.fn.stdpath("config") .. "/.nvim-spell/typos.toml"
@@ -7,17 +6,17 @@ if utils.is_git_repo() then
 	typos_config_path = vim.fn.getcwd() .. "/.nvim-spell/typos.toml"
 end
 
-local settings = {
-	init_options = {
-		config = typos_config_path,
-		diagnosticSeverity = "Error",
-	},
-	flags = {
-		debounce_text_changes = 150,
+vim.lsp.config("typos_lsp", {
+	settings = {
+		init_options = {
+			config = typos_config_path,
+			diagnosticSeverity = "Error",
+		},
+		flags = {
+			debounce_text_changes = 150,
+		}
 	}
-}
-
-nvim_lsp.typos_lsp.setup(settings)
+})
 
 local file_created = utils.ensure_file_exists(typos_config_path)
 if file_created then
@@ -26,7 +25,7 @@ end
 
 local function get_word_under_cursor()
 	-- Get the current cursor position (row, col)
-	local _, col = unpack(vim.api.nvim_win_get_cursor(0))
+	local _, col = table.unpack(vim.api.nvim_win_get_cursor(0))
 	local line = vim.api.nvim_get_current_line()
 	local start_col = col
 	local end_col = col
