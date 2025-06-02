@@ -35,3 +35,4 @@ vim.keymap.set({ "n", "v" }, "<F4>", "<cmd>lua vim.lsp.buf.code_action()<cr>", d
 vim.keymap.set("n", "<leader>d", "<cmd> lua vim.diagnostic.goto_next()<cr>", default_opts)
 vim.keymap.set("n", "<leader>D", "<cmd> lua vim.diagnostic.goto_prev()<cr>", default_opts)
 vim.keymap.set("n", "<leader>k", "<cmd> lua vim.diagnostic.open_float()<cr>", default_opts)
+vim.keymap.set("n", "<leader>li", "<cmd>LspInfo<cr>")
