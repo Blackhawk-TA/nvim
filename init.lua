@@ -32,15 +32,16 @@ require("config/copilot")
 require("config/copilot-chat")
 
 -- LSP configs
-require("lsp.clangd")
-require("lsp.go")
-require("lsp.lua")
-require("lsp.typos")
-require("lsp.utils")
+require("lsp/clangd")
+require("lsp/go")
+require("lsp/lua")
+require("lsp/python")
+require("lsp/typos")
 vim.lsp.enable({
 	"clangd",
-	"go",
-	"luals",
+	"gopls",
+	"lua_ls",
+	"pyright",
 	"typos_lsp"
 })
 

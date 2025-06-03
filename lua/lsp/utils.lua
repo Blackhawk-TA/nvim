@@ -1,3 +1,4 @@
+-- Can be imported for LSPs that support codelens and inlay hints.
 return {
 	default_on_attach = function(client, bufnr)
 		if client.supports_method("textDocument/inlayHint") then

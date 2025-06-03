@@ -3,7 +3,7 @@ local root_files = {
 	"init.lua",
 }
 
-vim.lsp.config("luals", {
+vim.lsp.config("lua_ls", {
 	name = "lua_ls",
 	cmd = { "lua-language-server" },
 	filetypes = { "lua" },

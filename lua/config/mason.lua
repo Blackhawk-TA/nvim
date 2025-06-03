@@ -29,7 +29,7 @@ require("mason-lspconfig").setup({
 	automatic_enable = true,
 })
 
-require("mason-tool-installer").setup {
+require("mason-tool-installer").setup({
 	-- All mason tools that should be installed expect language servers.
 	-- The language servers are installed in the lsp-zero config
 	ensure_installed = {
@@ -83,4 +83,4 @@ require("mason-tool-installer").setup {
 	-- effect when running manually via ":MasonToolsInstall" etc....
 	-- Default: nil
 	debounce_hours = 5, -- at least 5 hours between attempts to install/update
-}
+})
