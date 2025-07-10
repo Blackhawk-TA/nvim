@@ -37,12 +37,14 @@ require("lsp/go")
 require("lsp/lua")
 require("lsp/python")
 require("lsp/typos")
+require("lsp/yaml")
 vim.lsp.enable({
 	"clangd",
 	"gopls",
 	"lua_ls",
 	"pyright",
-	"typos_lsp"
+	"typos_lsp",
+	"yamlls"
 })
 
 require("after/plugin/autocmd")
