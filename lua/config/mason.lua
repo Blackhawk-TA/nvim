@@ -53,7 +53,7 @@ require("mason-tool-installer").setup({
 		-- Debuggers
 		"codelldb",
 		"delve",
-		"debugpy"
+		"debugpy",
 	},
 
 	-- if set to true this will check each tool for updates. If updates

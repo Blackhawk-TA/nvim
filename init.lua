@@ -44,7 +44,7 @@ vim.lsp.enable({
 	"lua_ls",
 	"pyright",
 	"typos_lsp",
-	"yamlls"
+	"yamlls",
 })
 
 require("after/plugin/autocmd")
