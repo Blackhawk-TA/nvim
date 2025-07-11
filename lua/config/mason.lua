@@ -37,6 +37,7 @@ require("mason-tool-installer").setup({
 		"cmakelint",
 		"cpplint",
 		"editorconfig-checker",
+		"golangci-lint",
 		"luacheck",
 		"markdownlint",
 		"mypy",

@@ -11,7 +11,9 @@ require("lint").linters_by_ft = {
 	editorconfig = {
 		"editorconfig-checker",
 	},
-	go = {},
+	go = {
+		"golangcilint",
+	},
 	json = {
 		"jsonlint",
 	},
@@ -30,6 +32,6 @@ require("lint").linters_by_ft = {
 vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {
 	callback = function()
 		require("lint").try_lint()
-		require("lint").try_lint("cspell")  -- Run cspell for all files
+		require("lint").try_lint("cspell") -- Run cspell for all files
 	end,
 })
