@@ -43,6 +43,8 @@ require("mason-tool-installer").setup({
 		"jsonlint",
 
 		-- Formatters
+		"autoflake",
+		"black",
 		"clang-format",
 		"prettier",
 		"stylua",
