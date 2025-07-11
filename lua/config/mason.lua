@@ -41,7 +41,6 @@ require("mason-tool-installer").setup({
 		"markdownlint",
 		"mypy",
 		"jsonlint",
-		"taplo",
 
 		-- Formatters
 		"clang-format",
