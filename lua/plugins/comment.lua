@@ -1,8 +1,8 @@
-return { {
+return {
 	'numToStr/Comment.nvim',
 	opts = {},
 	lazy = false,
-}}
+}
 
 --[[
 Keybinds:
@@ -18,4 +18,3 @@ VISUAL mode:
 `gc` - Toggles the region using linewise comment
 `gb` - Toggles the region using blockwise comment
 ]]
-
