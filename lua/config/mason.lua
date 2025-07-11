@@ -20,7 +20,6 @@ require("mason-lspconfig").setup({
 		"lua_ls",
 		"marksman",
 		"pyright",
-		"spectral",
 		"sqlls",
 		"lemminx",
 		"vimls",
@@ -41,7 +40,6 @@ require("mason-tool-installer").setup({
 		"luacheck",
 		"markdownlint",
 		"mypy",
-		"yamllint",
 		"jsonlint",
 		"taplo",
 

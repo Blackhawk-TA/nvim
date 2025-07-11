@@ -31,7 +31,6 @@ require("lint").linters_by_ft = {
 		"cspell"
 	},
 	yaml = {
-		"yamllint",
 		"cspell"
 	},
 }
