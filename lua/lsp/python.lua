@@ -1,5 +1,4 @@
 local lsp_util = require("lsp/utils")
-local util = require("lspconfig/util")
 
 require("venv-selector").setup({})
 
@@ -17,9 +16,7 @@ vim.lsp.config("pyright", {
 	name = "pyright",
 	cmd = { 'pyright-langserver', '--stdio' },
 	filetypes = { 'python' },
-	root_dir = function(fname)
-		return util.root_pattern(table.unpack(root_files))(fname)
-	end,
+	root_markers = root_files,
 	single_file_support = true,
 	on_attach = lsp_util.default_on_attach,
 	settings = {

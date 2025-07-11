@@ -44,7 +44,6 @@ require("mason-tool-installer").setup({
 		"taplo",
 
 		-- Formatters
-		"autoflake",
 		"clang-format",
 		"prettier",
 		"stylua",
