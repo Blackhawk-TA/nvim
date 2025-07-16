@@ -36,3 +36,7 @@ vim.keymap.set("n", "<leader>d", "<cmd> lua vim.diagnostic.goto_next()<cr>", def
 vim.keymap.set("n", "<leader>D", "<cmd> lua vim.diagnostic.goto_prev()<cr>", default_opts)
 vim.keymap.set("n", "<leader>k", "<cmd> lua vim.diagnostic.open_float()<cr>", default_opts)
 vim.keymap.set("n", "<leader>li", "<cmd>LspInfo<cr>")
+vim.keymap.set("n", "<leader>lr", function()
+	vim.cmd("LspRestart")
+	vim.print("Restarting LSP...")
+end)
