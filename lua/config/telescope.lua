@@ -1,6 +1,9 @@
 local trouble = require("trouble.sources.telescope")
-require("telescope").setup {
+require("telescope").setup({
 	defaults = {
+		preview = {
+			treesitter = false, -- TODO: Re-enable once treesitter works again
+		},
 		file_ignore_patterns = { "node_modules", "\\.git\\/", "\\.venv\\/", "\\.idea\\/" },
 		mappings = {
 			i = {
@@ -9,10 +12,10 @@ require("telescope").setup {
 				-- e.g. git_{create, delete, ...}_branch for the git_branches picker
 				["<C-h>"] = "select_horizontal",
 				["<C-s>"] = "select_vertical",
-				["<C-z>"] = trouble.open
+				["<C-z>"] = trouble.open,
 			},
 			n = { ["<C-z>"] = trouble.open },
-		}
+		},
 	},
 	pickers = {
 		-- Default configuration for builtin pickers goes here:
@@ -29,8 +32,8 @@ require("telescope").setup {
 		--   extension_config_key = value,
 		-- }
 		-- please take a look at the readme of the extension you want to configure
-	}
-}
+	},
+})
 
 require("dir-telescope").setup({
 	hidden = true,
