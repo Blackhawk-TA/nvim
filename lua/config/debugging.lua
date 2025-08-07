@@ -30,7 +30,7 @@ dap.adapters.codelldb = {
 	type = "server",
 	port = "${port}",
 	executable = {
-		command = vim.fn.stdpath("data") .. "/mason/packages/codelldb/codelldb",
+		command = utils.get_mason_binary("codelldb"),
 		args = { "--port", "${port}" },
 	},
 }
