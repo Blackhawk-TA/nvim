@@ -30,7 +30,7 @@ dap.adapters.codelldb = {
 	type = "server",
 	port = "${port}",
 	executable = {
-		command = "$MASON/packages/codelldb/codelldb",
+		command = vim.fn.stdpath("data") .. "/mason/packages/codelldb/codelldb",
 		args = { "--port", "${port}" },
 	},
 }
@@ -42,7 +42,7 @@ dap.configurations.c = {
 		program = function()
 			return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
 		end,
-		cwd = '${workspaceFolder}',
+		cwd = "${workspaceFolder}",
 		stopOnEntry = false,
 	},
 }
@@ -70,13 +70,13 @@ vim.keymap.set("n", "<F12>", "<cmd>lua require('dapui').eval()<cr>")
 
 -- There are two ways F-Keys are displayed when modifier keys like Shift or Control are used
 -- Therefore both definitions have to be included for each command that uses modifier keys
-vim.keymap.set("n", "<F21>", "<cmd>lua require('dap').run_last()<cr>")                            -- Re-run debugger, equals Shift + F9
+vim.keymap.set("n", "<F21>", "<cmd>lua require('dap').run_last()<cr>") -- Re-run debugger, equals Shift + F9
 vim.keymap.set("n", "<S-F9>", "<cmd>lua require('dap').run_last()<cr>")
 vim.keymap.set("n", "<F33>", "<cmd>lua require('dap').disconnect({ terminateDebuggee = true })<cr>") -- Stop debugging, equals Control + F9
 vim.keymap.set("n", "<C-F9>", "<cmd>lua require('dap').disconnect({ terminateDebuggee = true })<cr>")
-vim.keymap.set("n", "<F22>", "<cmd>lua require('utils').close_debugger()<cr>")                    -- Equals Shift + F10
+vim.keymap.set("n", "<F22>", "<cmd>lua require('utils').close_debugger()<cr>") -- Equals Shift + F10
 vim.keymap.set("n", "<S-F10>", "<cmd>lua require('utils').close_debugger()<cr>")
-vim.keymap.set("n", "<F19>", "<cmd>lua require('dap').step_out()<cr>")                            -- Equals Shift + F7
+vim.keymap.set("n", "<F19>", "<cmd>lua require('dap').step_out()<cr>") -- Equals Shift + F7
 vim.keymap.set("n", "<S-F7>", "<cmd>lua require('dap').step_out()<cr>")
 
 -- Breakpoints appearance
@@ -88,29 +88,29 @@ vim.fn.sign_define("DapBreakpoint", {
 	text = "●",
 	texthl = "DapBreakpoint",
 	linehl = "DapBreakpoint",
-	numhl = "DapBreakpoint"
+	numhl = "DapBreakpoint",
 })
 vim.fn.sign_define("DapBreakpointCondition", {
 	text = "○",
 	texthl = "DapBreakpoint",
 	linehl = "DapBreakpoint",
-	numhl = "DapBreakpoint"
+	numhl = "DapBreakpoint",
 })
 vim.fn.sign_define("DapBreakpointRejected", {
 	text = "",
 	texthl = "DapBreakpoint",
 	linehl = "DapBreakpoint",
-	numhl = "DapBreakpoint"
+	numhl = "DapBreakpoint",
 })
 vim.fn.sign_define("DapLogPoint", {
 	text = "",
 	texthl = "DapLogPoint",
 	linehl = "DapLogPoint",
-	numhl = "DapLogPoint"
+	numhl = "DapLogPoint",
 })
 vim.fn.sign_define("DapStopped", {
 	text = "",
 	texthl = "DapStopped",
 	linehl = "DapStopped",
-	numhl = "DapStopped"
+	numhl = "DapStopped",
 })
