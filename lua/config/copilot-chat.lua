@@ -15,20 +15,20 @@ local prompts = {
 require("CopilotChat").setup({
 	mappings = {
 		complete = {
-			insert = '', -- add autocomplete in chat window for prompts
+			insert = "", -- add autocomplete in chat window for prompts
 		},
 	},
 	config = {
 		chat_autocomplete = true,
 	},
 	debug = false,
-	model = "gpt-4.1",
+	model = "claude-sonnet-4",
 	question_header = "## User ",
 	answer_header = "## Copilot ",
 	error_header = "## Error ",
 	prompts = prompts,
 	auto_follow_cursor = false, -- Don't follow the cursor after getting response
-	show_help = false,       -- Show help in virtual text, set to true if that's 1st time using Copilot Chat
+	show_help = false, -- Show help in virtual text, set to true if that's 1st time using Copilot Chat
 	window = {
 		layout = "vertical",
 		width = 0.3, -- fractional width of parent, or absolute width in columns when > 1
