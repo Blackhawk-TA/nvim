@@ -1,5 +1,3 @@
-
-
 require("neotest").setup({
 	adapters = {
 		require("neotest-python")({
@@ -24,11 +22,7 @@ end)
 -- Debug nearest test
 vim.keymap.set("n", "<leader>ud", function()
 	vim.cmd("silent! w")
-	if vim.bo.filetype == "go" then
-		require("dap-go").debug_test()
-	else
-		require("neotest").run.run({ strategy = "dap" })
-	end
+	require("neotest").run.run({ strategy = "dap" })
 end)
 
 -- Stop nearest test
