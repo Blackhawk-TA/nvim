@@ -16,7 +16,7 @@ vim.lsp.config("gopls", {
 				unusedparams = true,
 				unusedwrite = true,
 				unusedvariable = true,
-				noUsedResult = true
+				noUsedResult = true,
 			},
 			staticcheck = true,
 			gofumpt = true,
@@ -35,8 +35,8 @@ vim.lsp.config("gopls", {
 				parameterNames = false,
 			},
 		},
-	}
-});
+	},
+})
 
 -- format code and import on save
 vim.api.nvim_create_autocmd("BufWritePre", {
@@ -59,5 +59,5 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 			end
 		end
 		vim.lsp.buf.format({ async = false })
-	end
+	end,
 })

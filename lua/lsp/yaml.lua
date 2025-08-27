@@ -1,6 +1,6 @@
 local lsp_util = require("lsp/utils")
 local root_files = {
-	".git"
+	".git",
 }
 
 vim.lsp.config("yamlls", {
@@ -15,8 +15,8 @@ vim.lsp.config("yamlls", {
 	settings = {
 		redhat = {
 			telemetry = {
-				enabled = false
-			}
-		}
-	}
+				enabled = false,
+			},
+		},
+	},
 })

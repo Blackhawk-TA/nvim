@@ -1,4 +1,4 @@
-require('nvim-treesitter.configs').setup({
+require("nvim-treesitter.configs").setup({
 	auto_install = true,
 	highlight = {
 		enable = true,
@@ -25,7 +25,6 @@ require('nvim-treesitter.configs').setup({
 		"xml",
 		"yaml",
 		"regex",
-		"dockerfile"
-	}
+		"dockerfile",
+	},
 })
-

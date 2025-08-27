@@ -14,8 +14,8 @@ vim.lsp.config("typos_lsp", {
 		},
 		flags = {
 			debounce_text_changes = 150,
-		}
-	}
+		},
+	},
 })
 
 local file_created = utils.ensure_file_exists(typos_config_path)

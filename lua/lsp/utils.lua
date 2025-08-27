@@ -9,16 +9,16 @@ return {
 		if client.supports_method("textDocument/codeLens") then
 			pcall(vim.lsp.codelens.refresh)
 
-			local codelense_cmds = vim.api.nvim_create_augroup('codelense_cmds', { clear = true })
+			local codelense_cmds = vim.api.nvim_create_augroup("codelense_cmds", { clear = true })
 
-			vim.api.nvim_create_autocmd('BufWritePost', {
+			vim.api.nvim_create_autocmd("BufWritePost", {
 				buffer = bufnr,
 				group = codelense_cmds,
-				desc = 'refresh codelens',
+				desc = "refresh codelens",
 				callback = function()
 					pcall(vim.lsp.codelens.refresh)
 				end,
 			})
 		end
-	end
+	end,
 }

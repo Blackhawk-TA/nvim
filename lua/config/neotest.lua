@@ -16,7 +16,7 @@ end)
 -- Run current file
 vim.keymap.set("n", "<leader>uf", function()
 	vim.cmd("silent! w")
-	require("neotest").run.run(vim.fn.expand('%'))
+	require("neotest").run.run(vim.fn.expand("%"))
 end)
 
 -- Debug nearest test
@@ -25,7 +25,7 @@ vim.keymap.set("n", "<leader>ud", function()
 	if vim.bo.filetype == "go" then
 		require("dap-go").debug_test()
 	else
-		require("neotest").run.run({ strategy = 'dap' })
+		require("neotest").run.run({ strategy = "dap" })
 	end
 end)
 
