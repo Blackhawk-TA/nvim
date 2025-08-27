@@ -42,7 +42,13 @@ vim.lsp.config("gopls", {
 vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = "*.go",
 	callback = function()
-		local params = vim.lsp.util.make_range_params()
+		local clients = vim.lsp.get_clients({ bufnr = 0 })
+		if #clients == 0 then
+			return
+		end
+
+		local client = clients[1]
+		local params = vim.lsp.util.make_range_params(nil, client.offset_encoding)
 		params.context = { only = { "source.organizeImports" } }
 		-- buf_request_sync defaults to a 1000ms timeout. Depending on your
 		-- machine and codebase, you may want longer. Add an additional
