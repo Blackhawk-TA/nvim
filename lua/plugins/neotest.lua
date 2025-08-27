@@ -7,5 +7,5 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 	},
 	"nvim-neotest/neotest-python",
-	"nvim-neotest/neotest-go",
+	"fredrikaverpil/neotest-golang",
 }
