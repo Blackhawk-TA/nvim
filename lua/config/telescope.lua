@@ -1,7 +1,7 @@
 local trouble = require("trouble.sources.telescope")
 require("telescope").setup({
 	defaults = {
-		file_ignore_patterns = { "node_modules", "\\.git\\/", "\\.venv\\/", "\\.idea\\/" },
+		file_ignore_patterns = { "vendor", "node_modules", "\\.git\\/", "\\.venv\\/", "\\.idea\\/" },
 		mappings = {
 			i = {
 				-- map actions.which_key to <C-h> (default: <C-/>)
