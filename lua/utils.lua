@@ -97,12 +97,13 @@ function utils.get_username()
 		username = username:gsub("%s+", "")
 		f:close()
 	end
-	return username
+	return username:lower()
 end
 
 function utils.is_work_device()
 	local username = utils.get_username()
-	return string.match(username, "D%d%d%d%d%d%d")
+	local name_regex = "d%d%d%d%d%d%d" -- matches d followed by 6 digits, e.g. d123456
+	return string.match(username, name_regex)
 end
 
 function utils.is_git_repo()
