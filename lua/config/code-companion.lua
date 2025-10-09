@@ -4,7 +4,16 @@ if not utils.is_work_device() then
 	return
 end
 
+local http_ops = {
+	-- allow_insecure = true,
+	-- proxy = "http://127.0.0.1:8899",
+}
 require("codecompanion").setup({
+	adapters = {
+		http = {
+			opts = http_ops,
+		},
+	},
 	display = {
 		chat = {
 			window = {
@@ -41,6 +50,7 @@ require("codecompanion").setup({
 vim.keymap.set({ "n", "v" }, "<leader>cc", "<cmd>CodeCompanionChat Toggle<cr>")
 vim.keymap.set({ "n", "v" }, "<leader>cf", "<cmd>CodeCompanionActions<cr>")
 
+-- Keybind for inline prompt
 vim.keymap.set("v", "<leader>cx", function()
 	local input = vim.fn.input("Inline prompt: ")
 	if input ~= "" then
