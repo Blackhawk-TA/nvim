@@ -29,7 +29,7 @@ require("config/conform")
 
 -- Copilot is only supported on work devices
 require("config/copilot")
-require("config/copilot-chat")
+require("config/code-companion")
 
 -- LSP configs
 require("lsp/clangd")
