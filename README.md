@@ -22,6 +22,7 @@ This is my personal neovim config.
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [fd](https://github.com/sharkdp/fd)
 - [lazygit](https://github.com/jesseduffield/lazygit#installation)
+- [treesitter](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md)
 
 ### Arch packages
 
