@@ -4,10 +4,47 @@ if not utils.is_work_device() then
 	return
 end
 
-local http_ops = {
-	-- allow_insecure = true,
-	-- proxy = "http://127.0.0.1:8899",
-}
+local function is_proxy_reachable(host, port)
+	local ok, socket = pcall(require, "socket")
+	if not ok then
+		return false
+	end
+
+	local tcp = socket.tcp()
+	if not tcp then
+		return false
+	end
+
+	tcp:settimeout(0.5)
+	local success = tcp:connect(host, port)
+	tcp:close()
+
+	if not success then
+		return false
+	end
+	return true
+end
+
+local function get_proxy_from_env()
+	local proxy_env = os.getenv("HTTP_PROXY") or os.getenv("http_proxy")
+	if not proxy_env then
+		return nil, nil
+	end
+	local url = proxy_env:match("^https?://([^:/]+)")
+	local port = tonumber(proxy_env:match(":(%d+)$"))
+	return url, port
+end
+
+local http_ops = {}
+local proxy_url, proxy_port = get_proxy_from_env()
+if proxy_url and proxy_port and is_proxy_reachable(proxy_url, proxy_port) then
+	local proxy = string.format("http://%s:%d", proxy_url, proxy_port)
+	http_ops = {
+		allow_insecure = true,
+		proxy = proxy,
+	}
+end
+
 require("codecompanion").setup({
 	adapters = {
 		http = {
