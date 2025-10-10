@@ -1,5 +1,6 @@
 require("nvim-treesitter.configs").setup({
 	auto_install = true,
+	sync_install = true,
 	highlight = {
 		enable = true,
 	},
@@ -20,6 +21,7 @@ require("nvim-treesitter.configs").setup({
 		"vimdoc",
 		"markdown",
 		"markdown_inline",
+		"latex",
 		"json",
 		"jsonc",
 		"xml",
@@ -27,4 +29,7 @@ require("nvim-treesitter.configs").setup({
 		"regex",
 		"dockerfile",
 	},
+	ignore_install = {},
+	define_modules = {},
+	modules = {},
 })
