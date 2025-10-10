@@ -1,7 +1,7 @@
 local utils = require("utils")
 
 if not utils.is_work_device() then
-	return
+	return {}
 end
 
 return {
