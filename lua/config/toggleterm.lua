@@ -1,6 +1,6 @@
-require("toggleterm").setup{
+require("toggleterm").setup({
 	terminal_mappings = true,
-}
+})
 
 vim.keymap.set("n", "<leader>ta", ":ToggleTermToggleAll<cr>")
 vim.keymap.set("n", "<leader>tt", ":ToggleTerm<cr>")

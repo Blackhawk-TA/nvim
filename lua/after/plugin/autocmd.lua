@@ -3,7 +3,7 @@ local utils = require("utils")
 -- Disable spellcheck in terminal
 vim.api.nvim_create_autocmd("TermOpen", {
 	pattern = "term://*",
-	command = "setlocal nospell"
+	command = "setlocal nospell",
 })
 
 -- Auto format on write
@@ -42,7 +42,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 		if utils.is_editable() then
 			vim.cmd("normal zR")
 		end
-	end
+	end,
 })
 
 -- Set spell file when entering a buffer
@@ -57,7 +57,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 		if vim.fn.filereadable(spellfile) then
 			vim.opt.spellfile = spellfile
 		end
-	end
+	end,
 })
 
 -- auto-reload files when modified externally

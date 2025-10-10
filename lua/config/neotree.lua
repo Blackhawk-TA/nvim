@@ -30,17 +30,17 @@ require("neo-tree").setup({
 		git_status = {
 			symbols = {
 				-- Change type
-				added     = "", -- or "✚", but it would be a duplicate due to the colored filenames
-				modified  = "", -- or "", but it would be a duplicate due to the colored filenames
-				deleted   = "✖", -- this can only be used in the git_status source
-				renamed   = "→", -- this can only be used in the git_status source
+				added = "", -- or "✚", but it would be a duplicate due to the colored filenames
+				modified = "", -- or "", but it would be a duplicate due to the colored filenames
+				deleted = "✖", -- this can only be used in the git_status source
+				renamed = "→", -- this can only be used in the git_status source
 				-- Status type
 				untracked = "",
-				ignored   = "",
-				unstaged  = "□",
-				staged    = "",
-				conflict  = "",
-			}
+				ignored = "",
+				unstaged = "□",
+				staged = "",
+				conflict = "",
+			},
 		},
 	},
 	event_handlers = {
@@ -49,8 +49,8 @@ require("neo-tree").setup({
 			handler = function()
 				vim.opt.relativenumber = true
 			end,
-		}
-	}
+		},
+	},
 })
 vim.keymap.set("n", "<leader>bb", "<Cmd>Neotree toggle<CR>")
 vim.keymap.set("n", "<leader>bv", "<Cmd>Neotree git_status<CR>")

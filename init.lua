@@ -19,6 +19,7 @@ require("config/trouble")
 require("config/neotest")
 require("config/refactoring")
 require("config/markdown-preview")
+require("config/markview")
 require("config/swagger-preview")
 require("config/colorizer")
 require("config/makeit")
@@ -29,7 +30,7 @@ require("config/conform")
 
 -- Copilot is only supported on work devices
 require("config/copilot")
-require("config/copilot-chat")
+require("config/code-companion")
 
 -- LSP configs
 require("lsp/clangd")

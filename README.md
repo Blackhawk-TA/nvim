@@ -59,6 +59,9 @@ Go development works out of the box.
 To be able to install all required Mason packages,
 [luarocks](https://archlinux.org/packages/extra/any/luarocks/) is required.
 
+It is possible to pre-install lua packages during neovim startups.
+This can be done in the [`luarocks.lua`](./lua/plugins/luarocks.lua) config file.
+
 ### Python
 
 For debugging to work, `debugpy` must be installed using mason.

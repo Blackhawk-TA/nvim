@@ -4,7 +4,7 @@ require("telescope").setup({
 		preview = {
 			treesitter = false, -- TODO: Re-enable once treesitter works again
 		},
-		file_ignore_patterns = { "node_modules", "\\.git\\/", "\\.venv\\/", "\\.idea\\/" },
+		file_ignore_patterns = { "vendor", "node_modules", "\\.git\\/", "\\.venv\\/", "\\.idea\\/" },
 		mappings = {
 			i = {
 				-- map actions.which_key to <C-h> (default: <C-/>)

@@ -11,11 +11,11 @@ require("copilot").setup({
 
 require("copilot_cmp").setup()
 
-vim.keymap.set("n", "<leader>ce", function ()
+vim.keymap.set("n", "<leader>ce", function()
 	vim.cmd("Copilot enable")
 	print("Copilot enabled")
 end)
-vim.keymap.set("n", "<leader>cd", function ()
+vim.keymap.set("n", "<leader>cd", function()
 	vim.cmd("Copilot disable")
 	print("Copilot disabled")
 end)

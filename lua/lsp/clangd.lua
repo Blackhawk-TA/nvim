@@ -1,5 +1,5 @@
 local root_files = {
-	'.git',
+	".git",
 	".clangd",
 	"compile_commands.json",
 }

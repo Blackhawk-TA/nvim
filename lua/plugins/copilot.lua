@@ -8,6 +8,7 @@ return {
 	{
 		"zbirenbaum/copilot.lua",
 		cmd = "Copilot",
+		copilot_model = "gpt-5-mini",
 		event = "InsertEnter",
 		opts = {
 			server_opts_overrides = {
@@ -23,5 +24,5 @@ return {
 		"zbirenbaum/copilot-cmp",
 		event = { "InsertEnter", "LspAttach" },
 		fix_pairs = true,
-	}
+	},
 }

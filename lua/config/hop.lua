@@ -3,4 +3,3 @@ require("hop").setup({
 })
 
 vim.keymap.set("n", " ", "<cmd>HopWord<cr>")
-

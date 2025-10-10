@@ -59,6 +59,17 @@ function utils.close_debugger()
 	end
 end
 
+-- Get the path of a mason package by its name
+function utils.get_mason_dir(package_name)
+	return vim.fn.stdpath("data") .. "/mason/packages/" .. package_name
+end
+
+-- Get the path of a mason binary by its package name
+function utils.get_mason_binary(package_name)
+	return utils.get_mason_dir(package_name) .. "/" .. package_name
+end
+
+-- Get the path of the Python interpreter used by debugpy
 function utils.get_python_path()
 	local cwd = vim.fn.getcwd()
 	if vim.fn.executable(cwd .. "/venv/bin/python") == 1 then
@@ -66,7 +77,7 @@ function utils.get_python_path()
 	elseif vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
 		return cwd .. "/.venv/bin/python"
 	else
-		return "$MASON/packages/debugpy/venv/bin/python"
+		return utils.get_mason_dir("debugpy") .. "/venv/bin/python"
 	end
 end
 
@@ -86,12 +97,13 @@ function utils.get_username()
 		username = username:gsub("%s+", "")
 		f:close()
 	end
-	return username
+	return username:lower()
 end
 
 function utils.is_work_device()
 	local username = utils.get_username()
-	return string.match(username, "D%d%d%d%d%d%d")
+	local name_regex = "d%d%d%d%d%d%d" -- matches d followed by 6 digits, e.g. d123456
+	return string.match(username, name_regex)
 end
 
 function utils.is_git_repo()

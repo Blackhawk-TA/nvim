@@ -20,7 +20,7 @@ cmp.setup({
 	mapping = cmp.mapping.preset.insert({
 		["<CR>"] = cmp.mapping.confirm({
 			behavior = cmp.ConfirmBehavior.Replace,
-			select = false
+			select = false,
 		}),
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() and has_words_before() then
@@ -42,7 +42,7 @@ cmp.setup({
 		end),
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<C-j>"] = cmp.mapping.select_next_item({ behavior = "select" }),
-		["<C-k>"] = cmp.mapping.select_prev_item({ behavior = "select" })
+		["<C-k>"] = cmp.mapping.select_prev_item({ behavior = "select" }),
 	}),
 	sorting = {
 		priority_weight = 2,
@@ -64,7 +64,7 @@ cmp.setup({
 	},
 	preselect = cmp.PreselectMode.None, -- Ensure the first item is preselected
 	completion = {
-		completeopt = "menu,menuone,noinsert"
+		completeopt = "menu,menuone,noinsert",
 	},
 	window = {
 		completion = cmp.config.window.bordered(),
@@ -77,17 +77,17 @@ cmp.setup({
 			mode = "symbol", -- show only symbol annotations
 			maxwidth = 50, -- prevent the popup from showing more than provided characters
 			ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead
-			symbol_map = { Copilot = "" }
-		})
+			symbol_map = { Copilot = "" },
+		}),
 	},
 	sources = {
 		-- Copilot Source
-		{ name = "copilot",  group_index = 2 },
+		{ name = "copilot", group_index = 2 },
 		-- Other Sources
 		{ name = "nvim_lsp", group_index = 2 },
-		{ name = "path",     group_index = 2 },
-		{ name = "buffer",   group_index = 2 },
-		{ name = 'luasnip',  group_index = 2 },
-		{ name = "lazydev",  group_index = 0 }, -- set group index to 0 to skip loading LuaLS completions
+		{ name = "path", group_index = 2 },
+		{ name = "buffer", group_index = 2 },
+		{ name = "luasnip", group_index = 2 },
+		{ name = "lazydev", group_index = 0 }, -- set group index to 0 to skip loading LuaLS completions
 	},
 })
