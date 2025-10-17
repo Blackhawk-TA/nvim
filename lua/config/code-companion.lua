@@ -17,10 +17,10 @@ local function get_proxy_settings()
 	local proxy_url, proxy_port = proxy.get_from_env()
 
 	if proxy_url and proxy_port and proxy.is_reachable(proxy_url, proxy_port) then
-		local proxy = string.format("http://%s:%d", proxy_url, proxy_port)
+		local proxy_address = string.format("http://%s:%d", proxy_url, proxy_port)
 		proxy_settings = {
 			allow_insecure = true,
-			proxy = proxy,
+			proxy = proxy_address,
 		}
 	end
 
