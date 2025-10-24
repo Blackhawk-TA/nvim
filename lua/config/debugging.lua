@@ -14,6 +14,10 @@ dap.listeners.after.event_initialized["dapui_config"] = function()
 		debugger.neotree_open_before_debug = true
 		vim.cmd("Neotree close")
 	end
+	if utils.is_terminal_open() then
+		debugger.terminal_open_before_debug = true
+		vim.cmd("ToggleTermToggleAll")
+	end
 end
 dap.listeners.before.event_terminated["dapui_config"] = function()
 	if debugger.autoclose_debug_windows then

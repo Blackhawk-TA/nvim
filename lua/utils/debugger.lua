@@ -1,6 +1,7 @@
 local utils = require("utils.utils")
 local debugger = {
 	neotree_open_before_debug = nil,
+	terminal_open_before_debug = nil,
 	autoclose_debug_windows = false,
 	debugging = false,
 	pre_debug_window = nil,
@@ -50,6 +51,10 @@ function debugger.close_debugger()
 	if not utils.is_neotree_open() and debugger.neotree_open_before_debug == true then
 		debugger.neotree_open_before_debug = false
 		vim.cmd("Neotree show")
+	end
+	if not utils.is_terminal_open() and debugger.terminal_open_before_debug == true then
+		debugger.terminal_open_before_debug = false
+		vim.cmd("ToggleTermToggleAll")
 	end
 end
 

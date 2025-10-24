@@ -10,6 +10,18 @@ function utils.is_neotree_open()
 	return window_exists
 end
 
+--- Checks if any ToggleTerm terminal is currently open.
+-- @return boolean True if at least one terminal is open, false otherwise.
+function utils.is_terminal_open()
+	local terminals = require("toggleterm.terminal").get_all()
+	for _, term in pairs(terminals) do
+		if term:is_open() then
+			return true
+		end
+	end
+	return false
+end
+
 -- Checks if the current buffer is editable.
 -- @return boolean # true if the buffer is editable, false otherwise.
 function utils.is_editable()
