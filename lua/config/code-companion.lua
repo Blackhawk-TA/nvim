@@ -72,7 +72,7 @@ vim.keymap.set({ "n", "v" }, "<leader>cc", "<cmd>CodeCompanionChat Toggle<cr>")
 vim.keymap.set({ "n", "v" }, "<leader>cf", "<cmd>CodeCompanionActions<cr>")
 
 -- Keybind for inline prompt
-vim.keymap.set("v", "<leader>cx", function()
+vim.keymap.set({ "n", "v" }, "<leader>cx", function()
 	local input = vim.fn.input("Inline prompt: ")
 	if input ~= "" then
 		vim.cmd("CodeCompanion " .. input)
