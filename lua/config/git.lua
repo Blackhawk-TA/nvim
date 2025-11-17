@@ -32,3 +32,10 @@ vim.keymap.set("n", "<leader>go", "<cmd>lua require('telescope').extensions.lazy
 vim.keymap.set("n", "<leader>gg", "<cmd>LazyGit<cr>")
 vim.keymap.set("n", "<leader>gh", "<cmd>LazyGitFilter<cr>")
 vim.keymap.set("n", "<leader>ghf", "<cmd>LazyGitFilterCurrentFile<cr>")
+
+-- diffview bindings
+vim.keymap.set("n", "<leader>gvv", "<cmd>DiffviewOpen<cr>")
+vim.keymap.set("n", "<leader>gvc", "<cmd>DiffviewClose<cr>")
+vim.keymap.set("n", "<leader>gvr", "<cmd>DiffviewRefresh<cr>")
+vim.keymap.set("n", "<leader>gvh", "<cmd>DiffviewFileHistory<cr>")
+vim.keymap.set("n", "<leader>gvf", "<cmd>DiffviewFileHistory %<cr>")

@@ -3,7 +3,10 @@ return {
 	"nvim-lualine/lualine.nvim",
 	"norcalli/nvim-colorizer.lua",
 	"editorconfig/editorconfig-vim",
+	"towolf/vim-helm",
+
+	-- git plugins
 	"kdheepak/lazygit.nvim",
 	"lewis6991/gitsigns.nvim",
-	"towolf/vim-helm",
+	"sindrets/diffview.nvim",
 }
