@@ -27,7 +27,8 @@ local function get_proxy_settings()
 	return proxy_settings
 end
 
-print("Code Companion: Proxy settings:", vim.inspect(get_proxy_settings()))
+-- Enable for debugging proxy settings
+-- print("Code Companion: Proxy settings:", vim.inspect(get_proxy_settings()))
 
 require("codecompanion").setup({
 	adapters = {
@@ -35,6 +36,7 @@ require("codecompanion").setup({
 			opts = get_proxy_settings(),
 		},
 	},
+	ignore_warnings = true, -- TODO: Remove once this is merged: https://github.com/olimorris/codecompanion.nvim/pull/2439
 	display = {
 		chat = {
 			window = {
