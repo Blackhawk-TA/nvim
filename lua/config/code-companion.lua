@@ -36,7 +36,6 @@ require("codecompanion").setup({
 			opts = get_proxy_settings(),
 		},
 	},
-	ignore_warnings = true, -- TODO: Remove once this is merged: https://github.com/olimorris/codecompanion.nvim/pull/2439
 	display = {
 		chat = {
 			window = {
@@ -46,11 +45,21 @@ require("codecompanion").setup({
 			},
 		},
 	},
-	strategies = {
+	interactions = {
 		chat = {
-			name = "copilot",
-			model = "gpt-4.1",
+			adapter = "copilot",
+			model = "gpt-5",
 		},
+		inline = {
+			adapter = "copilot",
+			model = "gpt-5",
+		},
+		cmd = {
+			adapter = "copilot",
+			model = "gpt-5",
+		},
+	},
+	strategies = {
 		inline = {
 			keymaps = {
 				accept_change = {
