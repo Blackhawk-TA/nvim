@@ -1,6 +1,7 @@
-local utils = require("utils")
 local cmp = require("cmp")
 local luasnip = require("luasnip")
+
+local system = require("utils.system")
 
 local has_words_before = function()
 	local current_buffer = vim.fn.bufnr("%")
@@ -12,7 +13,7 @@ local has_words_before = function()
 end
 
 local copilot_comparators_prioritize
-if not utils.is_work_device then
+if not system.is_work_device then
 	copilot_comparators_prioritize = ("copilot_cmp.comparators").prioritize
 end
 

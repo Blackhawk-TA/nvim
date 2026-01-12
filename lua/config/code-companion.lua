@@ -1,54 +1,39 @@
-local utils = require("utils")
+local system = require("utils.system")
+local proxy = require("utils.proxy")
 
-if not utils.is_work_device() then
+if not system.is_work_device() then
 	return
 end
 
-local function is_proxy_reachable(host, port)
-	local ok, socket = pcall(require, "socket")
-	if not ok then
-		return false
+-- Retrieves proxy settings from environment variables and checks if the proxy is reachable.
+--
+-- If a reachable proxy is found, it returns a table containing the proxy URL and an `allow_insecure` flag.
+-- Otherwise, it returns an empty table.
+--
+-- @return table: A table with proxy settings (`proxy` and `allow_insecure`) if a reachable proxy is found,
+-- otherwise an empty table.
+local function get_proxy_settings()
+	local proxy_settings = {}
+	local proxy_url, proxy_port = proxy.get_from_env()
+
+	if proxy_url and proxy_port and proxy.is_reachable(proxy_url, proxy_port) then
+		local proxy_address = string.format("http://%s:%d", proxy_url, proxy_port)
+		proxy_settings = {
+			allow_insecure = true,
+			proxy = proxy_address,
+		}
 	end
 
-	local tcp = socket.tcp()
-	if not tcp then
-		return false
-	end
-
-	tcp:settimeout(0.5)
-	local success = tcp:connect(host, port)
-	tcp:close()
-
-	if not success then
-		return false
-	end
-	return true
+	return proxy_settings
 end
 
-local function get_proxy_from_env()
-	local proxy_env = os.getenv("HTTP_PROXY") or os.getenv("http_proxy")
-	if not proxy_env then
-		return nil, nil
-	end
-	local url = proxy_env:match("^https?://([^:/]+)")
-	local port = tonumber(proxy_env:match(":(%d+)$"))
-	return url, port
-end
-
-local http_ops = {}
-local proxy_url, proxy_port = get_proxy_from_env()
-if proxy_url and proxy_port and is_proxy_reachable(proxy_url, proxy_port) then
-	local proxy = string.format("http://%s:%d", proxy_url, proxy_port)
-	http_ops = {
-		allow_insecure = true,
-		proxy = proxy,
-	}
-end
+-- Enable for debugging proxy settings
+-- print("Code Companion: Proxy settings:", vim.inspect(get_proxy_settings()))
 
 require("codecompanion").setup({
 	adapters = {
 		http = {
-			opts = http_ops,
+			opts = get_proxy_settings(),
 		},
 	},
 	display = {
@@ -60,11 +45,21 @@ require("codecompanion").setup({
 			},
 		},
 	},
-	strategies = {
+	interactions = {
 		chat = {
-			name = "copilot",
-			model = "gpt-4.1",
+			adapter = "copilot",
+			model = "gpt-5",
 		},
+		inline = {
+			adapter = "copilot",
+			model = "gpt-5",
+		},
+		cmd = {
+			adapter = "copilot",
+			model = "gpt-5",
+		},
+	},
+	strategies = {
 		inline = {
 			keymaps = {
 				accept_change = {
@@ -88,7 +83,7 @@ vim.keymap.set({ "n", "v" }, "<leader>cc", "<cmd>CodeCompanionChat Toggle<cr>")
 vim.keymap.set({ "n", "v" }, "<leader>cf", "<cmd>CodeCompanionActions<cr>")
 
 -- Keybind for inline prompt
-vim.keymap.set("v", "<leader>cx", function()
+vim.keymap.set({ "n", "v" }, "<leader>cx", function()
 	local input = vim.fn.input("Inline prompt: ")
 	if input ~= "" then
 		vim.cmd("CodeCompanion " .. input)

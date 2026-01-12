@@ -1,6 +1,6 @@
-local utils = require("utils")
+local system = require("utils.system")
 
-if not utils.is_work_device() then
+if not system.is_work_device() then
 	return {}
 end
 

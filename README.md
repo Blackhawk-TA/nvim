@@ -23,12 +23,13 @@ This is my personal neovim config.
 - [fd](https://github.com/sharkdp/fd)
 - [lazygit](https://github.com/jesseduffield/lazygit#installation)
 - [treesitter](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md)
-- [Node >= 23](https://nodejs.org/en/download)
+- [imagemagick](https://github.com/3rd/image.nvim?tab=readme-ov-file#imagemagick)
 
 ### Arch packages
 
 - [Pynvim](https://archlinux.org/packages/extra/any/python-pynvim/)
 - [lazygit](https://archlinux.org/packages/extra/x86_64/lazygit/)
+- [imagemagick](https://archlinux.org/packages/extra/x86_64/imagemagick/)
 
 ## Development
 

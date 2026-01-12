@@ -1,28 +1,35 @@
 local dap = require("dap")
 local dapui = require("dapui")
-local utils = require("utils")
+
+local debugger = require("utils.debugger")
+local system = require("utils.system")
+local utils = require("utils.utils")
 
 -- Toggle debug view
 dapui.setup()
 dap.listeners.after.event_initialized["dapui_config"] = function()
-	utils.store_current_buffer()
+	debugger.store_current_buffer()
 	dapui.open()
 	if utils.is_neotree_open() then
-		utils.neotree_open_before_debug = true
+		debugger.neotree_open_before_debug = true
 		vim.cmd("Neotree close")
+	end
+	if utils.is_terminal_open() then
+		debugger.terminal_open_before_debug = true
+		vim.cmd("ToggleTermToggleAll")
 	end
 end
 dap.listeners.before.event_terminated["dapui_config"] = function()
-	if utils.autoclose_debug_windows then
-		utils.close_debugger()
+	if debugger.autoclose_debug_windows then
+		debugger.close_debugger()
 	end
-	utils.restore_current_buffer()
+	debugger.restore_current_buffer()
 end
 dap.listeners.before.event_exited["dapui_config"] = function()
-	if utils.autoclose_debug_windows then
-		utils.close_debugger()
+	if debugger.autoclose_debug_windows then
+		debugger.close_debugger()
 	end
-	utils.restore_current_buffer()
+	debugger.restore_current_buffer()
 end
 
 -- C/C++/Rust debug adapter
@@ -30,7 +37,7 @@ dap.adapters.codelldb = {
 	type = "server",
 	port = "${port}",
 	executable = {
-		command = utils.get_mason_binary("codelldb"),
+		command = system.get_mason_binary("codelldb"),
 		args = { "--port", "${port}" },
 	},
 }
@@ -53,7 +60,7 @@ dap.configurations.rust = dap.configurations.c
 require("dap-go").setup()
 
 -- Python debug adapter
-local python_path = utils.get_python_path()
+local python_path = system.get_python_path()
 require("dap-python").setup(python_path)
 
 -- Helper function to restart an active debugging session
@@ -84,10 +91,10 @@ vim.keymap.set("n", "<F6>", function()
 end)
 
 vim.keymap.set("n", "<F9>", function()
-	utils.start_debugger(true)
+	debugger.start_debugger(true)
 end)
 vim.keymap.set("n", "<F10>", function()
-	utils.start_debugger(false)
+	debugger.start_debugger(false)
 end)
 
 -- There are two ways F-Keys are displayed when modifier keys like Shift or Control are used
@@ -106,8 +113,8 @@ vim.keymap.set("n", "<C-F9>", function()
 end)
 
 -- Close debugger, equals Shift + F10
-vim.keymap.set("n", "<F22>", utils.close_debugger)
-vim.keymap.set("n", "<S-F10>", utils.close_debugger)
+vim.keymap.set("n", "<F22>", debugger.close_debugger)
+vim.keymap.set("n", "<S-F10>", debugger.close_debugger)
 
 -- Set up of function, equals Shift + F7
 vim.keymap.set("n", "<F19>", dap.step_out)

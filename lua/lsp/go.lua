@@ -34,6 +34,7 @@ vim.lsp.config("gopls", {
 				constantValues = false,
 				parameterNames = false,
 			},
+			buildFlags = { "-tags=integrationtest" },
 		},
 	},
 })

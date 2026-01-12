@@ -1,4 +1,4 @@
-local utils = require("utils")
+local utils = require("utils.utils")
 
 local function get_info()
 	local reg_recording = vim.fn.reg_recording()

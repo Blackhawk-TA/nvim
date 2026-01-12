@@ -1,4 +1,4 @@
-local utils = require("utils")
+local utils = require("utils.utils")
 local hint_sign = utils.get_hint_char()
 
 -- Add icons for diagnostics

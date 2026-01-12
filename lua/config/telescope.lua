@@ -1,9 +1,17 @@
 local trouble = require("trouble.sources.telescope")
+
 require("telescope").setup({
 	defaults = {
 		preview = {
 			treesitter = false, -- TODO: Re-enable once treesitter works again
 		},
+		layout_strategy = "horizontal",
+		layout_config = {
+			horizontal = {
+				prompt_position = "top",
+			},
+		},
+		sorting_strategy = "ascending",
 		file_ignore_patterns = { "vendor", "node_modules", "\\.git\\/", "\\.venv\\/", "\\.idea\\/" },
 		mappings = {
 			i = {
