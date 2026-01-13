@@ -1,5 +1,8 @@
 return {
-	{ "nvim-telescope/telescope.nvim", branch = "0.1.x" },
+	{
+		"nvim-telescope/telescope.nvim",
+		version = "*",
+	},
 	"princejoogie/dir-telescope.nvim",
 	"nvim-telescope/telescope-ui-select.nvim",
 	dependencies = {

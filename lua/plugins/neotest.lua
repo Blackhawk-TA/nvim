@@ -7,5 +7,11 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 	},
 	"nvim-neotest/neotest-python",
-	{ "fredrikaverpil/neotest-golang", tag = "v1.15.1" }, -- TODO: remove tag on treesitter upgrade
+	{
+		"fredrikaverpil/neotest-golang",
+		version = "*",
+		build = function()
+			vim.system({ "go", "install", "gotest.tools/gotestsum@latest" }):wait()
+		end,
+	},
 }
