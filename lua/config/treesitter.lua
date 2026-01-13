@@ -20,7 +20,6 @@ local install_languages = {
 	"markdown_inline",
 	"latex",
 	"json",
-	"jsonc",
 	"xml",
 	"yaml",
 	"regex",
@@ -28,6 +27,7 @@ local install_languages = {
 }
 
 treesitter.install(install_languages):wait(300000) -- wait max. 5 minutes
+treesitter.update()
 
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = {
@@ -62,8 +62,10 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.treesitter.start()
 		-- folds, provided by Neovim
 		vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+		vim.wo.foldmethod = "expr"
+		vim.wo.foldlevel = 99
 		-- indentation, provided by nvim-treesitter
-		vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+		-- vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 	end,
 })
 
