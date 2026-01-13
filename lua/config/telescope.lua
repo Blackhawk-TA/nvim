@@ -2,9 +2,6 @@ local trouble = require("trouble.sources.telescope")
 
 require("telescope").setup({
 	defaults = {
-		preview = {
-			treesitter = false, -- TODO: Re-enable once treesitter works again
-		},
 		layout_strategy = "horizontal",
 		layout_config = {
 			horizontal = {
