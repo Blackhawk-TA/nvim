@@ -49,6 +49,7 @@ require("dir-telescope").setup({
 	show_preview = true,
 })
 require("telescope").load_extension("dir")
+require("telescope").load_extension("ui-select")
 
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>ff", builtin.find_files, {})

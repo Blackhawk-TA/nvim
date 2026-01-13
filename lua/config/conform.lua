@@ -14,7 +14,7 @@ conform.setup({
 		javascript = { "prettier" },
 		json = { "prettier" },
 		typescript = { "prettier" },
-		markdown = { "prettier" },
+		markdown = { "markdownlint" },
 		lua = { "stylua" },
 		python = { "autoflake", "black" },
 	},
