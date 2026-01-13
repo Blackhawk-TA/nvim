@@ -5,6 +5,7 @@ require("neotest").setup({
 		}),
 		require("neotest-golang")({
 			warn_test_name_dupes = false, -- prevent warning spam when using parameterized tests
+			runner = "gotestsum",
 		}),
 	},
 })
