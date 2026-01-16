@@ -28,7 +28,6 @@ keymap("n", "<Esc>", ":noh<CR>", default_opts)
 
 -- LSP related
 vim.keymap.set("n", "gd", "<cmd> lua vim.lsp.buf.definition()<cr>", default_opts)
-vim.keymap.set("n", "<leader>fr", "<cmd>Telescope lsp_references<cr>", default_opts)
 vim.keymap.set("n", "<F2>", "<cmd> lua vim.lsp.buf.rename()<cr>", default_opts)
 vim.keymap.set("n", "<F3>", "<cmd> lua vim.lsp.buf.format()<cr>", default_opts)
 vim.keymap.set({ "n", "v" }, "<F4>", "<cmd>lua vim.lsp.buf.code_action()<cr>", default_opts)
