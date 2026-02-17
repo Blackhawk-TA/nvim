@@ -1,5 +1,6 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
+local lspkind = require("lspkind")
 
 local system = require("utils.system")
 
@@ -72,12 +73,16 @@ cmp.setup({
 		documentation = cmp.config.window.bordered(),
 	},
 	formatting = {
-		fields = { "abbr", "kind", "menu" },
+		fields = { "abbr", "icon", "kind", "menu" },
 		expandable_indicator = true,
-		format = require("lspkind").cmp_format({
-			mode = "symbol", -- show only symbol annotations
-			maxwidth = 50, -- prevent the popup from showing more than provided characters
+		format = lspkind.cmp_format({
+			maxwidth = {
+				-- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+				menu = 50, -- leading text (labelDetails)
+				abbr = 50, -- actual suggestion item
+			},
 			ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead
+			show_labelDetails = true,
 			symbol_map = { Copilot = "" },
 		}),
 	},
@@ -92,3 +97,6 @@ cmp.setup({
 		{ name = "lazydev", group_index = 0 }, -- set group index to 0 to skip loading LuaLS completions
 	},
 })
+
+-- Set color for copilot suggestions in the completion menu
+vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
