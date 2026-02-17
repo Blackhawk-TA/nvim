@@ -27,6 +27,10 @@ require("gitsigns").setup({
 	end,
 })
 
+-- Use lazygit config in nvim config root directory
+vim.g.lazygit_use_custom_config_file_path = 1
+vim.g.lazygit_config_file_path = vim.fn.stdpath("config") .. "/lazygit.yaml"
+
 -- lazygit bindings
 vim.keymap.set("n", "<leader>go", "<cmd>lua require('telescope').extensions.lazygit.lazygit()<cr>")
 vim.keymap.set("n", "<leader>gg", "<cmd>LazyGit<cr>")
