@@ -5,7 +5,7 @@ if not system.is_work_device() then
 end
 
 require("copilot").setup({
-	suggestion = { enabled = true },
+	suggestion = { enabled = false },
 	panel = { enabled = false },
 })
 
