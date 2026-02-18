@@ -47,16 +47,22 @@ require("codecompanion").setup({
 	},
 	interactions = {
 		chat = {
-			adapter = "copilot",
-			model = "gpt-5",
+			adapter = {
+				name = "claude_code",
+				model = "opus",
+			},
 		},
 		inline = {
-			adapter = "copilot",
-			model = "gpt-5",
+			adapter = {
+				name = "claude_code",
+				model = "opus",
+			},
 		},
 		cmd = {
-			adapter = "copilot",
-			model = "gpt-5",
+			adapter = {
+				name = "claude_code",
+				model = "opus",
+			},
 		},
 	},
 	strategies = {
