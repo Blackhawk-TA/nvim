@@ -27,6 +27,38 @@ local function get_proxy_settings()
 	return proxy_settings
 end
 
+-- Retrieves the Claude authentication token from the user's settings file.
+-- @return string|nil: The Claude authentication token if found, otherwise nil.
+local function get_claude_token()
+	local settings_path = os.getenv("HOME") .. "/.claude/settings.json"
+	local file = io.open(settings_path, "r")
+	if not file then
+		return nil
+	end
+
+	local content = file:read("*a")
+	file:close()
+
+	local ok, settings = pcall(vim.json.decode, content)
+	if not ok or not settings then
+		return nil
+	end
+
+	return settings.env and settings.env.ANTHROPIC_AUTH_TOKEN
+end
+
+local claude_token = get_claude_token()
+
+-- Determines which adapter to use based on the availability of the Claude token.
+-- @return string: The name of the adapter to use ("claude_code" if the token is available, otherwise "copilot").
+local function get_adapter()
+	if claude_token ~= nil then
+		return "claude_code"
+	else
+		return "copilot"
+	end
+end
+
 -- Enable for debugging proxy settings
 -- print("Code Companion: Proxy settings:", vim.inspect(get_proxy_settings()))
 
@@ -34,6 +66,15 @@ require("codecompanion").setup({
 	adapters = {
 		http = {
 			opts = get_proxy_settings(),
+		},
+		acp = {
+			claude_code = function()
+				return require("codecompanion.adapters").extend("claude_code", {
+					env = {
+						CLAUDE_CODE_OAUTH_TOKEN = claude_token,
+					},
+				})
+			end,
 		},
 	},
 	display = {
@@ -46,23 +87,14 @@ require("codecompanion").setup({
 		},
 	},
 	interactions = {
+		cmd = {
+			adapter = get_adapter(),
+		},
 		chat = {
-			-- adapter = {
-			-- 	name = "claude_code",
-			-- 	model = "opus",
-			-- },
+			adapter = get_adapter(),
 		},
 		inline = {
-			-- adapter = {
-			-- 	name = "claude_code",
-			-- 	model = "opus",
-			-- },
-		},
-		cmd = {
-			-- adapter = {
-			-- 	name = "claude_code",
-			-- 	model = "opus",
-			-- },
+			adapter = "copilot", -- Inline does not support acp, use copilot as fallback
 		},
 		shared = {
 			keymaps = {

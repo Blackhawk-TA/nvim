@@ -25,6 +25,7 @@ This is my personal neovim config.
 - [treesitter](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md)
 - [imagemagick](https://github.com/3rd/image.nvim?tab=readme-ov-file#imagemagick)
 - [git-delta](https://dandavison.github.io/delta/installation.html)
+- [claude-agent-acp](https://github.com/zed-industries/claude-agent-acp)
 
 ### Arch packages
 
