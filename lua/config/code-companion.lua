@@ -49,10 +49,17 @@ end
 
 local claude_token = get_claude_token()
 
--- Determines which adapter to use based on the availability of the Claude token.
--- @return string: The name of the adapter to use ("claude_code" if the token is available, otherwise "copilot").
+-- Checks if the "hai proxy start" process is running.
+-- @return boolean: True if the process is running, false otherwise.
+local function is_hai_proxy_running()
+	local result = vim.system({ "pgrep", "-f", "hai proxy start" }, { text = true }):wait()
+	return result.code == 0 and result.stdout ~= ""
+end
+
+-- Determines which adapter to use based on the availability of the Claude token and hai proxy status.
+-- @return string: The name of the adapter to use.
 local function get_adapter()
-	if claude_token ~= nil then
+	if claude_token ~= nil and is_hai_proxy_running() then
 		return "claude_code"
 	else
 		return "copilot"
