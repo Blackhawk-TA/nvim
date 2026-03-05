@@ -47,38 +47,44 @@ require("codecompanion").setup({
 	},
 	interactions = {
 		chat = {
-			adapter = {
-				name = "claude_code",
-				model = "opus",
-			},
+			-- adapter = {
+			-- 	name = "claude_code",
+			-- 	model = "opus",
+			-- },
 		},
 		inline = {
-			adapter = {
-				name = "claude_code",
-				model = "opus",
-			},
+			-- adapter = {
+			-- 	name = "claude_code",
+			-- 	model = "opus",
+			-- },
 		},
 		cmd = {
-			adapter = {
-				name = "claude_code",
-				model = "opus",
-			},
+			-- adapter = {
+			-- 	name = "claude_code",
+			-- 	model = "opus",
+			-- },
 		},
-	},
-	strategies = {
-		inline = {
+		shared = {
 			keymaps = {
+				always_accept = {
+					callback = "keymaps.always_accept",
+					modes = { n = "cay" },
+				},
 				accept_change = {
+					callback = "keymaps.accept_change",
 					modes = { n = "ca" },
-					description = "Accept the suggested change",
 				},
 				reject_change = {
+					callback = "keymaps.reject_change",
 					modes = { n = "cr" },
-					opts = { nowait = true },
-					description = "Reject the suggested change",
 				},
-				always_accept = {
-					modes = { n = "cay" },
+				next_hunk = {
+					callback = "keymaps.next_hunk",
+					modes = { n = "]" },
+				},
+				previous_hunk = {
+					callback = "keymaps.previous_hunk",
+					modes = { n = "[" },
 				},
 			},
 		},
