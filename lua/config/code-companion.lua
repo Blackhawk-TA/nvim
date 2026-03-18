@@ -77,6 +77,9 @@ require("codecompanion").setup({
 		acp = {
 			claude_code = function()
 				return require("codecompanion.adapters").extend("claude_code", {
+					defaults = {
+						model = "opus",
+					},
 					env = {
 						CLAUDE_CODE_OAUTH_TOKEN = claude_token,
 					},
