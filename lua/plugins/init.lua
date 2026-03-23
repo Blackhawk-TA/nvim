@@ -4,6 +4,7 @@ return {
 	"norcalli/nvim-colorizer.lua",
 	"editorconfig/editorconfig-vim",
 	"towolf/vim-helm",
+	"nvim-treesitter/nvim-treesitter-context",
 
 	-- git plugins
 	"kdheepak/lazygit.nvim",
