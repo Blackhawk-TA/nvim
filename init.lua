@@ -26,6 +26,7 @@ require("config/diagnostic")
 require("config/cmp")
 require("config/mason")
 require("config/conform")
+require("config/treesitter-context")
 
 -- Copilot is only supported on work devices
 require("config/copilot")
