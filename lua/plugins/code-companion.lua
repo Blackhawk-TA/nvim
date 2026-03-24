@@ -8,5 +8,6 @@ return {
 	"olimorris/codecompanion.nvim",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
+		"franco-ruggeri/codecompanion-spinner.nvim",
 	},
 }

@@ -70,6 +70,9 @@ end
 -- print("Code Companion: Proxy settings:", vim.inspect(get_proxy_settings()))
 
 require("codecompanion").setup({
+	extensions = {
+		spinner = {},
+	},
 	adapters = {
 		http = {
 			opts = get_proxy_settings(),
