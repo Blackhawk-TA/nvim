@@ -6,6 +6,7 @@ end
 
 return {
 	"olimorris/codecompanion.nvim",
+	version = "*",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"franco-ruggeri/codecompanion-spinner.nvim",
