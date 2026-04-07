@@ -1,13 +1,13 @@
 -- Can be imported for LSPs that support codelens and inlay hints.
 return {
 	default_on_attach = function(client, bufnr)
-		if client.supports_method("textDocument/inlayHint") then
+		if client:supports_method("textDocument/inlayHint") then
 			if vim.lsp.inlay_hint then
 				vim.lsp.inlay_hint.enable(true)
 			end
 		end
-		if client.supports_method("textDocument/codeLens") then
-			pcall(vim.lsp.codelens.refresh)
+		if client:supports_method("textDocument/codeLens") then
+			pcall(vim.lsp.codelens.enable)
 
 			local codelense_cmds = vim.api.nvim_create_augroup("codelense_cmds", { clear = true })
 
@@ -16,7 +16,7 @@ return {
 				group = codelense_cmds,
 				desc = "refresh codelens",
 				callback = function()
-					pcall(vim.lsp.codelens.refresh)
+					pcall(vim.lsp.codelens.enable)
 				end,
 			})
 		end
