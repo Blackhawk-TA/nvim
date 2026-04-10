@@ -2,10 +2,5 @@
 return {
 	"nvim-lualine/lualine.nvim",
 	"editorconfig/editorconfig-vim",
-	"towolf/vim-helm",
-
-	-- git plugins
-	"kdheepak/lazygit.nvim",
-	"lewis6991/gitsigns.nvim",
-	"sindrets/diffview.nvim",
+	{ "towolf/vim-helm", ft = "helm" },
 }

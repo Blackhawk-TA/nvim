@@ -1,4 +1,3 @@
-require("telescope").load_extension("lazygit")
 require("gitsigns").setup({
 	current_line_blame = false,
 	current_line_blame_formatter = "<author>, <author_time:%d.%m.%Y> - <summary>",
@@ -26,20 +25,3 @@ require("gitsigns").setup({
 		map("n", "<leader>gtb", gs.toggle_current_line_blame)
 	end,
 })
-
--- Use lazygit config in nvim config root directory
-vim.g.lazygit_use_custom_config_file_path = 1
-vim.g.lazygit_config_file_path = vim.fn.stdpath("config") .. "/lazygit.yaml"
-
--- lazygit bindings
-vim.keymap.set("n", "<leader>go", "<cmd>lua require('telescope').extensions.lazygit.lazygit()<cr>")
-vim.keymap.set("n", "<leader>gg", "<cmd>LazyGit<cr>")
-vim.keymap.set("n", "<leader>gh", "<cmd>LazyGitFilter<cr>")
-vim.keymap.set("n", "<leader>ghf", "<cmd>LazyGitFilterCurrentFile<cr>")
-
--- diffview bindings
-vim.keymap.set("n", "<leader>gvv", "<cmd>DiffviewOpen<cr>")
-vim.keymap.set("n", "<leader>gvc", "<cmd>DiffviewClose<cr>")
-vim.keymap.set("n", "<leader>gvr", "<cmd>DiffviewRefresh<cr>")
-vim.keymap.set("n", "<leader>gvh", "<cmd>DiffviewFileHistory<cr>")
-vim.keymap.set("n", "<leader>gvf", "<cmd>DiffviewFileHistory %<cr>")
