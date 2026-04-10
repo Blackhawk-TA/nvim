@@ -19,6 +19,27 @@ return {
 				},
 			},
 		},
+		keys = {
+			{
+				"<leader>ce",
+				function()
+					vim.cmd("Copilot enable")
+					print("Copilot enabled")
+				end,
+				desc = "Copilot Enable",
+			},
+			{
+				"<leader>cd",
+				function()
+					vim.cmd("Copilot disable")
+					print("Copilot disabled")
+				end,
+				desc = "Copilot Disable",
+			},
+		},
+		config = function()
+			require("config/copilot")
+		end,
 	},
 	{
 		"zbirenbaum/copilot-cmp",
