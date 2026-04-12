@@ -16,7 +16,7 @@ require("lazy").setup({
 		{ import = "plugins" },
 	},
 	rocks = {
-		hererocks = true, -- uses hererocks to install luarocks dependencies instead of global installation
+		hererocks = false, -- uses hererocks to install luarocks dependencies instead of global installation
 	},
 	defaults = {
 		-- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.

@@ -1,30 +1,7 @@
 local system = require("utils.system")
-local proxy = require("utils.proxy")
 
 if not system.is_work_device() then
 	return
-end
-
--- Retrieves proxy settings from environment variables and checks if the proxy is reachable.
---
--- If a reachable proxy is found, it returns a table containing the proxy URL and an `allow_insecure` flag.
--- Otherwise, it returns an empty table.
---
--- @return table: A table with proxy settings (`proxy` and `allow_insecure`) if a reachable proxy is found,
--- otherwise an empty table.
-local function get_proxy_settings()
-	local proxy_settings = {}
-	local proxy_url, proxy_port = proxy.get_from_env()
-
-	if proxy_url and proxy_port and proxy.is_reachable(proxy_url, proxy_port) then
-		local proxy_address = string.format("http://%s:%d", proxy_url, proxy_port)
-		proxy_settings = {
-			allow_insecure = true,
-			proxy = proxy_address,
-		}
-	end
-
-	return proxy_settings
 end
 
 -- Retrieves the Claude authentication token from the user's settings file.
@@ -74,9 +51,6 @@ require("codecompanion").setup({
 		spinner = {},
 	},
 	adapters = {
-		http = {
-			opts = get_proxy_settings(),
-		},
 		acp = {
 			claude_code = function()
 				return require("codecompanion.adapters").extend("claude_code", {
