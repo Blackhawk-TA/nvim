@@ -1,4 +1,6 @@
-local trouble = require("trouble.sources.telescope")
+local open_with_trouble = function(...)
+	return require("trouble.sources.telescope").open(...)
+end
 
 require("telescope").setup({
 	defaults = {
@@ -17,9 +19,9 @@ require("telescope").setup({
 				-- e.g. git_{create, delete, ...}_branch for the git_branches picker
 				["<C-h>"] = "select_horizontal",
 				["<C-s>"] = "select_vertical",
-				["<C-z>"] = trouble.open,
+				["<C-z>"] = open_with_trouble,
 			},
-			n = { ["<C-z>"] = trouble.open },
+			n = { ["<C-z>"] = open_with_trouble },
 		},
 	},
 	pickers = {
