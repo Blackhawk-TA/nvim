@@ -34,7 +34,7 @@ function debugger.restore_current_buffer()
 	end
 end
 
-function debugger.start_debugger(autoclose_windows)
+function debugger.start(autoclose_windows)
 	if not debugger.debugging then
 		debugger.debugging = true
 		debugger.autoclose_debug_windows = autoclose_windows
@@ -45,7 +45,7 @@ function debugger.start_debugger(autoclose_windows)
 	require("dap").continue()
 end
 
-function debugger.close_debugger()
+function debugger.close()
 	debugger.debugging = false
 	require("dapui").close()
 	if not utils.is_neotree_open() and debugger.neotree_open_before_debug == true then
@@ -56,6 +56,19 @@ function debugger.close_debugger()
 		debugger.terminal_open_before_debug = false
 		vim.cmd("ToggleTermToggleAll")
 	end
+end
+
+function debugger.run_last()
+	local dap = require("dap")
+	if not dap.session() then
+		dap.run_last()
+		return
+	end
+	dap.terminate({}, {}, function()
+		vim.defer_fn(function()
+			dap.run_last()
+		end, 150)
+	end)
 end
 
 return debugger

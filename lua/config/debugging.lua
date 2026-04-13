@@ -21,13 +21,13 @@ dap.listeners.after.event_initialized["dapui_config"] = function()
 end
 dap.listeners.before.event_terminated["dapui_config"] = function()
 	if debugger.autoclose_debug_windows then
-		debugger.close_debugger()
+		debugger.close()
 	end
 	debugger.restore_current_buffer()
 end
 dap.listeners.before.event_exited["dapui_config"] = function()
 	if debugger.autoclose_debug_windows then
-		debugger.close_debugger()
+		debugger.closer()
 	end
 	debugger.restore_current_buffer()
 end
@@ -62,63 +62,6 @@ require("dap-go").setup()
 -- Python debug adapter
 local python_path = system.get_python_path()
 require("dap-python").setup(python_path)
-
--- Helper function to restart an active debugging session
-local function restart_or_run_last()
-	-- On no active debug session, rerun last one
-	if not dap.session() then
-		dap.run_last()
-		return
-	end
-
-	-- On active debug session, restart it
-	dap.terminate({}, {}, function()
-		-- add 150ms delay to give the adapter time to fully exit before starting again
-		vim.defer_fn(function()
-			dap.run_last()
-		end, 150)
-	end)
-end
-
--- Debugging keybindings
-vim.keymap.set("n", "<F7>", dap.step_into)
-vim.keymap.set("n", "<F8>", dap.step_over)
-vim.keymap.set("n", "<F12>", dapui.eval)
-vim.keymap.set("n", "<F5>", dap.toggle_breakpoint)
-vim.keymap.set("n", "<F6>", function()
-	-- Set Breakpoint condition
-	dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
-end)
-
-vim.keymap.set("n", "<F9>", function()
-	debugger.start_debugger(true)
-end)
-vim.keymap.set("n", "<F10>", function()
-	debugger.start_debugger(false)
-end)
-
--- There are two ways F-Keys are displayed when modifier keys like Shift or Control are used
--- Therefore both definitions have to be included for each command that uses modifier keys
-
--- Re-run debugger, equals Shift + F9
-vim.keymap.set("n", "<F21>", restart_or_run_last)
-vim.keymap.set("n", "<S-F9>", restart_or_run_last)
-
--- Stop debugging, equals Control + F9
-vim.keymap.set("n", "<F33>", function()
-	dap.disconnect({ terminateDebuggee = true })
-end)
-vim.keymap.set("n", "<C-F9>", function()
-	dap.disconnect({ terminateDebuggee = true })
-end)
-
--- Close debugger, equals Shift + F10
-vim.keymap.set("n", "<F22>", debugger.close_debugger)
-vim.keymap.set("n", "<S-F10>", debugger.close_debugger)
-
--- Set up of function, equals Shift + F7
-vim.keymap.set("n", "<F19>", dap.step_out)
-vim.keymap.set("n", "<S-F7>", dap.step_out)
 
 -- Breakpoints appearance
 vim.api.nvim_set_hl(0, "DapBreakpoint", { ctermbg = 0, fg = "#ef5f6b", bg = "#2d3343" })
