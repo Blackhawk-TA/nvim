@@ -1,4 +1,3 @@
-local lsp_util = require("lsp/utils")
 local root_files = {
 	".git",
 	"go.mod",
@@ -9,7 +8,6 @@ vim.lsp.config("gopls", {
 	cmd = { "gopls" },
 	filetypes = { "go", "gomod", "gowork", "gotmpl" },
 	root_markers = root_files,
-	on_attach = lsp_util.default_on_attach,
 	settings = {
 		gopls = {
 			analyses = {

@@ -1,5 +1,3 @@
-local lsp_util = require("lsp/utils")
-
 local root_files = {
 	"pyproject.toml",
 	"setup.py",
@@ -16,7 +14,6 @@ vim.lsp.config("pyright", {
 	filetypes = { "python" },
 	root_markers = root_files,
 	single_file_support = true,
-	on_attach = lsp_util.default_on_attach,
 	settings = {
 		python = {
 			analysis = {

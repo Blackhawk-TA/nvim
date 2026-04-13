@@ -26,6 +26,7 @@ vim.lsp.enable({
 	"typos_lsp",
 	"yamlls",
 })
+vim.lsp.codelens.enable(true)
 
 require("after/plugin/autocmd")
 require("after/plugin/keymap")
