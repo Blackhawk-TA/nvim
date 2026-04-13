@@ -20,5 +20,7 @@ return {
 	keys = {
 		{ "<leader>ps", toggle_swagger_preview, desc = "Toggle Swagger Preview" },
 	},
-	config = true,
+	config = function()
+		require("config/swagger-preview")
+	end,
 }
