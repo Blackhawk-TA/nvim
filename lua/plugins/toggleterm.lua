@@ -15,7 +15,6 @@ end
 return {
 	"akinsho/toggleterm.nvim",
 	version = "*",
-	opts = {},
 	cmd = { "ToggleTerm", "ToggleTermToggleAll" },
 	keys = keys,
 	config = function()

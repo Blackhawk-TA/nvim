@@ -2,7 +2,6 @@ return {
 	"folke/trouble.nvim",
 	cmd = "Trouble",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
-	opts = {},
 	keys = {
 		{ "<leader>zz", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics (Trouble)" },
 		{ "<leader>zr", "<cmd>Trouble lsp_references toggle<cr>", desc = "LSP References (Trouble)" },
