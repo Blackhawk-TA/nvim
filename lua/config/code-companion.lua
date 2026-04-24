@@ -26,22 +26,38 @@ end
 
 local claude_token = get_claude_token()
 
--- Checks if the "hai proxy start" process is running.
--- @return boolean: True if the process is running, false otherwise.
-local function is_hai_proxy_running()
-	local result = vim.system({ "pgrep", "-f", "hai proxy start" }, { text = true }):wait()
-	return result.code == 0 and result.stdout ~= ""
+-- Checks if the hai proxy can be reached on its usual port.
+-- @return boolean: True if the proxy is available, false otherwise.
+local function is_hai_proxy_available()
+	local connected = false
+	local request_done = false
+	vim.net.request("http://127.0.0.1:6655", { retry = 0 }, function(err)
+		request_done = true
+		if err ~= nil then
+			return
+		end
+
+		connected = true
+	end)
+	vim.wait(1000, function()
+		return request_done
+	end, 25)
+	return request_done and connected
 end
 
 -- Determines which adapter to use based on the availability of the Claude token and hai proxy status.
 -- @return string: The name of the adapter to use.
 local function get_adapter()
-	if claude_token ~= nil and is_hai_proxy_running() then
+	if claude_token ~= nil and is_hai_proxy_available() then
+		vim.notify("Using Claude Code", vim.log.levels.INFO)
 		return "claude_code"
 	else
+		vim.notify("Using Copilot", vim.log.levels.INFO)
 		return "copilot"
 	end
 end
+
+local adapter = get_adapter()
 
 require("codecompanion").setup({
 	extensions = {
@@ -72,10 +88,10 @@ require("codecompanion").setup({
 	},
 	interactions = {
 		cmd = {
-			adapter = get_adapter(),
+			adapter = adapter,
 		},
 		chat = {
-			adapter = get_adapter(),
+			adapter = adapter,
 		},
 		inline = {
 			adapter = "copilot", -- Inline does not support acp, use copilot as fallback
