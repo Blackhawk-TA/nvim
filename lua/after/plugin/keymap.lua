@@ -37,5 +37,5 @@ vim.keymap.set("n", "<leader>k", "<cmd> lua vim.diagnostic.open_float()<cr>", de
 vim.keymap.set("n", "<leader>li", "<cmd>checkhealth vim.lsp<cr>")
 vim.keymap.set("n", "<leader>lr", function()
 	vim.cmd("lsp restart")
-	vim.print("Restarting LSP...")
+	vim.notify("Restarting LSP...", vim.log.levels.INFO)
 end)

@@ -49,7 +49,7 @@ local function add_word_to_exceptions()
 	local word = get_word_under_cursor()
 	local exception_rule = word .. ' = "' .. word .. '"\n'
 	system.append_file(typos_config_path, exception_rule)
-	print("Added '" .. word .. "' to typos exceptions")
+	vim.notify("Added '" .. word .. "' to typos exceptions", vim.log.levels.INFO)
 	-- nvim_lsp.typos_lsp.setup(settings) --TODO: Causes error
 end
 

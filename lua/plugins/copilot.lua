@@ -24,7 +24,7 @@ return {
 				"<leader>ce",
 				function()
 					vim.cmd("Copilot enable")
-					print("Copilot enabled")
+					vim.notify("Copilot enabled", vim.log.Levels.INFO)
 				end,
 				desc = "Copilot Enable",
 			},
@@ -32,7 +32,7 @@ return {
 				"<leader>cd",
 				function()
 					vim.cmd("Copilot disable")
-					print("Copilot disabled")
+					vim.notify("Copilot disabled", vim.log.Levels.INFO)
 				end,
 				desc = "Copilot Disable",
 			},

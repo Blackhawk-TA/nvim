@@ -4,7 +4,7 @@ local function toggle_swagger_preview()
 	-- Use a global to track state across invocations
 	if vim.g.swagger_preview_active then
 		vim.cmd("SwaggerPreviewStop")
-		print("Stopped swagger preview server")
+		vim.notify("Stopped swagger preview server", vim.log.levels.INFO)
 		vim.g.swagger_preview_active = false
 	else
 		vim.cmd("SwaggerPreview")

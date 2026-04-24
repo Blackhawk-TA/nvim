@@ -84,7 +84,7 @@ function system.open_browser(url)
 	elseif vim.fn.has("unix") == 1 then
 		browser_cmd = "xdg-open " .. url
 	else
-		print("Unsupported system")
+		vim.notify("Unsupported system", vim.log.Levels.ERROR)
 		return
 	end
 

@@ -43,9 +43,6 @@ local function get_adapter()
 	end
 end
 
--- Enable for debugging proxy settings
--- print("Code Companion: Proxy settings:", vim.inspect(get_proxy_settings()))
-
 require("codecompanion").setup({
 	extensions = {
 		spinner = {},
