@@ -1,12 +1,16 @@
 local dap = require("dap")
 local dapui = require("dapui")
+local overseer = require("overseer")
 
 local debugger = require("utils.debugger")
 local system = require("utils.system")
 local utils = require("utils.utils")
 
--- Toggle debug view
+-- Load plugins
 dapui.setup()
+overseer.setup()
+
+-- Toggle debug view
 dap.listeners.after.event_initialized["dapui_config"] = function()
 	debugger.store_current_buffer()
 	dapui.open()
