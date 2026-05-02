@@ -3,6 +3,7 @@ return {
 	opts = {},
 	cmd = { "OverseerRun" },
 	keys = {
-		{ "<leader>o", "<cmd>OverseerRun<cr>", desc = "Run overseer" },
+		{ "<leader>oo", "<cmd>OverseerRun<cr>", desc = "Run overseer" },
+		{ "<leader>ot", "<cmd>OverseerToggle<cr>", desc = "Toggle overseer view" },
 	},
 }
