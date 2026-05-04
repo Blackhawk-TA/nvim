@@ -100,7 +100,7 @@ require("codecompanion").setup({
 			keymaps = {
 				always_accept = {
 					callback = "keymaps.always_accept",
-					modes = { n = "cay" },
+					modes = { n = "cA" },
 				},
 				accept_change = {
 					callback = "keymaps.accept_change",
