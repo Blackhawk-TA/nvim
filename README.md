@@ -19,6 +19,7 @@ This is my personal neovim config.
 
 - [FiraMono font](https://github.com/ryanoasis/nerd-fonts)
 - [Pynvim](https://github.com/neovim/pynvim)
+- [nodejs](https://nodejs.org/en/download)
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [fd](https://github.com/sharkdp/fd)
 - [lazygit](https://github.com/jesseduffield/lazygit#installation)
@@ -26,6 +27,7 @@ This is my personal neovim config.
 - [imagemagick](https://github.com/3rd/image.nvim?tab=readme-ov-file#imagemagick)
 - [git-delta](https://dandavison.github.io/delta/installation.html)
 - [claude-agent-acp](https://github.com/zed-industries/claude-agent-acp)
+- [luarocks](https://github.com/luarocks/luarocks/blob/main/docs/download.md)
 
 ### Arch packages
 
