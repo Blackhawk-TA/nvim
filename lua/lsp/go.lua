@@ -18,15 +18,7 @@ vim.lsp.config("gopls", {
 			},
 			staticcheck = true,
 			gofumpt = true,
-			codelenses = {
-				enable = true,
-				references = true,
-				generate = true,
-				gc_details = true,
-				run_govulncheck = true,
-				tidy = true,
-				upgrade_dependency = true,
-			},
+			codelenses = {},
 			["ui.inlayhint.hints"] = {
 				compositeLiteralFields = false,
 				constantValues = false,
