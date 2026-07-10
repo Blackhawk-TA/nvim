@@ -13,6 +13,7 @@ conform.setup({
 		cpp = { "clang-format" },
 		javascript = { "prettier" },
 		json = { "prettier" },
+		json5 = { "prettier" },
 		typescript = { "prettier" },
 		markdown = { "markdownlint" },
 		lua = { "stylua" },
