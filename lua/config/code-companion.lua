@@ -24,7 +24,26 @@ local function get_claude_token()
 	return settings.env and settings.env.ANTHROPIC_AUTH_TOKEN
 end
 
+local function get_codex_token()
+	local settings_path = os.getenv("HOME") .. "/.codex/auth.json"
+	local file = io.open(settings_path, "r")
+	if not file then
+		return nil
+	end
+
+	local content = file:read("*a")
+	file:close()
+
+	local ok, settings = pcall(vim.json.decode, content)
+	if not ok or not settings then
+		return nil
+	end
+
+	return settings.OPENAI_API_KEY
+end
+
 local claude_token = get_claude_token()
+local codex_token = get_codex_token()
 
 -- Checks if the hai proxy can be reached on its usual port.
 -- @return boolean: True if the proxy is available, false otherwise.
@@ -48,7 +67,10 @@ end
 -- Determines which adapter to use based on the availability of the Claude token and hai proxy status.
 -- @return string: The name of the adapter to use.
 local function get_adapter()
-	if claude_token ~= nil and is_hai_proxy_available() then
+	if codex_token ~= nil and is_hai_proxy_available() then
+		vim.notify("Using Codex", vim.log.levels.INFO)
+		return "codex"
+	elseif claude_token ~= nil and is_hai_proxy_available() then
 		vim.notify("Using Claude Code", vim.log.levels.INFO)
 		return "claude_code"
 	else
@@ -65,6 +87,16 @@ require("codecompanion").setup({
 	},
 	adapters = {
 		acp = {
+			codex = function()
+				return require("codecompanion.adapters").extend("codex", {
+					defaults = {
+						auth_method = "api-key",
+					},
+					env = {
+						OPENAI_API_KEY = codex_token,
+					},
+				})
+			end,
 			claude_code = function()
 				return require("codecompanion.adapters").extend("claude_code", {
 					defaults = {

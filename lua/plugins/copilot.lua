@@ -8,7 +8,7 @@ return {
 	{
 		"zbirenbaum/copilot.lua",
 		cmd = "Copilot",
-		copilot_model = "gpt-5.1",
+		copilot_model = "gpt-5.6",
 		event = "InsertEnter",
 		opts = {
 			server_opts_overrides = {
